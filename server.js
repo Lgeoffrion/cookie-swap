@@ -26,8 +26,12 @@ app.use(routes);
 
 
 // Start the API server
-db.sequelize.sync({ force: false }).then(function () {
-    app.listen(PORT, function () {
-      console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-    });
+// db.sequelize.sync({ force: false }).then(function () {
+//     app.listen(PORT, function () {
+//       console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+//     });
+// });
+
+app.listen(PORT, function () {
+  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });
