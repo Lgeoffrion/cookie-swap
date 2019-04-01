@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "siamese",
+    "database": "cookie_db",
     "host": "localhost",
     "dialect": "mysql",
     "port": 3306
