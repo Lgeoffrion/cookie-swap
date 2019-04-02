@@ -35,7 +35,7 @@ peanut_butter_patties VARCHAR(50) NOT NULL
 CREATE TABLE Trade (
 id INTEGER(10) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 tcmID_giver INTEGER(10) NOT NULL,
-tcmID_taker  INTEGER(10) NOT NULL,
+tcmID_taker  INTEGER(10),
 cookie_type VARCHAR(30),
 cookie_amount INTEGER(10)
 );
