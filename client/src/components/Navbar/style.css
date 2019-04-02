@@ -1,0 +1,30 @@
+#navTitle{
+    margin-top:1rem;
+}
+#navbar{
+   background-color:#00AE58;
+}
+#tabs{
+   background-color: #009447;
+}
+#topNav{
+   padding-bottom: 1rem;
+}
+#navDrop{
+   padding-right: 6rem;
+}
+#logo{
+   padding-left:10px;
+}
+
+.nav-content{
+   padding-left:0 !important;
+   padding-right:0 !important;
+}
+
+
+
+
+/* .brand-logo {
+   padding-left: 12px !important;
+} */
