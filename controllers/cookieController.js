@@ -2,13 +2,6 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models/");
 
-// get route -> index
-router.get("/", function(req, res) {
-  // send us to the next get function instead.
-  res.redirect("/burgers");
-});
-
-
 //Get Route for SUM to see all TCM's with their SUM identifier/foreign key
 //findAll - where foreignkey = SUM_ID
 
@@ -16,24 +9,21 @@ router.get("/", function(req, res) {
 //create
 
 //Get Route for TCM to see their inventory
-//findAll
+//findAll - for TCM ID
 
-//Put Route to add to specific cookie inventory
+//Put Route to add/subtract to specific cookie inventory
 //update
 
-//Put Route to reduce specific cookie inventory?  This might not be needed as previous could accomplish same thing
-//update
-
-//Post route to add an open trade
-//create
+//Post route to add an open trade and reduce inventory of TCM_1
+//create - TCM_giver = TCM ID of maker of trade
 
 //Get Route to see trades available
 //findAll - where TCM_taker = null
 
-//Get Route to see all trades your involved in
+//Get Route to see all trades you're involved in
 //findAll - where TCM_giver or TCM_taker = their TCM ID
 
-//Put route to update an open trade with TCM 2 ID
+//Put route to claim an open trade and update trade with TCM 2 ID
 //update
 
 //Post route to delete completed/cancelled trades
@@ -46,6 +36,11 @@ router.get("/", function(req, res) {
 //update
 
 
+// get route -> index
+router.get("/", function(req, res) {
+  // send us to the next get function instead.
+  res.redirect("/burgers");
+});
 
 // get route, edited to match sequelize
 router.get("/burgers", function(req, res) {
