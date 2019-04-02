@@ -3,6 +3,7 @@ var session = require("express-session");
 // Requiring passport as we've configured it
 // var passport = require("./config/passport");
 const routes = require("./routes");
+var db = require("./models");
 
 
 const app = express();
@@ -25,8 +26,8 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 // Add routes, both API and view
 app.use(routes);
 
-
-
-app.listen(PORT, function () {
-  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App now listening on port:", PORT);
+  });
 });

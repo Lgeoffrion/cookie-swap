@@ -1,9 +1,5 @@
-module.exports = sequelize, DataTypes => {
-    const SUM = sequelize.define("SUM", {
-        id: {
-          type: DataTypes.INT,
-          allowNull: false,
-        },
+module.exports = function(sequelize, DataTypes) {
+    var SUM = sequelize.define("SUM", {
         name: {
           type: DataTypes.STRING,
           allowNull: false,

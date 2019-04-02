@@ -1,13 +1,5 @@
-module.exports = sequelize, DataTypes => {
-    const TCM = sequelize.define("TCM", {
-        id: {
-          type: DataTypes.INT,
-          allowNull: false,
-        },
-        sum_ID: {
-          type: DataTypes.INT,
-          allowNull: false,
-        },
+module.exports = function(sequelize, DataTypes) {
+  var TCM = sequelize.define("TCM", {
         name: {
           type: DataTypes.STRING,
           allowNull: false,
@@ -29,39 +21,39 @@ module.exports = sequelize, DataTypes => {
             allowNull: true,
         },
         smores: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         thin_mint:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         shortbread:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         peanut_butter_sandwich:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         lemonades:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         thanks_a_lot:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         samoas:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         caramel_chocolate_chip:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         peanut_butter_patties:  {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         }
       });

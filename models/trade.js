@@ -1,15 +1,11 @@
-module.exports = sequelize, DataTypes => {
-    const trade = sequelize.define("Trade", {
-        id: {
-          type: DataTypes.INT,
-          allowNull: false,
-        },
+module.exports = function(sequelize, DataTypes) {
+  var trade = sequelize.define("Trade", {
         tcmID_giver: {
-          type: DataTypes.INT,
+          type: DataTypes.INTEGER,
           allowNull: false,
         },
         tcmID_taker: {
-          type: DataTypes.INT,
+          type: DataTypes.INTEGER,
           allowNull: true,
         },
         cookie_type: {
@@ -17,7 +13,7 @@ module.exports = sequelize, DataTypes => {
           allowNull: false,
         },
         cookie_amount: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
         }
       });
