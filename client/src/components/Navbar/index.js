@@ -1,8 +1,9 @@
 import React from "react";
 import "./style.css";
+import { PromiseProvider } from "mongoose";
 // import "./main.js";
 
-function Navbar() {
+function Navbar(props) {
     return (
         <div>
             <nav class="nav-extended row" id="navbar">
@@ -10,7 +11,7 @@ function Navbar() {
                     <div class="col s12" id="topNav">
                         <div class="brand-logo left" id="logo"><img width="100" height="auto" src="../../images/gstcslogo.png" alt="" />
                         </div>
-                        <h1 class="brand-logo center hide-on-small-only" id="navTitle">Girl Scout Cookie Swap</h1>
+                        <h1 class="brand-logo center hide-on-small-only" id="navTitle">{props.title}</h1>
                         <a href="#" data-target="dropdown1" id="navDrop" class="dropdown-trigger hide-on-large-only right"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li><a href="sass.html">Sass</a></li>

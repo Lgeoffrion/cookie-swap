@@ -4,9 +4,8 @@ import Navbar from "../components/Navbar"
 function Landing() {
         return (
         <div>
-        <Navbar/>
+        <Navbar title={'Excess Cookie Inventory'}/>
         <h1>TESTING</h1>
         </div>);
 }
-
 export default Landing;
