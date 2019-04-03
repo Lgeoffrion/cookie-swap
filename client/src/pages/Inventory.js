@@ -4,6 +4,7 @@ import MainWrapper from "../components/MainWrapper"
 import Sidebar from "../components/Sidebar"
 import ExcessCookieBody from "../components/ExcessCookieBody"
 import SideBtn from "../components/SideBtn"
+import { withRouter } from 'react-router-dom';
 
 class Inventory extends Component {
     state = {
@@ -31,5 +32,5 @@ class Inventory extends Component {
     }
 
 }
-
-export default Inventory
+export default withRouter(Inventory);
+// export default Inventory
