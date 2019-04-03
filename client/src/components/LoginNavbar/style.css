@@ -1,0 +1,24 @@
+#loginnavTitle{
+    margin-top:1rem;
+}
+#loginnavbar{
+   background-color:#00AE58;
+   height: 12vh;
+}
+#tabs{
+   background-color: #009447;
+}
+#logintopNav{
+   padding-bottom: 1rem;
+}
+#navDrop{
+   padding-right: 6rem;
+}
+#logo{
+   padding-left:20px;
+}
+
+.nav-content{
+   padding-left:0 !important;
+   padding-right:0 !important;
+}
