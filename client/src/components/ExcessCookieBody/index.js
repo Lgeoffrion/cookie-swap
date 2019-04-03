@@ -3,6 +3,11 @@ import "./style.css";
 
 function ExcessCookieBody(){
     return(
+        // Data will be passed through state and props to here, could 
+        // use separate component for table and thead then use
+        //  props.children to fill with map of the rows
+
+        //The table here is just dummy filler for now
         <div className="col s8" id="excessBody">
             <table>
                 <thead>
