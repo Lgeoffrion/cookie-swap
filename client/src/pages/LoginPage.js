@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-
-import Navbar from "../components/Navbar";
-import { Link} from "react-router-dom";
-import { withRouter } from "react-router-dom";
 import LoginNavbar from "../components/LoginNavbar";
 import Dropdown from "../components/Dropdown";
 import Button from "../components/Button";
@@ -54,7 +50,7 @@ class LoginPage extends Component {
       //   .then(res => this.homePage())
       //   .catch(err => console.log(err));
       // }
-       this.props.history.push("/TCM");
+       this.props.history.push("/Inventory");
     }
     } 
   };

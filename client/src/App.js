@@ -12,9 +12,10 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/" component={loginPage} />
-          <Route exact path="/inventory" component={Inventory} />
+          <Route path="/Inventory" component={Inventory} />
+          {/* <Route path="/Inventory" render={() => <Inventory/>} /> */}
           <Route exact path="/SUM" component={SUMlanding} />
-          <Route exact path="/TCM" component={TCMlanding} />
+          {/* <Route exact path="/TCM" component={TCMlanding} /> */}
         </Switch>
       </div>
     </Router>
