@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 
+//Side column which is passed SideBtn's as children
 function Sidebar(props) {
     return(
 
@@ -8,8 +9,7 @@ function Sidebar(props) {
         {props.children}    
         </div>
 
-    )
-    
+    ) 
 }
 
 export default Sidebar
