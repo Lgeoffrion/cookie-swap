@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import { Input, PasswordInput } from "../components/Form";
+import API from "../utils/API"
 
 // function LoginPage() {
+API.getTCM().then (res => {
+  console.log(res);
+})
+
 
 class LoginPage extends Component {
         state = {
