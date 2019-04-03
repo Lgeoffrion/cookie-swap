@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { Link} from "react-router-dom";
-import { withRouter } from "react-router-dom";
 import LoginNavbar from "../components/LoginNavbar";
 import Dropdown from "../components/Dropdown";
 import Button from "../components/Button";
-import { EmailInput, PasswordInput  } from "../components/Form";
+import { Input, EmailInput, PasswordInput  } from "../components/Form";
 import API from "../utils/API";
 
+
 // function LoginPage() {
+API.getTCM().then (res => {
+  console.log(res);
+})
+
 
 class LoginPage extends Component {
   state = {
@@ -47,7 +50,7 @@ class LoginPage extends Component {
       //   .then(res => this.homePage())
       //   .catch(err => console.log(err));
       // }
-       this.props.history.push("/TCM");
+       this.props.history.push("/Inventory");
     }
     } 
   };
