@@ -1,15 +1,18 @@
 import axios from "axios";
 
-
 // ***********
 //defaults still need to be updated with correct info and function names
 // ***********
 
 export default {
   // Gets all saved books
-  getSavedBooks: function() {
+  getInventory: function() {
     return axios.get("/api/tcms");
   },
+
+  getTCM: function(){
+    return axios.get("/api/tcms/1");
+
   // Deletes the saved book with the given id
   deleteBook: function(id) {
     return axios.delete("/api/books/" + id);
@@ -41,5 +44,7 @@ export default {
   validateTCMLogin : function()
   {
     return axios.get("/api/TCM/login");
+
   }
+
 };
