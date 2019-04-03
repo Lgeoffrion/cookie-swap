@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 
 import Navbar from "../components/Navbar";
-import { Input, PasswordInput } from "../components/Form";
 import { Link} from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import LoginNavbar from "../components/LoginNavbar";
 import Dropdown from "../components/Dropdown";
 import Button from "../components/Button";
-import { EmailInput, PasswordInput  } from "../components/Form";
+import { Input, EmailInput, PasswordInput  } from "../components/Form";
 import API from "../utils/API";
 
 
