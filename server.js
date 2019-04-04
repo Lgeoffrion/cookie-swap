@@ -26,11 +26,14 @@ app.use(passport.session());
 
 // Requiring our routes
 require("./routes/tcms.js")(app);
+
+require("./routes/post.js")(app);
+require("./routes/sum.js")(app);
+
 require("./routes/login.js")(app);
 
 // Add routes, both API and view
 app.use(routes);
-
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
