@@ -12,7 +12,7 @@ function Navbar(props) {
                         <h1 className="brand-logo center hide-on-small-only" id="navTitle">{props.title}</h1>
                         <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="/Profile">Profile</a></li>
                             <li><a href="/">Logout</a></li>
                         </ul>
                     </div> 

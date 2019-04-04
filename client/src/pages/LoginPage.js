@@ -17,49 +17,51 @@ class LoginPage extends Component {
     title: "",
     email: "",
     password: "",
-    pagehref: ""
   };
   handleInputChange = event => {
-    const { id, value } = event.target;
-    this.setState({
-      [id]: value
-    });
+    const { id, value,className } = event.target;
+     this.setState({ [id]: value });
   };
 
+  componentDidMount() {
+    // this.loadBooks();
+  }
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.email && this.state.password) {
-      if(this.state.title === 'SUM')
-      {
-        // API.validateSUMLogin({
-        //   email: this.state.email,
-        //   password: this.state.password
-        // }) 
-        // .then(res => this.homePage())
-        // .catch(err => console.log(err));
-         this.props.history.push("/SUM");
-        // window.location.hash = "/SUM";
-      }
-      else if(this.state.title === 'TCM')
-      {
-      //   API.validateTCPLogin({
-      //     email: this.state.email,
-      //     password: this.state.password
-      //   }) 
-      //   .then(res => this.homePage())
-      //   .catch(err => console.log(err));
-      // }
-       this.props.history.push("/Inventory");
-    }
-    } 
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+
+  //     if(this.state.title === 'SUM')
+  //     {
+  //       // API.validateSUMLogin({
+  //       //   email: this.state.email,
+  //       //   password: this.state.password
+  //       // }) 
+  //       // .then(res => this.homePage())
+  //       // .catch(err => console.log(err));
+  //       //  this.props.history.push("/SUM");
+  //       // window.location.hash = "/SUM";
+  //       // console.log(this.state.emailValidate);
+  //     }
+  //     else if(this.state.title === 'TCM')
+  //     {
+  //     //   API.validateTCPLogin({
+  //     //     email: this.state.email,
+  //     //     password: this.state.password
+  //     //   }) 
+  //     //   .then(res => this.homePage())
+  //     //   .catch(err => console.log(err));
+  //     // }
+  //     //  this.props.history.push("TCMInventory");
+  //   } 
+  // };
 
 
   render() {
     return (
       <div>
-      <LoginNavbar title={'Girl Scout Cookie Swap'} />
+      <LoginNavbar title={'Girl Scout Cookie Swap'}
+        ahref={'/'}
+        page={'login'}/>/>
       <div className='row'>
         <div className="col col l7 push-l4 s12">
           
@@ -67,6 +69,7 @@ class LoginPage extends Component {
             value={this.state.title} 
             id="title"
             name="Title"
+            // error={!this.state.title || !this.state.title == '' ? '': this.state.titleError}//this.state.titleError}
             onChange={this.handleInputChange}
           />
           <EmailInput
@@ -75,6 +78,11 @@ class LoginPage extends Component {
             id="email"
             name="Email"  
             placeholder="Email (required)"
+            className=
+            {
+              (!this.state.email || 
+              this.state.email.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/)) ? "valid" : "invalid"
+            }
           />
           <PasswordInput
             value={this.state.password}
@@ -84,8 +92,10 @@ class LoginPage extends Component {
             placeholder="Password (required)"
           />
           <Button 
-           disabled={!(this.state.title && this.state.email && this.state.password)}
-           onClick={this.handleFormSubmit}
+            disabled={!(this.state.title && this.state.email && this.state.password
+              && this.state.email.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/))
+            }
+            ahref={this.state.title === 'SUM'? '/SUM' : '/TCMInventory'}
             />
         </div>
       </div>
