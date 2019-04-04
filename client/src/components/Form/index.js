@@ -19,11 +19,11 @@ export function EmailInput(props) {
   return (
     <div className="row">
         <div className="input-field col s6">
-             <input type="email" className="validate"
+             <input type="email" 
              {...props}
             />
              <label htmlFor={props.id}>{props.name}</label>
-             <span className="helper-text" data-error="Please enter a Valid Email Id" data-success=""></span>
+             <span className="helper-text" data-error="Please enter a valid Email"></span>
         </div>
     </div>
   );
