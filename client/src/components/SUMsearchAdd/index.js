@@ -7,7 +7,7 @@ function SUMsearchAdd() {
 
     return (
         <>
-            <div className="row">
+            <div className="row" id="topRow">
                 <h5 className="col s6 offset-s2 center">Search by Troop# or Cookie Manager</h5>
                 <h5 className="col s3 offset-s1">Add a Cookie Manager</h5>
             </div>
@@ -26,7 +26,7 @@ function SUMsearchAdd() {
                         </form>
                     </div>
                 </nav>
-                {/* Modal trigger button */}
+                {/* Modal trigger button linked to the modal structure by the modal structure id*/}
                 <div className="col s3 offset-s1" id="AddTroop">
                     <a className="waves-effect btn modal-trigger" href="#addModal">
                         <i className="material-icons right">arrow_forward</i>
@@ -41,7 +41,7 @@ function SUMsearchAdd() {
                             <form className="col s12">
                                 <div className="row modal-form-row">
                                     <div className="input-field col s5">
-                                        <input id="troopnum" type="text" className="validate" />
+                                        <input id="troopnum" type="number" className="validate" />
                                         <label htmlFor="troop">Troop #</label>
                                     </div>
 

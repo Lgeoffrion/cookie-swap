@@ -4,7 +4,7 @@ import "./style.css";
 
 function Dropdown(props) {
     return (
-        <div className="row">
+        <div id="formDropdown" className="row">
             <div className="input-field col s8">
                 <select  {...props}>
                 <option defaultValue="" disabled>Choose your option</option>

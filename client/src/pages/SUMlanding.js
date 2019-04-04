@@ -17,7 +17,11 @@ class SUMlanding extends Component {
         return (
             <>
                     {/* Navbar passes a prop which will be the navbar title */}
-                    <LoginNavbar title="Service Unit Manager"/>
+                    <LoginNavbar 
+                        title={'Service Unit Manager'}
+                        ahref={'/'}
+                        page={'sum'} 
+                    />
                     {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
                     tabs from the Navbar then swap which wrapper is seen based off this id*/}
                     <SUMsearchAdd/>
