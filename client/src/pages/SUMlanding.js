@@ -1,11 +1,59 @@
 import React from "react";
 import Navbar from "../components/Navbar"
 
-function Landing() {
+import React, { Component } from "react";
+import Navbar from "../components/Navbar"
+import MainWrapper from "../components/MainWrapper"
+import Sidebar from "../components/Sidebar"
+// import ExcessCookieBody from "../components/ExcessCookieBody"
+import SideBtn from "../components/SideBtn"
+import ExcessTable from "../components/ExcessTable"
+import ExcessRow from "../components/ExcessRow"
+
+class SUMLanding extends Component {
+    // Take from database and pass to state as troopInv
+    state = {
+        troopInv:{}
+    };
+    
+    render(){
         return (
-        <div>
-        <Navbar title={'Excess Cookie Inventory'}/>
-        <h1>SUM Page</h1>
-        </div>);
+            <>
+                    {/* Navbar passes a prop which will be the navbar title */}
+                    <Navbar title="Excess Cookie Inventory"/>
+                    {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
+                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
+                    <MainWrapper id="excessinventory">
+                        {/* Sidebar which will take SideBtn as children */}
+                        <Sidebar>
+                            {/* pass SideBtn with name and link props to populate sidebar */}
+                            <SideBtn 
+                            name="button"
+                            />
+                        </Sidebar>
+                        {/* Table for excess cookie data, will pull from database and 
+                        pass props through state to populate table
+                        Data will be passed through state and props to here*/}
+                        <ExcessTable>
+                            <ExcessRow/>
+                        </ExcessTable>
+                    </MainWrapper>
+                    {/* Wrapper for invetory of logged in troop, passes a prop which ids the wrapper 
+                    tabs from the Navbar then swap which wrapper is seen based off this id */}
+                    <MainWrapper id="yourinventory">
+                        {/* Sidebar which will take SideBtn as children */}
+                        <Sidebar>
+                            {/* pass SideBtn with name and link props to populate sidebar */}
+                            <SideBtn 
+                            name="button"
+                            />
+                        </Sidebar>
+                    </MainWrapper>
+            </>
+
+        )
+    }
+
 }
-export default Landing;
+
+export default SUMLanding;
