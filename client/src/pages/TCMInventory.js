@@ -43,7 +43,9 @@ class TCMInventory extends Component {
                         {/* Sidebar which will take SideBtn as children */}
                         <Sidebar>
                             {/* pass SideBtn with name and link props to populate sidebar */}
-                            <SideBtn 
+                            <SideBtn onClick={() => {
+                                //onclick for when you click ??this button code goes here
+                            }}
                             name="button"
                             />
                         </Sidebar>

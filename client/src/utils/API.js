@@ -9,18 +9,16 @@ export default {
   getInventory: function() {
     return axios.get("/api/tcms");
   },
-
-  getTCM: function(){
-    return axios.get("/api/tcms/1");
+  getTCMS: function(){
+    return axios.get("/api/tcms");
   },
   validateSUMLogin : function()
   {
     return axios.get("/api/SUM/login");
   },
-  validateTCMLogin : function()
+  validateTCMLogin : function(userInfo)
   {
-    return axios.get("/api/TCM/login");
-
+    return axios.post("/api/tcm/login",userInfo);
   }
 
 };
