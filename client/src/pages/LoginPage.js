@@ -64,12 +64,9 @@ class LoginPage extends Component {
               this.setState({ errorMsg: "Invalid Username or Password" });
             }
             else {
-<<<<<<< HEAD
-=======
               sessionStorage.removeItem('userInfo');
               sessionStorage.clear();
               sessionStorage.setItem('userInfo', JSON.stringify(res.data));
->>>>>>> 498cd5f31bf8322687d89fe4fe1dcac28e441f54
               document.location.href = "/TCM";
             }
           }
