@@ -1,53 +1,35 @@
-import React from "react";
-import Navbar from "../components/Navbar"
-
 import React, { Component } from "react";
-import Navbar from "../components/Navbar"
+import LoginNavbar from "../components/LoginNavbar";
 import MainWrapper from "../components/MainWrapper"
-import Sidebar from "../components/Sidebar"
+import SUMsearchAdd from "../components/SUMsearchAdd"
 // import ExcessCookieBody from "../components/ExcessCookieBody"
 import SideBtn from "../components/SideBtn"
-import ExcessTable from "../components/ExcessTable"
-import ExcessRow from "../components/ExcessRow"
+import SUMtable from "../components/SUMtable"
+import SUMrow from "../components/SUMrow"
 
-class SUMLanding extends Component {
+class SUMlanding extends Component {
     // Take from database and pass to state as troopInv
     state = {
-        troopInv:{}
+        contacts:{}
     };
     
     render(){
         return (
             <>
                     {/* Navbar passes a prop which will be the navbar title */}
-                    <Navbar title="Excess Cookie Inventory"/>
+                    <LoginNavbar title="Service Unit Manager"/>
                     {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
                     tabs from the Navbar then swap which wrapper is seen based off this id*/}
-                    <MainWrapper id="excessinventory">
+                    <SUMsearchAdd/>
+                    <MainWrapper id="SUMwrapper">
                         {/* Sidebar which will take SideBtn as children */}
-                        <Sidebar>
-                            {/* pass SideBtn with name and link props to populate sidebar */}
-                            <SideBtn 
-                            name="button"
-                            />
-                        </Sidebar>
+
                         {/* Table for excess cookie data, will pull from database and 
                         pass props through state to populate table
                         Data will be passed through state and props to here*/}
-                        <ExcessTable>
-                            <ExcessRow/>
-                        </ExcessTable>
-                    </MainWrapper>
-                    {/* Wrapper for invetory of logged in troop, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id */}
-                    <MainWrapper id="yourinventory">
-                        {/* Sidebar which will take SideBtn as children */}
-                        <Sidebar>
-                            {/* pass SideBtn with name and link props to populate sidebar */}
-                            <SideBtn 
-                            name="button"
-                            />
-                        </Sidebar>
+                        <SUMtable>
+                            <SUMrow/>
+                        </SUMtable>
                     </MainWrapper>
             </>
 
@@ -56,4 +38,4 @@ class SUMLanding extends Component {
 
 }
 
-export default SUMLanding;
+export default SUMlanding;
