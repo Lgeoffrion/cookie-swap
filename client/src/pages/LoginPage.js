@@ -7,10 +7,6 @@ import API from "../utils/API";
 
 
 // function LoginPage() {
-API.getTCM().then (res => {
-  console.log(res);
-})
-
 
 class LoginPage extends Component {
   state = {
@@ -61,7 +57,7 @@ class LoginPage extends Component {
       <div>
       <LoginNavbar title={'Girl Scout Cookie Swap'}
         ahref={'/'}
-        page={'login'}/>/>
+        page={'login'}/>
       <div className='row'>
         <div className="col col l7 push-l4 s12">
           
@@ -91,11 +87,41 @@ class LoginPage extends Component {
             name="Password"
             placeholder="Password (required)"
           />
-          <Button 
+          <Button onClick={() => {           
+            //onclick for when you click login
+            API.getTCMS().then (res => {
+              //initialize variable for email
+              let emailGrabbed = {
+                name: "",
+                id: "",
+                foundEmail: false
+              };
+              for(let i = 0; i <res.data.length; i++){
+                if (res.data[i].email === this.state.email){
+                  emailGrabbed.name = res.data[i].email;
+                  emailGrabbed.id = i;
+                  emailGrabbed.foundEmail = true;
+                }
+              }
+              if(emailGrabbed.foundEmail == true){
+                //checks the password you inputed against the email you have entered and runs code if password does match
+                if(res.data[emailGrabbed.id].password === this.state.password){
+                  console.log("You have successfully logged in with email: " + emailGrabbed.name)
+                  document.location.href = "/TCMinventory";
+                }else{
+                  console.log("password is incorrect")
+                }
+              }else{
+                console.log("email doesnt exist")
+              }
+            })
+          //=================================================================================================
+          }}
             disabled={!(this.state.title && this.state.email && this.state.password
               && this.state.email.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/))
             }
-            ahref={this.state.title === 'SUM'? '/SUM' : '/TCMInventory'}
+            
+            
             />
         </div>
       </div>

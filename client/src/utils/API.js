@@ -9,9 +9,8 @@ export default {
   getInventory: function() {
     return axios.get("/api/tcms");
   },
-
-  getTCM: function(){
-    return axios.get("/api/tcms/1");
+  getTCMS: function(){
+    return axios.get("/api/tcms");
   },
   validateSUMLogin : function()
   {
