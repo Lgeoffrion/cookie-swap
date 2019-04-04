@@ -7,7 +7,7 @@ function Dropdown(props) {
         <div className="row">
             <div className="input-field col s8">
                 <select  {...props}>
-                <option defaultValue="" disabled>Choose your option</option>
+                <option value="0">Choose your option</option>
                     <option value="SUM">Service Unit Manager</option>
                     <option value="TCM">Troop Cookie Manager</option>
                 </select>

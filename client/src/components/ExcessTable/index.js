@@ -7,7 +7,7 @@ function ExcessTable(props){
             <table>
                 <thead>
                 <tr>
-                    <th>Troop</th>
+                    <th>Troop #</th>
                     <th>TAL</th>
                     <th>SM</th>
                     <th>LEM</th>
