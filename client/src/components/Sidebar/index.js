@@ -5,7 +5,7 @@ import "./style.css";
 function Sidebar(props) {
     return(
 
-        <div className="col s4 teal lighten-2 row" id="SideBar">
+        <div className="col s3 teal lighten-2 row" id="SideBar">
         {props.children}    
         </div>
 
