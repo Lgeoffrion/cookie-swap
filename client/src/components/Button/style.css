@@ -7,3 +7,12 @@
     /* position: relative; */
     margin-left: 20%;
 }
+.input-field
+{
+    /* margin: 1%; */
+}
+.errorMsg
+{
+    margin:15%;
+    color: red;
+}

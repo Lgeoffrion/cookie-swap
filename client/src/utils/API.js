@@ -16,10 +16,9 @@ export default {
   {
     return axios.get("/api/SUM/login");
   },
-  validateTCMLogin : function()
+  validateTCMLogin : function(userInfo)
   {
-    return axios.get("/api/TCM/login");
-
+    return axios.post("/api/tcm/login",userInfo);
   }
 
 };
