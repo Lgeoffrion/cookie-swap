@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Requiring our routes
 require("./routes/tcms.js")(app);
-
+require("./routes/login.js")(app);
 
 
 db.sequelize.sync().then(function() {
