@@ -13,7 +13,7 @@ function LoginNav(props) {
               props.page !== 'login'?
               (
                 <ul className="right hide-on-med-and-down">
-                  <li><a href="/TCMInventory">Inventory</a></li>
+                  <li><a href="/TCM">Inventory</a></li>
                   <li><a href="/">Logout</a></li>
               </ul>
               ):""
