@@ -14,8 +14,15 @@ class TCMInventory extends Component {
     };
     
     render(){
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        console.log("usernfo",userInfo);
         return (
             <>
+                <div className='row'>
+                    <div className="col col l7 push-l4 s12">
+                    {/* <div>{userInfo}</div> */}
+
+                    </div></div>
                     {/* Navbar passes a prop which will be the navbar title */}
                     <LoginNavbar 
                         title={'Excess Cookie Inventory'}

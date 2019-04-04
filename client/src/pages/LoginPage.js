@@ -32,16 +32,25 @@ class LoginPage extends Component {
     // event.preventDefault();
 
     if (this.state.title === 'SUM') {
-
-      // API.validateSUMLogin({
-      //   email: this.state.email,
-      //   password: this.state.password
-      // }) 
-      // .then(res => this.homePage())
-      // .catch(err => console.log(err));
-      //  this.props.history.push("/SUM");
-      // window.location.hash = "/SUM";
-      // console.log(this.state.emailValidate);
+      API.validateSUMLogin({
+        email: this.state.email,
+        password: this.state.password
+      })
+        .then(
+          res => {
+            console.log("res", res);
+            if (res.data == null) {
+              this.setState({ errorMsg: "Invalid Username or Password" });
+            }
+            else {
+              sessionStorage.removeItem('userInfo');
+              sessionStorage.clear();
+              sessionStorage.setItem('userInfo', JSON.stringify(res.data));
+              document.location.href = "/SUM";
+            }
+          }
+        )
+        .catch(err => console.log(err));
     }
     else if (this.state.title === 'TCM') {
       API.validateTCMLogin({
@@ -55,6 +64,12 @@ class LoginPage extends Component {
               this.setState({ errorMsg: "Invalid Username or Password" });
             }
             else {
+<<<<<<< HEAD
+=======
+              sessionStorage.removeItem('userInfo');
+              sessionStorage.clear();
+              sessionStorage.setItem('userInfo', JSON.stringify(res.data));
+>>>>>>> 498cd5f31bf8322687d89fe4fe1dcac28e441f54
               document.location.href = "/TCM";
             }
           }
@@ -99,7 +114,7 @@ class LoginPage extends Component {
               placeholder="Password (required)"
             />
            <Button
-              disabled={!(this.state.title && this.state.email && this.state.password
+              disabled={ !(this.state.email && this.state.title && this.state.password
                 && this.state.email.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/))
               }
               onClick={this.handleFormSubmit}

@@ -1,3 +1,4 @@
+var bcrypt = require("bcrypt-nodejs");
 module.exports = function(sequelize, DataTypes) {
   var TCM = sequelize.define("TCM", {
         name: {
@@ -66,6 +67,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+      };
+
+      TCM.prototype.validPassword = function (password) {
+        console.log("Password from the DB:" , this.password)
+        console.log("Password from the Client :" , password)
+        return (this.password === password)
       };
     
       return TCM;
