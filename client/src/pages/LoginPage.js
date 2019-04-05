@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
-import LoginNavbar from '../components/LoginNavbar';
 import Button from "../components/Button";
 import { Input, EmailInput, PasswordInput } from "../components/Form";
 import API from "../utils/API";
@@ -38,15 +37,15 @@ class LoginPage extends Component {
       })
         .then(
           res => {
-            console.log("res.success", res.success);
-            if (res.data == null) {
-              this.setState({ errorMsg: "Invalid Username or Password" });
-            }
-            else {
+            console.log("res.success", res.data.success);
+            if (res.data.success === "Yes") {
               sessionStorage.removeItem('userInfo');
               sessionStorage.clear();
               sessionStorage.setItem('userInfo', JSON.stringify(res.data));
               document.location.href = "/SUM";
+            }
+            else {
+              this.setState({ errorMsg: "Invalid Username or Password" });
             }
           }
         )
@@ -83,7 +82,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <LoginNavbar title={'Girl Scout Cookie Swap'}
+        <Navbar title={'Girl Scout Cookie Swap'}
           ahref={'/'}
           page={'login'} />
         <div className='row'>

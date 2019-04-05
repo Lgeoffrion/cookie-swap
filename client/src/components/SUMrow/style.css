@@ -1,3 +1,11 @@
 td:not(:first-child){
     text-align: center;
+
+}
+
+td:not(:last-child) {
+    border-right: grey solid 1px;
+}
+#invSpace{
+    padding-right:1rem;
 }
