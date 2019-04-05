@@ -20,7 +20,8 @@ function Navbar(props) {
               <>
                 <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
                 <ul className="right hide-on-med-and-down">
-                  <li><a href="/TCM">Inventory</a></li>
+                <li><a href="/TCM">Trade Cookies</a></li>
+                  <li><a href="/TCM2">Inventory</a></li>
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
                 </ul>
@@ -62,21 +63,23 @@ function Navbar(props) {
         // login is nothing
         props.page === 'login' ?
           ""
-        // tcm page links
-        : props.page === 'tcm' ?
-          <ul className='dropdown-content' id='dropdown-nav'>
-            <li><a href="/TCM">Inventory</a></li>
-            <li><a href="/Profile">Profile</a></li>
-            <li><a href="/">Logout</a></li>
-          </ul>
-        //sum page links
-        : props.page === 'sum' ?
+          //tcm page dropdown content
+          : props.page === 'tcm' ?
+            
+            <ul className='dropdown-content' id='dropdown-nav'>
+              <li><a href="/TCM">Trade Cookies</a></li>
+              <li><a href="/TCM2">Inventory</a></li>
+              <li><a href="/Profile">Profile</a></li>
+              <li><a href="/">Logout</a></li>
+            </ul>
+          //sum page dropdown
+          : props.page === 'sum' ?
             <ul className='dropdown-content' id='dropdown-nav'>
               <li><a href="/TCM">Inventory</a></li>
               <li><a href="/Profile">Profile</a></li>
               <li><a href="/">Logout</a></li>
             </ul>
-        : ""
+          : ""
       }
     </>
   );

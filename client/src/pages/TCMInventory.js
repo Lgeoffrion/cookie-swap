@@ -3,8 +3,8 @@ import Navbar from "../components/Navbar"
 // import MainWrapper from "../components/MainWrapper"
 // import ExcessCookieBody from "../components/ExcessCookieBody"
 import TradeTable from "../components/TradeTable"
-
 import API from "../utils/API";
+
 class TCMInventory extends Component {
     // Take from database and pass to state as troopInv
     state = {
@@ -12,17 +12,16 @@ class TCMInventory extends Component {
         openTrades :"",
         userid:""
     };
-
     componentDidMount() {
         this.tradeCookie();
     }
     tradeCookie = () => {
         API.getTCMS().then(res => {
-            // console.log(res);
+            console.log("Trade Cookie:",res);
             this.setState({ openTrade: res.data });
         });
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        console.log("usernfo", userInfo.id);
+        console.log("userinfo", userInfo.id);
         this.setState({ userid: userInfo.id});
 
     }

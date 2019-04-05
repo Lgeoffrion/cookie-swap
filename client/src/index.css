@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family: "Trefoil Sans Web", "Open Sans", Arial, sans-serif;
 }
-.btn{
+.btn, .btn-small{
   color: black !important;
   background-color: #F7CE4F !important;
 }

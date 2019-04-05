@@ -10,8 +10,8 @@ module.exports = function(app) {
   // Create an offer...
   app.post("/api/offer", function(req, res) {
     // Update the variables above based on the selected cookie on the form... req.params.cookies is a placeholder
-    let cookies = req.params.cookies;
-    let amount = req.params.amount;
+    let cookies = req.body.cookieType;
+    let amount = req.body.cookieAmount;
     // etc etc...
     // Find your current database values, searching for your username...
     // req.params.id is a placeholder, that's YOU THE TRADE MAKER's logged in ID
@@ -26,7 +26,8 @@ module.exports = function(app) {
         // req.params.id is a placeholder, that's YOU THE TRADE MAKER's logged in ID
         // req.params.cookie is a placeholder for cookie chosen
         db.Trade.create({
-          tcmID_giver: req.params.id,
+          tcmID_giver: req.body.userOffering,
+          tcmID_taker: req.body.userRequesting,
           cookie_type: cookies,
           cookie_amount: amount
         }).then(function(dbPost) {

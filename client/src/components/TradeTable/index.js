@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../../utils/API";
 // import "./style.css";
 //will pass props to populate table row with real data sometime
 
@@ -23,7 +24,7 @@ function TradeTable(props) {
             tradeRow.push([props.tradeDetails[index].id, props.tradeDetails[index].name, props.tradeDetails[index].city, "thin_mint", props.tradeDetails[index].thin_mint]);
         }
     }
-    // console.log(propsArray);
+    console.log(props);
 
     return (
         <table  className='tradecol striped' >
@@ -46,7 +47,22 @@ function TradeTable(props) {
                         <td> {obj[2]}</td>
                         <td> {obj[3]}</td>
                         <td> {obj[4]}</td>
-                        <td className="tblBtn"><div className="waves-effect waves-light btn">Request</div></td>
+                        <td className="tblBtn" ><div tcmid={obj[0]}cookietype={obj[3]} cookieamount={obj[4]} className="waves-effect waves-light btn" onClick={(event) => {
+                            //create variables and pass info from the button into those variables
+                            let userOffering = event.target.getAttribute('tcmid');
+                            let userRequesting = props.currentUser;
+                            let cookieType = event.target.getAttribute('cookietype');
+                            let cookieAmount = event.target.getAttribute('cookieamount');
+                            //place those variables into object to post to /api/offer
+                            let newTrade = {
+                                userRequesting: userRequesting,
+                                userOffering: userOffering,
+                                cookieType: cookieType,
+                                cookieAmount: cookieAmount
+                            }
+                            //post the info we have recieved from the button to route /api/offer
+                            API.createTrade(newTrade);
+                        }}>Request</div></td>
                         <td className="tblBtn"><div className="waves-effect waves-light btn disabled">Status</div></td>
                     </tr>
                 )) : <tr><td></td></tr>}
