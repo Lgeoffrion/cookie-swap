@@ -38,15 +38,15 @@ class LoginPage extends Component {
       })
         .then(
           res => {
-            console.log("res.success", res.success);
-            if (res.data == null) {
-              this.setState({ errorMsg: "Invalid Username or Password" });
-            }
-            else {
+            console.log("res.success", res.data.success);
+            if (res.data.success === "Yes") {
               sessionStorage.removeItem('userInfo');
               sessionStorage.clear();
               sessionStorage.setItem('userInfo', JSON.stringify(res.data));
               document.location.href = "/SUM";
+            }
+            else {
+              this.setState({ errorMsg: "Invalid Username or Password" });
             }
           }
         )
