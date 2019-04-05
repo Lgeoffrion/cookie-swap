@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginNavbar from "../components/LoginNavbar"
+import Navbar from "../components/Navbar"
 import MainWrapper from "../components/MainWrapper"
 import InventoryTable from "../components/TCMinventory"
 import API from "../utils/API";
@@ -35,7 +35,7 @@ class TCMInventory2 extends Component {
 
         return (
             <>
-             <LoginNavbar
+             <Navbar
                     title={'Troop Cookie Manager'}
                     ahref={'/'}
                     page={'tcm'}
