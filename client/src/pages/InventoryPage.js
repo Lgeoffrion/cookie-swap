@@ -1,33 +1,37 @@
 import React, { Component } from "react";
 import LoginNavbar from "../components/LoginNavbar"
 import MainWrapper from "../components/MainWrapper"
-import TradeTable from "../components/TradeTable"
+import InventoryTable from "../components/TCMinventory"
 import API from "../utils/API";
 
-class TCMInventory extends Component {
+class TCMInventory2 extends Component {
     // Take from database and pass to state as troopInv
     state = {
         troopInv: "",
-        openTrades :"",
-        userid:""
+        userid:"",
+        openTrades :""
+  
     };
 
     componentDidMount() {
+   
         this.tradeCookie();
     }
+    
     tradeCookie = () => {
-        API.getTCMS().then(res => {
-            console.log("Trade Cookie:",res);
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        console.log("user ID :", userInfo.id);
+
+        API.getYourInventory(userInfo.id)
+
+        .then(res => {
+            console.log("API Response:", res);
             this.setState({ openTrade: res.data });
         });
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        console.log("userinfo", userInfo.id);
-        this.setState({ userid: userInfo.id});
-
+      
     }
 
     render() {
-        // this.tradeCookie();
 
         return (
             <>
@@ -42,9 +46,9 @@ class TCMInventory extends Component {
                 </MainWrapper> */}
 
                         {/* <div>{userInfo}</div> */}
-                        <TradeTable tradeDetails={this.state.openTrade} 
+                        <InventoryTable tradeDetails={this.state.openTrade} 
                         currentUser={this.state.userid}>
-                        </TradeTable>
+                        </InventoryTable>
                     </div></div>
                 {/* Navbar passes a prop which will be the navbar title */}
                
@@ -69,4 +73,4 @@ class TCMInventory extends Component {
 
 }
 
-export default TCMInventory
+export default TCMInventory2

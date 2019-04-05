@@ -16,7 +16,8 @@ function LoginNav(props) {
                 <>
                 <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
                 <ul className="right hide-on-med-and-down">
-                  <li><a href="/TCM">Inventory</a></li>
+                <li><a href="/TCM">Trade Cookies</a></li>
+                  <li><a href="/TCM2">Inventory</a></li>
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
                 </ul>
@@ -40,7 +41,7 @@ function LoginNav(props) {
 
                 <ul className="tabs tabs-transparent tabs-fixed-width z-depth-1" id="tabs">
                   <li className="tab"><a href="#cookieTrade">Trading Cookie</a></li>
-                  <li className="tab"><a href="#yourinventory">Your Invertory</a></li>
+                  <li className="tab"><a href="#yourinventory">Your Inventory</a></li>
                 </ul>
                 : props.page === 'sum' ?
 
@@ -59,7 +60,8 @@ function LoginNav(props) {
           : props.page === 'tcm' ?
             (
               <ul className='dropdown-content' id='dropdown-nav'>
-                <li><a href="/TCM">Inventory</a></li>
+                <li><a href="/TCM">Trade Cookies</a></li>
+                <li><a href="/TCM2">Inventory</a></li>
                 <li><a href="/Profile">Profile</a></li>
                 <li><a href="/">Logout</a></li>
               </ul>

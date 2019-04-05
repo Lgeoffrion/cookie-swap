@@ -6,8 +6,9 @@ import axios from "axios";
 
 export default {
   // Gets all saved books
-  getInventory: function() {
-    return axios.get("/api/tcms");
+  getYourInventory: function(id) {
+    console.log("/api/tcms/"+ id)
+    return axios.get("/api/tcms/"+ id);
   },
   getTCMS: function(){
     return axios.get("/api/tcms");
@@ -21,5 +22,8 @@ export default {
     
     return axios.post("/api/tcm/login",userInfo);
   }
+
+
+
 
 };

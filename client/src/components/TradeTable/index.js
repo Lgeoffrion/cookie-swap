@@ -23,7 +23,7 @@ function TradeTable(props) {
             tradeRow.push([props.tradeDetails[index].id, props.tradeDetails[index].name, props.tradeDetails[index].city, "thin_mint", props.tradeDetails[index].thin_mint]);
         }
     }
-    // console.log(propsArray);
+    console.log(props);
 
     return (
         <table  className='tradecol striped' >

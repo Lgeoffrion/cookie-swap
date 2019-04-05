@@ -12,7 +12,7 @@ class Profile extends Component {
             {/* Navbar passes a prop which will be the navbar title */}
             <LoginNavbar title="Troop Manager Profile" 
             ahref={'/TCMInventory'} 
-            page={'profile'}/>
+            page={'tcm'}/>
             </>
         
         

@@ -58,6 +58,20 @@ module.exports = function (app) {
         .catch(err => res.status(422).json(err));
       });
 
+   //See Your trades that are currently open for someone to take
+      app.get("/api/yourOpenTrades/:id", function (req, res) {
+        db.Trade.findAll({
+      where: {
+        tcmID_giver: req.params.id,
+        tcmID_taker: null,
+      }
+       })
+        .then(function (users) {
+          res.json(users);
+            console.log(users);
+          })
+          .catch(err => res.status(422).json(err));
+        });
 
       //The follow 2 calls could be merged into a single call 
       // but this will be done for now for simplicity
