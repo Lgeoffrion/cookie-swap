@@ -9,7 +9,7 @@ function Button(props) {
             <a className="waves-effect waves-light btn-large" {...props} ahref={props.href}>Login</a>
            
         </div>
-        <br/><span className="errorMsg">{props.errorMsg}</span>
+        <br/><span className="errorMsg">{props.error}</span>
         </>
     );
 }

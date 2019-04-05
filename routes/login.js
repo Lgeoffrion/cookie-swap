@@ -4,17 +4,16 @@ var UserInfo;
 
 module.exports = function (app) {
 
-    app.post("/api/tcm/login", passport.authenticate("local"), function (req, res) {
-        console.log("userInfo",req.body);
-        // UserInfo = { user: req.user }
-        console.log("res",res.user);
-        // res.json("dgfgdf");
-        // res.json({ success: (req.user ? "Yes" : "No"), user: req.user });
-      res.json({ success: (req.user ? "Yes" : "No")});
+    app.post("/api/tcm/login", passport.authenticate("local", { failureRedirect: "/" }), function (req, res) {
+        if(req.user)
+       { 
+           res.json({ success: (req.user ? "Yes" : "No"), user: req.user });
+        }
+        // else res.json({ success: "No"});
       });
 
     
-    // app.post("/api/tcm/login", function (req, res) {
+    // app.post("/api/tcms/login", function (req, res) {
     //     // console.log("userInfo",req.body);
     //     db.TCM.findOne({
     //         where: {
@@ -55,4 +54,16 @@ module.exports = function (app) {
             })
             .catch(err => res.status(422).json(err));
     });
+
+    app.get("/", function(req, res) {
+
+        // console.log("redirect");
+        if(!req.user) {
+            
+            res.json({ success: (req.user ? "Yes" : "No") });
+        }
+        //   res.sendFile(path.join(__dirname, "../client/public/index.html"));
+        
+      });
+    
 }
