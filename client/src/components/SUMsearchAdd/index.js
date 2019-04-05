@@ -1,9 +1,10 @@
 import React from "react";
 import "./style.css";
+import API from "../../utils/API.js";
 
 //search field which will filter the SUMtable based off of troop number or cookie manager
 
-function SUMsearchAdd() {
+function SUMsearchAdd(props) {
 
     return (
         <>
@@ -41,29 +42,29 @@ function SUMsearchAdd() {
                             <form className="col s12">
                                 <div className="row modal-form-row">
                                     <div className="input-field col s5">
-                                        <input id="troopnum" type="number" className="validate" />
+                                        <input name="troop" value={props.troopnum} type="number" onChange={props.handleInputChange} className="validate" />
                                         <label htmlFor="troop">Troop #</label>
                                     </div>
 
                                     <div className="input-field col s6">
-                                        <input id="cm" type="text" className="validate" />
+                                        <input name="name" type="text" value={props.cm} onChange={props.handleInputChange} className="validate" />
                                         <label htmlFor="cm">Cookie Manager</label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s5">
-                                        <input id="phone" type="text" className="validate" />
+                                        <input name="phone" type="text" value={props.phone} onChange={props.handleInputChange} className="validate" />
                                         <label htmlFor="phone">Phone</label>
                                     </div>
 
                                     <div className="input-field col s6">
-                                        <input id="location" type="text" className="validate" />
+                                        <input name="city" type="text" value={props.location} onChange={props.handleInputChange} className="validate" />
                                         <label htmlFor="location">City/Location</label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s11">
-                                        <input id="email" type="email" className="validate"></input>
+                                        <input name="email" type="email" value={props.email} onChange={props.handleInputChange} className="validate"></input>
                                         <label htmlFor="email">Email</label>
                                     </div>
                                 </div>
@@ -71,7 +72,7 @@ function SUMsearchAdd() {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <a className=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+                        <a className=" modal-action modal-close waves-effect waves-green btn-flat" id="tcmSubmit" onClick={props.handleFormSubmit}>Submit</a>
                     </div>
                 </div>
             </div>
