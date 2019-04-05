@@ -1,0 +1,23 @@
+/* form{
+    max-width: 50px;
+} */
+
+
+
+input{
+   max-width: 25%;
+   text-align: center;
+}
+
+.btn-small{
+    margin-left: 5px;
+}
+
+/* 
+.inventoryButton{
+    width: 25%;
+   }
+   
+   .tradeButton{
+       width: 25%;
+   } */
