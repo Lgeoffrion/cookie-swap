@@ -21,6 +21,10 @@ export default {
   {
     return axios.post("/api/tcm/login",userInfo);
   },
+  createTrade: function(newTrade)
+  {
+    return axios.post("/api/offer", newTrade)
+  },
   tcmCreate : function(tcm) {
     return axios.post("/api/addtcm",tcm)
   }
