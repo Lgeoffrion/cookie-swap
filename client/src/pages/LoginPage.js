@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import LoginNavbar from "../components/LoginNavbar";
+import Navbar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
+import LoginNavbar from '../components/LoginNavbar';
 import Button from "../components/Button";
 import { Input, EmailInput, PasswordInput } from "../components/Form";
 import API from "../utils/API";
@@ -29,7 +30,7 @@ class LoginPage extends Component {
 
   handleFormSubmit = () => {
     // event.preventDefault();
-
+    this.setState({ email : "", password : "", });
     if (this.state.title === 'SUM') {
       API.validateSUMLogin({
         email: this.state.email,
@@ -37,7 +38,7 @@ class LoginPage extends Component {
       })
         .then(
           res => {
-            console.log("res", res);
+            console.log("res.success", res.success);
             if (res.data == null) {
               this.setState({ errorMsg: "Invalid Username or Password" });
             }
@@ -58,15 +59,19 @@ class LoginPage extends Component {
       })
         .then(
           res => {
-            console.log("res", res);
-            if (res.data == null) {
-              this.setState({ errorMsg: "Invalid Username or Password" });
-            }
-            else {
+            console.log("res.data.success", res.data.success);
+            // if (res.data.success ) {
+            //   this.setState({ errorMsg: "Invalid Username or Password" });
+            // }
+            if(res.data.success === "Yes")   {
               sessionStorage.removeItem('userInfo');
               sessionStorage.clear();
-              sessionStorage.setItem('userInfo', JSON.stringify(res.data));
+              sessionStorage.setItem('userInfo', JSON.stringify(res.data.user));
               document.location.href = "/TCM";
+            }
+            else
+            {
+              this.setState({ errorMsg: "Invalid Username or Password" });
             }
           }
         )
@@ -114,7 +119,7 @@ class LoginPage extends Component {
                 && this.state.email.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/))
               }
               onClick={this.handleFormSubmit}
-              errorMsg={this.state.errorMsg}
+              error={this.state.errorMsg}
             />
           </div>
 

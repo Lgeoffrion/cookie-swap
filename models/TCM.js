@@ -1,8 +1,11 @@
+var bcrypt = require("bcrypt-nodejs");
+
 module.exports = function(sequelize, DataTypes) {
   var TCM = sequelize.define("TCM", {
         name: {
           type: DataTypes.STRING,
           allowNull: false,
+          unique: true,
         },
         email: {
           type: DataTypes.STRING,
@@ -67,6 +70,25 @@ module.exports = function(sequelize, DataTypes) {
           }
         });
       };
+
+      TCM.prototype.validPassword = function(password) {
+        // console.log("Password from the DB:" , this.password)
+        // console.log("Password from the Client :" , password)
+        return (this.password === password)
+      }
+
+
+
+  //    TCM.prototype.validPassword = function (password) {
+  //   return bcrypt.compareSync(password, this.password);
+  // };
+  // // Hooks are automatic methods that run during various phases of the User Model lifecycle
+  // // In this case, before a User is created, we will automatically hash their password
+  // TCM.hook("beforeCreate", function (user) {
+  //   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  // });
+
+    
     
       return TCM;
     };
