@@ -7,9 +7,15 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false,
           unique: true,
         },
+        troop: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          unique: true,
+        },
         email: {
           type: DataTypes.STRING,
           allowNull: false,
+          unique: true,
         },
         password: {
             type: DataTypes.STRING,

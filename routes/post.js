@@ -28,8 +28,8 @@ module.exports = function(app) {
         // req.params.cookie is a placeholder for cookie chosen
         db.Trade.create({
           tcmID_giver: req.params.id,
-          cookie_type: req.params.cookie,
-          cookie_amount: req.params.amount
+          cookie_type: cookies,
+          cookie_amount: amount
         }).then(function(dbPost) {
           res.json(dbPost);
         })
@@ -40,7 +40,7 @@ module.exports = function(app) {
   app.put("/api/claim", function(req, res) {
     // Identify the user when you click a button that says 'Claim Swap'
     // req.params.tradeID is a placeholder for THE TRADE ID
-    db.Trade.findOne({ where: { id: req.params.tradeID } })
+    db.Trade.findOne({ where: { tradeid: req.params.tradeID } })
       .then(function(claim) {
         // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
         // req.params.id is a placeholder for YOU, the clicker
@@ -58,6 +58,7 @@ module.exports = function(app) {
       db.TCM.create({
         // sumId is a placeholder for the bridging of things from SUM
         //  name: ,
+        //  troop: ,
         //  email: ,
         //  password: ,
         //  phone: ,
@@ -101,16 +102,13 @@ module.exports = function(app) {
     let cookies = req.params.cookies;
     let amount = req.params.amount;
     db.TCM.findOne({
-      // req.params.id is a placeholder for your logged in ID
-      where: { id: req.params.id }
+      // req.params.id is a placeholder for the tcmID_taker's TCM table id
+            where: { id: req.params.id }
     })
       // Finds all your current amounts of cookies and saves them as variables
       .then(function(updating) {
         // Adds how many you swapped to your current cookie inventory variables
         updating.increment(cookies, { by: amount });
-      })
-      .then(function(result) {
-        res.json(result);
       })
       .then(
         // where this trade ID is from the button
