@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-//will pass props to populate table row with real data sometime
+//recieves props from SUMlanding state and generates rows
 function SUMrow(props){
     return(
         <tr>

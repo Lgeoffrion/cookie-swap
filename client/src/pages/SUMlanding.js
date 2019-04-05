@@ -58,18 +58,19 @@ class SUMlanding extends Component {
             city: "",
             email: ""
         })
+        // location.reload()
     }
     render(){
         return (
             <>
-                    {/* Navbar passes a prop which will be the navbar title */}
+                    {/* Navbar props, which will be the navbar title, and page its on */}
                     <Navbar 
                         title={'Service Unit Manager'}
                         ahref={'/'}
                         page={'sum'} 
                     />
-                    {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
+                    {/* Holds the search bar and the add troop button with the modal
+                    passes prop for the modal form*/}
                     <SUMsearchAdd
                         handleInputChange={this.handleInputChange}
                         handleFormSubmit={this.handleFormSubmit}
