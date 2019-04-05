@@ -15,10 +15,11 @@ class TCMInventory2 extends Component {
 
     componentDidMount() {
    
-        this.tradeCookie();
+        this.myInventory();
     }
     
-    tradeCookie = () => {
+    //Pulls inventory of individual that is logged in
+    myInventory = () => {
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         console.log("user ID :", userInfo.id);
 
