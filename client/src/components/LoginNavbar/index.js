@@ -39,8 +39,8 @@ function LoginNav(props) {
               : props.page === 'tcm' ?
 
                 <ul className="tabs tabs-transparent tabs-fixed-width z-depth-1" id="tabs">
-                  <li className="tab"><a href="#excessinventory">Excess Inventory</a></li>
-                  <li className="tab"><a href="#yourinventory">Your Excess Invertory</a></li>
+                  <li className="tab"><a href="#cookieTrade">Trading Cookie</a></li>
+                  <li className="tab"><a href="#yourinventory">Your Invertory</a></li>
                 </ul>
                 : props.page === 'sum' ?
 

@@ -24,7 +24,7 @@ module.exports = function (app) {
     db.TCM.findAll({})
     .then(function (users) {
       res.json(users);
-        console.log(users);
+        // console.log(users);
       })
       .catch(err => res.status(422).json(err));
     });
