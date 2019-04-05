@@ -13,17 +13,23 @@ class TCMInventory extends Component {
         userid:""
     };
     componentDidMount() {
-        this.tradeCookie();
+        this.openSwaps();
     }
-    tradeCookie = () => {
-        API.getTCMS().then(res => {
-            console.log("Trade Cookie:",res);
+    openSwaps = () => {
+        API.getOpenSwaps().then(res => {
+            // console.log("Trade Cookies:",res.data);
             this.setState({ openTrade: res.data });
         });
         var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         console.log("userinfo", userInfo.id);
         this.setState({ userid: userInfo.id});
 
+    }
+
+    claimFormSubmit = event => {
+        event.preventDefault();       
+        // Trying to log the current info of JUST the claim you're clicking on, before we go further.
+        console.log(this.state.openTrade);    
     }
 
     render() {
@@ -42,8 +48,11 @@ class TCMInventory extends Component {
                         </MainWrapper> */}
 
                         {/* <div>{userInfo}</div> */}
-                        <TradeTable tradeDetails={this.state.openTrade} 
-                        currentUser={this.state.userid}>
+                        <TradeTable 
+                        tradeDetails={this.state.openTrade} 
+                        currentUser={this.state.userid}
+                        claimFormSubmit={this.claimFormSubmit}
+                        >
                         </TradeTable>
                     </div></div>
             </>

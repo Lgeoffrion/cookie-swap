@@ -13,6 +13,9 @@ export default {
   getTCMS: function(){
     return axios.get("/api/tcms");
   },
+  getOpenSwaps: function(){
+    return axios.get("/api/trades");
+  },
   validateSUMLogin : function(userInfo)
   {
     return axios.post("/api/sum/login",userInfo);
@@ -23,9 +26,21 @@ export default {
   },
   createTrade: function(newTrade)
   {
-    return axios.post("/api/offer", newTrade)
+    return axios.put("/api/claim", newTrade)
   },
   tcmCreate : function(tcm) {
     return axios.post("/api/addtcm",tcm)
+  },
+  addCookies: function(cookies) {
+    return axios.put("/api/add", cookies)
+  },
+  subCookies: function(cookies) {
+    return axios.put("/api/sub", cookies)
+  },
+  swapCookies: function(swap) {
+    return axios.post("api/offer", swap)
+  },
+  claimCookies: function(claim) {
+    return axios.post("api/claim", claim)
   }
 };
