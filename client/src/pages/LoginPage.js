@@ -6,11 +6,6 @@ import { Input, EmailInput, PasswordInput } from "../components/Form";
 import API from "../utils/API";
 
 
-// function LoginPage() {
-// API.getTCM().then (res => {
-//   console.log(res);
-// })
-
 class LoginPage extends Component {
   state = {
     title: "",
