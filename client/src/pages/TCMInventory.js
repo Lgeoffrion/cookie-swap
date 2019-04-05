@@ -11,7 +11,6 @@ class TCMInventory extends Component {
         openTrades :"",
         userid:""
     };
-
     componentDidMount() {
         this.tradeCookie();
     }
