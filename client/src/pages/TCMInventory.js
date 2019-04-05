@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../components/Navbar"
+import LoginNavbar from "../components/LoginNavbar"
 import MainWrapper from "../components/MainWrapper"
 import Sidebar from "../components/Sidebar"
 // import ExcessCookieBody from "../components/ExcessCookieBody"
@@ -24,7 +24,11 @@ class TCMInventory extends Component {
 
                     </div></div>
                     {/* Navbar passes a prop which will be the navbar title */}
-                    <Navbar title="Excess Cookie Inventory"/>
+                    <LoginNavbar 
+                        title={'Excess Cookie Inventory'}
+                        ahref={'/'}
+                        page={'tcm'} 
+                    />
                     {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
                     tabs from the Navbar then swap which wrapper is seen based off this id*/}
                     <MainWrapper id="excessinventory">

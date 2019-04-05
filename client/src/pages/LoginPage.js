@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import LoginNavbar from "../components/LoginNavbar";
+import Navbar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
+import LoginNavbar from '../components/LoginNavbar';
 import Button from "../components/Button";
 import { Input, EmailInput, PasswordInput } from "../components/Form";
 import API from "../utils/API";

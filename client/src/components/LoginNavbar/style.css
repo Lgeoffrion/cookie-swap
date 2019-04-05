@@ -1,24 +1,32 @@
-#loginnavTitle{
-    margin-top:1rem;
+#navTitle{
+  margin-top:1rem;
 }
-#loginnavbar{
-   background-color:#00AE58;
-   height: 12vh;
+#tabBar{
+  padding-top: 1.5rem;
+}
+#navbar{
+ background-color:#00AE58;
+ /* height: 12vh; */
 }
 #tabs{
-   background-color: #009447;
+ background-color: #009447;
 }
-#logintopNav{
-   padding-bottom: 1rem;
-}
-#navDrop{
-   padding-right: 6rem;
-}
+/* #logintopNav{
+ padding-bottom: 1rem;
+} */
+/* #navDrop{
+ padding-right: 6rem;
+} */
 #logo{
-   padding-left:20px;
+ padding-left:20px;
 }
-
+/* .nav-extended{
+  padding-bottom: 50px !important;
+} */
+#navWrapper{
+  padding-top: 1rem;
+}
 .nav-content{
-   padding-left:0 !important;
-   padding-right:0 !important;
+ padding-left:0 !important;
+ padding-right:0 !important;
 }
