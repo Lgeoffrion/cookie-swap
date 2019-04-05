@@ -16,7 +16,8 @@ function LoginNav(props) {
                 <>
                 <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
                 <ul className="right hide-on-med-and-down">
-                  <li><a href="/TCM">Inventory</a></li>
+                <li><a href="/TCM">Trade Cookies</a></li>
+                  <li><a href="/TCM2">Inventory</a></li>
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
                 </ul>
@@ -59,7 +60,8 @@ function LoginNav(props) {
           : props.page === 'tcm' ?
             (
               <ul className='dropdown-content' id='dropdown-nav'>
-                <li><a href="/TCM">Inventory</a></li>
+                    <li><a href="/TCM">Trade Cookies</a></li>
+                  <li><a href="/TCM2">Inventory</a></li>
                 <li><a href="/Profile">Profile</a></li>
                 <li><a href="/">Logout</a></li>
               </ul>
