@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginNavbar from "../components/LoginNavbar"
+import Navbar from "../components/Navbar"
 
 class Profile extends Component {
     state = {
@@ -10,8 +10,8 @@ class Profile extends Component {
         return(
             <>
             {/* Navbar passes a prop which will be the navbar title */}
-            <LoginNavbar title="Troop Manager Profile" 
-            ahref={'/TCMInventory'} 
+            <Navbar title="Troop Manager Profile" 
+            ahref={'/TCM'} 
             page={'profile'}/>
             </>
         
