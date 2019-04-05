@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
-import LoginNavbar from '../components/LoginNavbar';
 import Button from "../components/Button";
 import { Input, EmailInput, PasswordInput } from "../components/Form";
 import API from "../utils/API";
@@ -83,7 +82,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <LoginNavbar title={'Girl Scout Cookie Swap'}
+        <Navbar title={'Girl Scout Cookie Swap'}
           ahref={'/'}
           page={'login'} />
         <div className='row'>
