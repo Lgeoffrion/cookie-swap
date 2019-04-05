@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import LoginNavbar from "../components/LoginNavbar"
 import MainWrapper from "../components/MainWrapper"
-import Sidebar from "../components/Sidebar"
 // import ExcessCookieBody from "../components/ExcessCookieBody"
-import SideBtn from "../components/SideBtn"
 import ExcessTable from "../components/ExcessTable"
 import ExcessRow from "../components/ExcessRow"
 
@@ -18,11 +16,7 @@ class TCMInventory extends Component {
         console.log("usernfo",userInfo);
         return (
             <>
-                <div className='row'>
-                    <div className="col col l7 push-l4 s12">
-                    {/* <div>{userInfo}</div> */}
 
-                    </div></div>
                     {/* Navbar passes a prop which will be the navbar title */}
                     <LoginNavbar 
                         title={'Excess Cookie Inventory'}
@@ -30,15 +24,10 @@ class TCMInventory extends Component {
                         page={'tcm'} 
                     />
                     {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
+                    tabs from the Navbar then swap which wrapper is seen based off this id */}
                     <MainWrapper id="excessinventory">
                         {/* Sidebar which will take SideBtn as children */}
-                        <Sidebar>
-                            {/* pass SideBtn with name and link props to populate sidebar */}
-                            <SideBtn 
-                            name="button"
-                            />
-                        </Sidebar>
+
                         {/* Table for excess cookie data, will pull from database and 
                         pass props through state to populate table
                         Data will be passed through state and props to here, could use separate 
@@ -52,14 +41,7 @@ class TCMInventory extends Component {
                     tabs from the Navbar then swap which wrapper is seen based off this id */}
                     <MainWrapper id="yourinventory">
                         {/* Sidebar which will take SideBtn as children */}
-                        <Sidebar>
-                            {/* pass SideBtn with name and link props to populate sidebar */}
-                            <SideBtn onClick={() => {
-                                //onclick for when you click ??this button code goes here
-                            }}
-                            name="button"
-                            />
-                        </Sidebar>
+
                     </MainWrapper>
             </>
 
