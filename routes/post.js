@@ -7,7 +7,6 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-
   // Create an offer...
   app.post("/api/offer", function(req, res) {
     // Update the variables above based on the selected cookie on the form... req.params.cookies is a placeholder
@@ -53,28 +52,28 @@ module.exports = function(app) {
 
   // Add a new Troop Cookie Manager
   app.post("/api/addtcm", function(req, res) {
-      // Create a new TCM.
-      // All fields are placeholders for like req.body.name or whatever
-      db.TCM.create({
-        // sumId is a placeholder for the bridging of things from SUM
-        //  name: ,
-        //  troop: ,
-        //  email: ,
-        //  password: ,
-        //  phone: ,
-        //  city: ,
-         smores: '0',
-         thin_mint: '0' ,
-         shortbread: '0' ,
-         peanut_butter_patties: '0' ,
-         lemonades: '0' ,
-         thanks_a_lot: '0' ,
-         samoas: '0' ,
-         caramel_chocolate_chip: '0' ,
-         peanut_butter_sandwich: '0' }
-      ).then(function(dbPost) {
-        res.json(dbPost);
-      });
+    // Create a new TCM.
+    // All fields are placeholders for like req.body.name or whatever
+    db.TCM.create({
+      // sumId is a placeholder for the bridging of things from SUM
+      //  name: ,
+      //  troop: ,
+      //  email: ,
+      //  password: ,
+      //  phone: ,
+      //  city: ,
+      smores: "0",
+      thin_mint: "0",
+      shortbread: "0",
+      peanut_butter_patties: "0",
+      lemonades: "0",
+      thanks_a_lot: "0",
+      samoas: "0",
+      caramel_chocolate_chip: "0",
+      peanut_butter_sandwich: "0"
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // Put route that lets you update your cookies inventory
@@ -96,14 +95,14 @@ module.exports = function(app) {
       });
   });
 
-  // Put route that lets you update your cookies inventory
-  app.put("/api/update", function(req, res) {
+  // Put route that lets you update your cookies inventory and destroy the trade after Completion
+  app.put("/api/complete", function(req, res) {
     // These params are placeholders
     let cookies = req.params.cookies;
     let amount = req.params.amount;
     db.TCM.findOne({
       // req.params.id is a placeholder for the tcmID_taker's TCM table id
-            where: { id: req.params.id }
+      where: { id: req.params.giverID }
     })
       // Finds all your current amounts of cookies and saves them as variables
       .then(function(updating) {
@@ -112,7 +111,27 @@ module.exports = function(app) {
       })
       .then(
         // where this trade ID is from the button
-        db.Trade.destroy({where: { id: req.params.tradeID }})
-      )
+        db.Trade.destroy({ where: { id: req.params.tradeID } })
+      );
+  });
+
+  // Put route that lets you update your cookies inventory and destroy the trade after Canceling
+  app.put("/api/cancel", function(req, res) {
+    // These params are placeholders
+    let cookies = req.params.cookies;
+    let amount = req.params.amount;
+    db.TCM.findOne({
+      // req.params.id is a placeholder for the tcmID_giver's TCM table id
+      where: { id: req.params.takerID }
+    })
+      // Finds all your current amounts of cookies and saves them as variables
+      .then(function(updating) {
+        // Adds how many you swapped to your current cookie inventory variables
+        updating.increment(cookies, { by: amount });
+      })
+      .then(
+        // where this trade ID is from the button
+        db.Trade.destroy({ where: { id: req.params.tradeID } })
+      );
   });
 };
