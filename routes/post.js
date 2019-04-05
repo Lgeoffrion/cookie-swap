@@ -54,14 +54,16 @@ module.exports = function(app) {
   app.post("/api/addtcm", function(req, res) {
     // Create a new TCM.
     // All fields are placeholders for like req.body.name or whatever
+    console.log(req.body);
+    
     db.TCM.create({
       // sumId is a placeholder for the bridging of things from SUM
-      //  name: ,
-      //  troop: ,
-      //  email: ,
-      //  password: ,
-      //  phone: ,
-      //  city: ,
+      name: req.body.name,
+      troop: req.body.troop,
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone,
+      city: req.body.city,
       smores: "0",
       thin_mint: "0",
       shortbread: "0",
