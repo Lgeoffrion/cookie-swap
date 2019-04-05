@@ -21,21 +21,17 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-
 // Requiring our routes
 require("./routes/tcms.js")(app);
-
 require("./routes/post.js")(app);
 require("./routes/sum.js")(app);
-
 require("./routes/login.js")(app);
 
 // Add routes, both API and view
 app.use(routes);
 
-db.sequelize.sync().then(function() {
+
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function() {
     console.log("App now listening on port:", PORT);
   });
