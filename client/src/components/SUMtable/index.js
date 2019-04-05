@@ -12,6 +12,16 @@ function SUMtable(props){
                     <th>LOCATION</th>
                     <th>EMAIL</th>
                     <th>PHONE</th>
+                    <th></th>
+                    <th>CDL</th>
+                    <th>GF</th>
+                    <th>LEM</th>
+                    <th>PBP</th>
+                    <th>PBS</th>
+                    <th>SB</th>
+                    <th>SM</th>
+                    <th>TAL</th>
+                    <th>TM</th>
                 </tr>
                 </thead>
 

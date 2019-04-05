@@ -1,31 +1,32 @@
 #navTitle{
-    margin-top:1rem;
+  margin-top:1rem;
+}
+#tabBar{
+  padding-top: 1.5rem;
 }
 #navbar{
-   /* background-color:#00AE58;
-   height: 12vh */
+ background-color:#00AE58;
+ /* height: 15vh; */
 }
 #tabs{
-   background-color: #009447;
+ background-color: #009447;
 }
-#topNav{
-   padding-bottom: 1rem;
-}
-#navDrop{
-   padding-right: 6rem;
-}
-#logo{
-   padding-left:20px;
-}
-
-.nav-content{
-   padding-left:0 !important;
-   padding-right:0 !important;
-}
-
-
-
-
-/* .brand-logo {
-   padding-left: 12px !important;
+/* #logintopNav{
+ padding-bottom: 1rem;
 } */
+/* #navDrop{
+ padding-right: 6rem;
+} */
+#logo{
+ padding-left:20px;
+}
+/* .nav-extended{
+  padding-bottom: 50px !important;
+} */
+#navWrapper{
+  padding-top: 1rem;
+}
+.nav-content{
+ padding-left:0 !important;
+ padding-right:0 !important;
+}
