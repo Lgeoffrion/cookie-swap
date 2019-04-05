@@ -21,9 +21,9 @@ class SUMlanding extends Component {
             // console.log(res);
             this.setState({ troops: res.data });    
         });
-        // var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        // console.log("usernfo", userInfo.id);
-        // this.setState({ userid: userInfo.id});
+        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        console.log("usernfo", userInfo.id);
+        this.setState({ userid: userInfo.id});
 
     }
     
