@@ -75,7 +75,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+        // TCM.hasMany(models.Trade, {
+        //   as: 'TCMs'
+        // })
       };
+
+
 
       TCM.prototype.validPassword = function(password) {
         // console.log("Password from the DB:" , this.password)
