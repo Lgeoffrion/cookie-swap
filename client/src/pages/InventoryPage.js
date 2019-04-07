@@ -29,19 +29,25 @@ class TCMInventory2 extends Component {
   }
 
 
-//Pulls inventory of individual that is logged in
+  //Pulls inventory of individual that is logged in
   myInventory = () => {
-    var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-    console.log("user ID :", userInfo.id);
+    var TCM_userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
 
-    API.getYourInventory(userInfo.id)
-    .then(res => {
-      console.log("API Response:", res);
-      this.setState({ 
-          openTrade: res.data,
-          userid: userInfo.id
-     });
-    });
+    if (!TCM_userInfo) {
+      document.location.href = "/";
+    }
+    else {
+      console.log("user ID :", TCM_userInfo.id);
+
+      API.getYourInventory(TCM_userInfo.id)
+        .then(res => {
+          console.log("API Response:", res);
+          this.setState({
+            openTrade: res.data,
+            userid: TCM_userInfo.id
+          });
+        });
+    }
   };
 
   addInputChange = event => {
@@ -54,13 +60,13 @@ class TCMInventory2 extends Component {
     // const email = event.target.email;
 
     this.setState({
-        [name]: value,
-        cookie: name,
-        value: value
+      [name]: value,
+      cookie: name,
+      value: value
     })
-}
+  }
 
-subInputChange = event => {
+  subInputChange = event => {
     // const value = event.target.value;
     const name = event.target.name;
     const value = event.target.value;
@@ -70,13 +76,13 @@ subInputChange = event => {
     // const email = event.target.email;
 
     this.setState({
-        [name]: value,
-        cookie: name,
-        value: value
+      [name]: value,
+      cookie: name,
+      value: value
     })
-}
+  }
 
-swapInputChange = event => {
+  swapInputChange = event => {
     // const value = event.target.value;
     const name = event.target.name;
     const value = event.target.value;
@@ -86,65 +92,65 @@ swapInputChange = event => {
     // const email = event.target.email;
 
     this.setState({
-        [name]: value,
-        cookie: name,
-        value: value
+      [name]: value,
+      cookie: name,
+      value: value
     })
-}
+  }
 
-addFormSubmit = event => {
-    event.preventDefault();       
-    API.addCookies(this.state);    
+  addFormSubmit = event => {
+    event.preventDefault();
+    API.addCookies(this.state);
     this.setState({
-        caramel_chocolate_chip: "",
-        lemonades: "",
-        peanut_butter_patties: "",
-        peanut_butter_sandwich: "",
-        smores: "",
-        samoas: "",
-        shortbread: "",
-        thanks_a_lot: "",
-        thin_mint: "",
-        cookie: "",
-        value: ""
+      caramel_chocolate_chip: "",
+      lemonades: "",
+      peanut_butter_patties: "",
+      peanut_butter_sandwich: "",
+      smores: "",
+      samoas: "",
+      shortbread: "",
+      thanks_a_lot: "",
+      thin_mint: "",
+      cookie: "",
+      value: ""
     })
-}
+  }
 
-subFormSubmit = event => {
-    event.preventDefault();     
-    API.subCookies(this.state);    
+  subFormSubmit = event => {
+    event.preventDefault();
+    API.subCookies(this.state);
     this.setState({
-        caramel_chocolate_chip: "",
-        lemonades: "",
-        peanut_butter_patties: "",
-        peanut_butter_sandwich: "",
-        smores: "",
-        samoas: "",
-        shortbread: "",
-        thanks_a_lot: "",
-        thin_mint: "",
-        cookie: "",
-        value: ""
+      caramel_chocolate_chip: "",
+      lemonades: "",
+      peanut_butter_patties: "",
+      peanut_butter_sandwich: "",
+      smores: "",
+      samoas: "",
+      shortbread: "",
+      thanks_a_lot: "",
+      thin_mint: "",
+      cookie: "",
+      value: ""
     })
-}
+  }
 
-swapFormSubmit = event => {
-    event.preventDefault();    
-    API.swapCookies(this.state);    
+  swapFormSubmit = event => {
+    event.preventDefault();
+    API.swapCookies(this.state);
     this.setState({
-        caramel_chocolate_chip: "",
-        lemonades: "",
-        peanut_butter_patties: "",
-        peanut_butter_sandwich: "",
-        smores: "",
-        samoas: "",
-        shortbread: "",
-        thanks_a_lot: "",
-        thin_mint: "",
-        cookie: "",
-        value: ""
+      caramel_chocolate_chip: "",
+      lemonades: "",
+      peanut_butter_patties: "",
+      peanut_butter_sandwich: "",
+      smores: "",
+      samoas: "",
+      shortbread: "",
+      thanks_a_lot: "",
+      thin_mint: "",
+      cookie: "",
+      value: ""
     })
-}
+  }
 
   render() {
     return (
@@ -154,8 +160,6 @@ swapFormSubmit = event => {
           <div className="col col l10 push-l1 s12">
             {/* <MainWrapper id="yourinventory">
                 </MainWrapper> */}
-
-            {/* <div>{userInfo}</div> */}
             <InventoryTable
               tradeDetails={this.state.openTrade}
               currentUser={this.state.userid}
