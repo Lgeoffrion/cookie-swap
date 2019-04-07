@@ -9,7 +9,7 @@ class TCMInventory2 extends Component {
   state = {
     troopInv: "",
     userid: "",
-    openTrades: "",
+    openTrade: "",
     troops: [],
     caramel_chocolate_chip: "",
     lemonades: "",

@@ -12,6 +12,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -21,6 +22,7 @@ module.exports = function(app) {
     db.TCM.findAll({})
       .then(function(users) {
         res.json(users);
+        // console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -34,16 +36,18 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
 
   //See All Open Trades available to claim
   app.get("/api/trades", function(req, res) {
-    db.Trade.findAll({   
-        where: {
-          tcmID_taker: null
-        }
+    
+    db.Trade.findAll({
+      where: {
+        tcmID_taker: null
+      }
     })
       .then(function(users) {
         res.json(users);
@@ -62,6 +66,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -78,6 +83,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -91,6 +97,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });

@@ -36,6 +36,9 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+// db[Trade].belongsTo(db[TCM]);
+// db[TCM].hasMany(db[Trade]);
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

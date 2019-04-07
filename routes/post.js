@@ -37,19 +37,17 @@ module.exports = function(app) {
   });
 
   // Put route that claims an open trade by updating the update trade with TCM 2 ID
-  app.put("/api/claim", function(req, res) {
+  app.post("/api/claim", function(req, res) {
     // Identify the user when you click a button that says 'Claim Swap'
-    // req.params.tradeID is a placeholder for THE TRADE ID
-    db.Trade.findOne({ where: { tradeid: req.params.tradeID } })
-      .then(function(claim) {
-        // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
-        // req.params.id is a placeholder for YOU, the clicker
-        return claim.update({ tcmID_taker: req.params.id });
-      })
-      .then(function(result) {
-        res.json(result);
-      });
-  });
+    // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
+    db.Trade.findOne({where: {id: req.body.claim.id}})
+    .then(function(claim) {
+      console.log(claim);
+      return claim.update({tcmID_taker: req.body.claimer})
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    })
+  })
 
   // Add a new Troop Cookie Manager
   app.post("/api/addtcm", function(req, res) {

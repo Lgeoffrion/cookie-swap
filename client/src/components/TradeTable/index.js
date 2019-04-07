@@ -1,18 +1,22 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+
 // import "./style.css";
 //will pass props to populate table row with real data sometime
 
 function TradeTable(props) {
-  console.log("Drill down:", props);
 
   var tradeRow = [];
 
 //   Several if conditionals to rewrite the name of the cookie as its brought in
 // Some attempts, like indNumber=index, to save the index number so you can then...
-//  put it into a value for the form to receive but... I can't figure that out.
+//  put it into a data-value for the form to receive but... I can't figure that out.
 
-  for (var index in props.tradeDetails) {
+
+console.log(props.tradeDetails);
+
+  for (var index = 0; index < props.tradeDetails.length; index++) {
+      console.log("You found me.");
+      
     if (props.tradeDetails[index].id != props.currentUser) {
       if (props.tradeDetails[index].cookie_type === "lemonades") {
         let indNumber=index;
@@ -22,7 +26,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Lemonades",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -38,7 +42,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Smores",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -54,7 +58,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Thin Mints",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -70,7 +74,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Shortbread",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -88,7 +92,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Peanut Butter Sandwich",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -104,7 +108,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Thanks a Lot",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -120,7 +124,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Caramel Delights",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -138,7 +142,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Peanut Butter Patties",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
@@ -156,7 +160,7 @@ function TradeTable(props) {
           props.tradeDetails[index].city,
           "Gluten Free",
           props.tradeDetails[index].cookie_amount,
-          <form> <a value={[indNumber]}
+          <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
             onClick={props.claimFormSubmit}
           >
