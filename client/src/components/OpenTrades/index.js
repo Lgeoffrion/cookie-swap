@@ -16,7 +16,7 @@ for (var index in props.tradeDetails) {
         props.tcmInfo[index2].troop,
         props.tradeDetails[index].cookie_type, 
         props.tradeDetails[index].cookie_amount,
-        <a class="waves-effect waves-light btn"> Cancel</a>
+        <a data-value={[props.tradeDetails[index].id, index2]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>
     ]);
 
 }

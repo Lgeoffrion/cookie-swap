@@ -10,15 +10,12 @@ export default {
     return axios.get("/api/tcms/" + id);
   },
   myOpenTrades: function(id) {
-    console.log("/api/yourOpenTrades/"+ id)
     return axios.get("/api/yourOpenTrades/"+ id);
   },
   myOutgoingTrades: function(id) {
-    console.log("/api/outgoingtrades/"+ id)
     return axios.get("/api/outgoingtrades/"+ id);
   },
   myIncomingTrades: function(id) {
-    console.log("/api/incomingtrades/"+ id)
     return axios.get("/api/incomingtrades/"+ id);
   },
   getTCMS: function(){
@@ -47,7 +44,6 @@ export default {
 
   // Add a new TCM to the TCM table
   tcmCreate : function(tcm) {
-    console.log("Tcm Create",tcm);
     return axios.post("/api/addtcm",tcm)
   },
 
@@ -81,4 +77,12 @@ export default {
     // console.log(claim);
     return axios.post("api/claim", claim);
   },
+  // Cancel a cookie trade you are involved in
+  cancelSwap: function(cancel) {
+    return axios.put("api/cancel", cancel)
+  },
+  // Confirm a cookie trade you are involved in completes
+  completeSwap: function(complete) {
+    return axios.put("api/complete", complete)
+  }
 };

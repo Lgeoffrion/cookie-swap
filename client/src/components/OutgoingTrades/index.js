@@ -14,7 +14,6 @@ for (var index in props.tradeDetails) {
     // console.log("TCM Props Name: ", props.tcmInfo[index].name);
     let index2 = props.tradeDetails[index].tcmID_giver - 1;
     let index3 = props.tradeDetails[index].tcmID_taker - 1;
-    console.log("what is it: ", index2);
     tradeRow.push([
 
         props.tcmInfo[index2].name,
@@ -26,7 +25,7 @@ for (var index in props.tradeDetails) {
         props.tcmInfo[index3].troop,
         props.tradeDetails[index].cookie_type, 
         props.tradeDetails[index].cookie_amount,
-        <a class="waves-effect waves-light btn"> Cancel</a>,
+        <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>,
     ])
 }
 

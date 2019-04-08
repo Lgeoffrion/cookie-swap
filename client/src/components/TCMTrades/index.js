@@ -3,8 +3,6 @@ import "./style.css";
 
 
 function TradeTable(props) {
-    console.log("props.tcmInfo: ", props.tcmInfo);
-    console.log("props.tradeDetails: ", props.tradeDetails);
     // console.log("Trade Table of 0: ", props.tradeDetails);
    var tradeRow = [];
 
@@ -14,20 +12,17 @@ for (var index in props.tradeDetails) {
     // console.log("TCM Props Name: ", props.tcmInfo[index].name);
     let index2 = props.tradeDetails[index].tcmID_giver - 1;
     let index3 = props.tradeDetails[index].tcmID_taker - 1;
-    console.log("what is it: ", index2);
     tradeRow.push([
-
         props.tcmInfo[index2].name,
         props.tcmInfo[index2].city,
         props.tcmInfo[index2].troop,
-   
         props.tcmInfo[index3].name,
         props.tcmInfo[index3].city,
         props.tcmInfo[index3].troop,
         props.tradeDetails[index].cookie_type, 
         props.tradeDetails[index].cookie_amount,
-        <a class="waves-effect waves-light btn"> Cancel</a>,
-        <a class="waves-effect waves-light btn">Complete Trade</a>
+        <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.completeFormSubmit}>Complete Swap</a>,
+        <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}>Cancel</a>
     ])
 }
 
