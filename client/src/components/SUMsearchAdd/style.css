@@ -4,3 +4,7 @@
 #topRow{
     padding-top: 3rem;
 }
+
+#lalert, #talert, #calert, #palert, #ealert{
+    visibility: hidden
+}
