@@ -64,6 +64,7 @@ class TCMInventory2 extends Component {
       cookie: name,
       value: value
     })
+  
   }
 
   subInputChange = event => {
@@ -114,6 +115,8 @@ class TCMInventory2 extends Component {
       cookie: "",
       value: ""
     })
+      window.location.reload()
+  
   }
 
   subFormSubmit = event => {
@@ -132,6 +135,7 @@ class TCMInventory2 extends Component {
       cookie: "",
       value: ""
     })
+    window.location.reload()
   }
 
   swapFormSubmit = event => {
@@ -150,6 +154,7 @@ class TCMInventory2 extends Component {
       cookie: "",
       value: ""
     })
+    window.location.reload()
   }
 
   render() {
