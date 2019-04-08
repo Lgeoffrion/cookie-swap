@@ -1,7 +1,7 @@
 $(document).ready(function () {
     M.AutoInit();
     $('#textarea1').val('New Text');
-    M.textareaAutoResize($('#textarea1'));
+    // M.textareaAutoResize($('#textarea1'));
     $('.sidenav').sidenav();
     $('.dropdown-trigger').dropdown();
     $('.collapsible').collapsible();
