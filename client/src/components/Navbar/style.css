@@ -1,5 +1,6 @@
 #navTitle{
   margin-top:1rem;
+  left:45%;
 }
 #tabBar{
   padding-top: 1.5rem;
@@ -29,4 +30,18 @@
 .nav-content{
  padding-left:0 !important;
  padding-right:0 !important;
+}
+
+@media only screen and (max-width: 600px){
+  #navTitle{
+    font-size: 1.3rem;
+    font-style: bolder;
+    left:60%;
+   }
+}
+@media only screen and (max-width: 768px){
+  nav a
+  {
+  margin-right: 50px !important;
+  }
 }

@@ -18,5 +18,19 @@ module.exports = function(sequelize, DataTypes) {
         }
       });
     
+      // trade.associate = function(models) {
+      //   // We're saying that a TCM should belong to an SUM
+      //   // A TCM can't be created without a SUM due to the foreign key constraint
+      //   trade.belongsTo(models.TCM, {
+      //     foreignKey: {
+      //       as: 'Trades'
+      //     }
+      //   });
+      // };
+      
+        // trade.belongsTo(db.TCM, {
+        //   foreignKey: trade.tcmID_giver
+        // });
+      
       return trade;
     };

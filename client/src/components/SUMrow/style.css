@@ -9,3 +9,8 @@ td:not(:last-child) {
 #invSpace{
     padding-right:1rem;
 }
+
+.SUMPageInput{
+    width: 3vw !important;
+    text-align: center;
+ }
