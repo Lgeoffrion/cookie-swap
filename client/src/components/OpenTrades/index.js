@@ -13,7 +13,8 @@ for (var index in props.tradeDetails) {
         props.tcmInfo[props.tradeDetails[index].tcmID_giver].city,
         props.tcmInfo[props.tradeDetails[index].tcmID_giver].troop,
         props.tradeDetails[index].cookie_type, 
-        props.tradeDetails[index].cookie_amount
+        props.tradeDetails[index].cookie_amount,
+        <a class="waves-effect waves-light btn"> Cancel</a>
     ]);
 
 }
@@ -40,7 +41,7 @@ for (var index in props.tradeDetails) {
                         <td class="number"> {obj[2]}</td>
                         <td class="name"> {obj[3]}</td>
                         <td class="number"> {obj[4]}</td>
-        
+                        <td class="number"> {obj[5]}</td>
                    </tr>
                 )) : <tr><td></td></tr>}
             </tbody>

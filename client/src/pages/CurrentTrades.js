@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar"
 import MainWrapper from "../components/MainWrapper"
 import TradeTable from "../components/TCMTrades"
+import TradeTable2 from "../components/OutgoingTrades"
 import OpenTradeTable from "../components/OpenTrades"
 import API from "../utils/API";
 
@@ -18,6 +19,8 @@ class TCMTrades extends Component {
     };
 
     componentDidMount() {
+        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
+        this.setState({ userid: userInfo.id });
         this.tcmInfo();
         this.myOpenTrades();
         this.myOutgoingTrades();
@@ -88,19 +91,19 @@ class TCMTrades extends Component {
                 <div className='row'>
                     <div className="col col l10 push-l1 s12">
                    
-                        <h3>Open Trades</h3>
+                        <h3 class="tradeh3">Open Cookie Swaps</h3>
                         <OpenTradeTable tradeDetails={this.state.openTrades} 
                         tcmInfo={this.state.tcmInfo}
                         currentUser={this.state.userid}>
                         </OpenTradeTable>
 
-                        <h3>Outgoing Trades</h3>
-                        <TradeTable tradeDetails={this.state.outgoingTrades} 
+                        <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
+                        <TradeTable2 tradeDetails={this.state.outgoingTrades} 
                         tcmInfo={this.state.tcmInfo}
                         currentUser={this.state.userid}>
-                        </TradeTable>
+                        </TradeTable2>
 
-                        <h3>Incoming Trades</h3>
+                        <h3 class="tradeh3">Receiving Cookie Swaps</h3>
                         <TradeTable tradeDetails={this.state.incomingTrades} 
                         tcmInfo={this.state.tcmInfo}
                         currentUser={this.state.userid}>
