@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SUMlanding from "./pages/SUMlanding";
 import TCMInventory from "./pages/TCMInventory";
 import TCMInventory2 from "./pages/InventoryPage";
+import Trades from "./pages/CurrentTrades";
 import Profile from "./pages/Profile";
 import loginPage from "./pages/LoginPage";
 
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/SUM" component={SUMlanding} />
           <Route exact path="/TCM" component={TCMInventory} />
           <Route exact path="/TCM2" component={TCMInventory2} />
+          <Route exact path="/Trades" component={Trades} />
           <Route exact path="/Profile" component={Profile} />
         </Switch>
       </div>
