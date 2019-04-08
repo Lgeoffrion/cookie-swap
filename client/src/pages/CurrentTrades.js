@@ -18,6 +18,8 @@ class TCMTrades extends Component {
   
     };
 
+
+
     componentDidMount() {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         this.setState({ userid: userInfo.id });
@@ -28,6 +30,7 @@ class TCMTrades extends Component {
         
     }
 
+//pulls all TCM data
     tcmInfo = () => {
         API.getTCMS()
         .then(res => {
@@ -35,46 +38,35 @@ class TCMTrades extends Component {
         });
     }
     
-    //Pulls inventory of individual that is logged in
+//pulls open trades made by the user
     myOpenTrades = () => {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
-        // console.log("user ID :", userInfo.id);
-
         API.myOpenTrades(userInfo.id)
-
         .then(res => {
-            // console.log(" myOpenTrades API Response:", res);
             this.setState({ openTrades: res.data });
         });
       
     }
 
+    //pulls outgoing trades made by the user
     myOutgoingTrades = () => {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
-        // console.log("user ID :", userInfo.id);
-
         API.myOutgoingTrades(userInfo.id)
-
         .then(res => {
-            // console.log("myOutgoingTrades API Response:", res);
             this.setState({ outgoingTrades: res.data });
         });
       
     }
 
-
+  //pulls incoming trades claimed by the user
     myIncomingTrades = () => {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
-        // console.log("user ID :", userInfo.id);
-
         API.myIncomingTrades(userInfo.id)
-
         .then(res => {
-            // console.log("myIncomingTrades API Response:", res);
             this.setState({ incomingTrades: res.data });
         });
     }
-
+    
 
     cancelFormSubmit = (event, i) => {
         event.preventDefault();

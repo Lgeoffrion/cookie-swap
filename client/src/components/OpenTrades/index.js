@@ -7,8 +7,9 @@ function OpenTradeTable(props) {
 
 
    //displays open trades for the individual that is logged in
-   for (var index in props.tradeDetails) {
+for (var index in props.tradeDetails) {
     let index2 = props.tradeDetails[index].tcmID_giver - 1;
+
     tradeRow.push([
         props.tcmInfo[index2].name,
         props.tcmInfo[index2].city,

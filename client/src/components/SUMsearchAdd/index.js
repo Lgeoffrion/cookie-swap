@@ -16,7 +16,7 @@ function SUMsearchAdd(props) {
                     <div className="nav-wrapper row">
                         <form className="green lighten-2" id="SUMsearch">
                             <div className="input-field">
-                                <input id="search" type="search" required />
+                                <input  id="search" type="search" required />
                                 <label className="label-icon" htmlFor="search">
 
                                     <i className="material-icons">search</i>
@@ -43,36 +43,41 @@ function SUMsearchAdd(props) {
                                 <div className="row modal-form-row">
                                     <div className="input-field col s5">
                                         <input name="troop" value={props.troop} type="number" onChange={props.handleInputChange} className="validate" />
-                                        <label htmlFor="troop">Troop #</label>
+                                        <label htmlFor="troop">Troop #*</label>
+                                        <div id="talert" className="red-text text-accent-4">Please input troop.</div>
                                     </div>
 
                                     <div className="input-field col s6">
                                         <input name="name" type="text" value={props.name} onChange={props.handleInputChange} className="validate" />
-                                        <label htmlFor="cm">Cookie Manager</label>
+                                        <label htmlFor="cm">Cookie Manager*</label>
+                                        <div id="calert" className="red-text text-accent-4">Please input cookie manager.</div>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s5">
                                         <input name="phone" type="text" value={props.phone} onChange={props.handleInputChange} className="validate" />
-                                        <label htmlFor="phone">Phone</label>
+                                        <label htmlFor="phone">Phone*</label>
+                                        <div id="palert" className="red-text text-accent-4">Please input phone number.</div>
                                     </div>
 
                                     <div className="input-field col s6">
                                         <input name="city" type="text" value={props.city} onChange={props.handleInputChange} className="validate" />
-                                        <label htmlFor="location">City/Location</label>
+                                        <label htmlFor="location">City/Location*</label>
+                                        <div id="lalert" className="red-text text-accent-4">Please input a city/location.</div>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s11">
                                         <input name="email" type="email" value={props.email} onChange={props.handleInputChange} className="validate"></input>
-                                        <label htmlFor="email">Email</label>
+                                        <label htmlFor="email">Email*</label>
+                                        <div id="ealert" className="red-text text-accent-4">Please input an email.</div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <a className=" modal-action modal-close waves-effect waves-green btn-flat" id="tcmSubmit" onClick={props.handleFormSubmit}>Submit</a>
+                        <a className="modal-action waves-effect waves-green btn-flat" id="tcmSubmit" disabled={props.disabled} onClick={props.handleFormSubmit}>Submit</a>
                     </div>
                 </div>
             </div>
