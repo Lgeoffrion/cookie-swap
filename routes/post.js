@@ -60,7 +60,6 @@ module.exports = function(app) {
   app.post("/api/addtcm", function(req, res) {
     // Create a new TCM.
     // All fields are placeholders for like req.body.name or whatever
-<<<<<<< HEAD
     // Setting the email options and send out email when a new TCM is created
     eAddress = req.body.email;
     eSubject = "Cookie Swap Account Created";
@@ -73,8 +72,6 @@ module.exports = function(app) {
     sendEmail(eAddress,eSubject,eBody);            
               
     console.log("creating new TCM", req.body);
-=======
->>>>>>> 5800bb98ccca689ecf4db45731c3c3dd0cdf083d
     db.TCM.create({
       // sumId is a placeholder for the bridging of things from SUM
       name: req.body.name,
