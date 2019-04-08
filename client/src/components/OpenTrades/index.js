@@ -8,10 +8,12 @@ function OpenTradeTable(props) {
 
    //displays open trades for the individual that is logged in
 for (var index in props.tradeDetails) {
+    let index2 = props.tradeDetails[index].tcmID_giver - 1;
+
     tradeRow.push([
-        props.tcmInfo[props.tradeDetails[index].tcmID_giver].name,
-        props.tcmInfo[props.tradeDetails[index].tcmID_giver].city,
-        props.tcmInfo[props.tradeDetails[index].tcmID_giver].troop,
+        props.tcmInfo[index2].name,
+        props.tcmInfo[index2].city,
+        props.tcmInfo[index2].troop,
         props.tradeDetails[index].cookie_type, 
         props.tradeDetails[index].cookie_amount,
         <a class="waves-effect waves-light btn"> Cancel</a>
