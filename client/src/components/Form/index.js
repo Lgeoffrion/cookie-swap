@@ -18,7 +18,7 @@ export function Input(props) {
 export function EmailInput(props) {
   return (
     <div className="row">
-        <div className="input-field col s6">
+        <div className="input-field col l6 s10">
              <input type="email" 
              {...props}
             />
@@ -32,7 +32,7 @@ export function EmailInput(props) {
 export function PasswordInput(props) {
     return (
       <div className="row">
-          <div className="input-field col s6">
+          <div className="input-field col l6 s10">
                <input type="password" 
                {...props}
               //  value={props.value} onChange={props.onChange} 

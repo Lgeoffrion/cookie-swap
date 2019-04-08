@@ -65,17 +65,13 @@ class TCMInventory extends Component {
     }
   };
 
-  claimFormSubmit = event => {
-    let ind = {
-      claim: this.state.openTrade[event.target.getAttribute("data-value")],
-      claimer: this.state.userid
-    };
-    event.preventDefault();
-    // Trying to log the current info of JUST the claim you're clicking on, before we go further.
-    API.claimCookies(ind);
-  };
+    claimFormSubmit = event => {
+        event.preventDefault();
+        // Trying to log the current info of JUST the claim you're clicking on, before we go further.
+        console.log(this.state.openTrade);
+    }
 
-  render() {
+    render() {
     // this.tradeCookie();
 
     return (

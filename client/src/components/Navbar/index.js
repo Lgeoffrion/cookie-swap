@@ -10,7 +10,8 @@ function Navbar(props) {
           <div className="brand-logo left" id="logo"><img width="100" height="auto" src="../../images/gstcslogo.png" alt="" />
           </div>
           {/* title of the navbar, passed as a prop for the title by page */}
-          <h1 className="brand-logo center hide-on-small-only" id="navTitle">{props.title}</h1>
+          <h1
+          className="brand-logo center" id="navTitle">{props.title}</h1>
           {/* ============ Nav links and dropdown anchor for med and smaller pages ======= */}
           {
             props.page === 'login' ?
@@ -34,7 +35,17 @@ function Navbar(props) {
                   <li><a href="/">Logout</a></li>
                 </ul>
               </>
-            : ""
+            : props.page === 'profile' ?
+            <>
+            <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
+                <ul className="right hide-on-med-and-down">
+                <li><a href="/TCM">Trade Cookies</a></li>
+                  <li><a href="/TCM2">Inventory</a></li>
+                  <li><a href="/Profile">Profile</a></li>
+                  <li><a href="/">Logout</a></li>
+                </ul>
+            </>
+          : ""
           }
         </div>
         {/*============== Tabs beneath the navbar ================================*/}
@@ -76,6 +87,14 @@ function Navbar(props) {
           : props.page === 'sum' ?
             <ul className='dropdown-content' id='dropdown-nav'>
               <li><a href="/TCM">Inventory</a></li>
+              <li><a href="/Profile">Profile</a></li>
+              <li><a href="/">Logout</a></li>
+            </ul>
+          //profile page dropdown
+          : props.page === 'profile' ?
+            <ul className='dropdown-content' id='dropdown-nav'>
+              <li><a href="/TCM">Trade Cookies</a></li>
+              <li><a href="/TCM2">Inventory</a></li>
               <li><a href="/Profile">Profile</a></li>
               <li><a href="/">Logout</a></li>
             </ul>

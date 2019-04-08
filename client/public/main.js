@@ -9,6 +9,7 @@ $(document).ready(function () {
     $('select').formSelect();
     $('.modal').modal();
     // console.log("main.js linked")
+    // M.updateTextFields();
 });
 
     

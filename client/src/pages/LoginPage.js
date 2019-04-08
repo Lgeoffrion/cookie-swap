@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
-import Button from "../components/Button";
+import LoginButton from "../components/LoginButton";
 import { Input, EmailInput, PasswordInput } from "../components/Form";
 import API from "../utils/API";
 
@@ -91,17 +91,17 @@ class LoginPage extends Component {
       <div>
         {/* Passing the Navbar title and page Name as parameter */}
         <Navbar title={'Girl Scout Cookie Swap'}
-          ahref={'/'}
           page={'login'} />
 
         <div className='row'>
-          <div className="col col l7 push-l4 s12">
+          <div className="col col l7 push-l4 m10 push-m2 s12 push-s1">
           
           {/* Dropdown for selecting Login for SUM / TCM */}
             <Dropdown
               value={this.state.title}
               id="title"
               name="Title"
+              className='loginpageInput'
               onChange={this.handleInputChange}
             />
 
@@ -125,11 +125,12 @@ class LoginPage extends Component {
               onChange={this.handleInputChange}
               id="password"
               name="Password"
+              className='loginpageInput'
               placeholder="Password (required)"
             />
 
             {/* Disable the Login button if email/password/ title is not entered and also if the email is not valid*/}
-           <Button
+           <LoginButton
               disabled={ !(this.state.email && this.state.title && this.state.password
                 && this.state.email.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/))
               }

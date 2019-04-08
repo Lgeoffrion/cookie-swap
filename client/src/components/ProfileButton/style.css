@@ -1,0 +1,47 @@
+#changePwd .input-field 
+{
+    width: 25vw !important;
+}
+#changePassword .buttonDiv
+{
+    /* margin-left: 10vw;   */
+    padding: 2px 10px;
+}
+.profileBtn
+{
+    margin-left: 0vw;  
+}
+.pwdSubmit
+{
+    
+}
+
+@media only screen and (max-width: 768px){
+    #changePassword .buttonDiv
+    {
+        /* width:15% !important; */
+        /* padding: 2px 10px; */
+        margin-left: 10vw;  
+        /* margin-right: 10vw;    */
+        width:200px;
+    }
+    .profileBtn
+    {
+        margin-left: 10vw;  
+    }
+  }
+
+  @media only screen and (max-width: 600px){
+    #changePassword .buttonDiv
+    {
+        /* width:15% !important; */
+        /* padding: 2px 10px; */
+        margin-left: 15vw;  
+        /* margin-right: 60%;   */
+        width:200px;
+    }
+    .profileBtn
+    {
+        margin-left: 5vw;  
+    }
+  }
