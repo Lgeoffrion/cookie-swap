@@ -1,9 +1,24 @@
 .select-wrapper
 {
-    width:30vw;
+    width:28vw;
     /* margin:1%; */
 }
 
 #formDropdown{
     padding-top: 4rem;
 }
+
+@media only screen and (max-width: 769px){
+.select-wrapper
+    {
+        width:45vw;
+        margin:1%;
+    }
+} 
+@media only screen and (max-width: 600px){
+.select-wrapper
+    {
+        width:70vw;
+        /* margin:1%; */
+    }
+  }

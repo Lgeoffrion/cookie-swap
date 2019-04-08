@@ -26,7 +26,6 @@ module.exports = function(sequelize, DataTypes) {
         // Associating SUM with TCMs
         // When an SUM is deleted, also delete any associated TCM
         SUM.hasMany(models.TCM, {
-          onDelete: "cascade"
         });
       };
 

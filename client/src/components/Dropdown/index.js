@@ -5,7 +5,7 @@ import "./style.css";
 function Dropdown(props) {
     return (
         <div id="formDropdown" className="row">
-            <div className="input-field col s8">
+            <div className="input-field col l6 s10">
                 <select  {...props}>
                 <option value="0">Choose your option</option>
                     <option value="SUM">Service Unit Manager</option>

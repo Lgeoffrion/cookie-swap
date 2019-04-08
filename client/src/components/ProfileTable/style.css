@@ -1,0 +1,50 @@
+.profilePageRow
+{
+    margin-top:4vh !important;
+    /* margin-left: vw !important; */
+    /* width:50vw !important; */
+}
+
+.profilePageRow .row , .updateMsg
+{
+    margin: 0%;
+    padding: 0%;
+}
+.profilePageLabel
+{
+    font-size: 20px;
+    margin-top: 2vw !important;
+    width:10% !important;
+    /* float:right; */
+}
+
+.profilePageInput
+{
+    width: 400px !important;
+}
+
+@media only screen and (max-width: 769px){
+    .profilePageLabel
+    {
+        width:15% !important;
+    }
+    .profilePageInput
+    {
+        width: 300px !important;
+    }
+}
+
+  @media only screen and (max-width: 600px){
+    .profilePageLabel
+    {
+        width: 6vw !important;
+        text-align: left;
+        font-size: 15px;
+    }
+    .profilePageInput
+    {
+        width:50vw !important;
+        margin-left: 10% !important;
+    }
+
+  }

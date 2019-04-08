@@ -12,6 +12,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -21,6 +22,7 @@ module.exports = function(app) {
     db.TCM.findAll({})
       .then(function(users) {
         res.json(users);
+        // console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -34,51 +36,18 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
 
-
-    // Put route that claims an open trade by updating the update trade with TCM 2 ID
-    app.post("/api/update_tcm/:id", function(req, res) {
-      // Identify the user when you click a button that says 'Claim Swap'
-      // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
-      db.TCM.findOne({where: {id: req.params.id}})
-      .then(function(tcm) {
-        console.log(tcm);
-        return tcm.update({
-          name: req.body.name,
-          troop: req.body.troop,
-          email: req.body.email,
-          phone: req.body.phone,
-          city: req.body.city
-        })
-      }).then(function(dbPost) {
-        res.json(dbPost);
-      })
-    })
-
-      // Put route that claims an open trade by updating the update trade with TCM 2 ID
-      app.post("/api/update_pwd_tcm/:id", function(req, res) {
-        // Identify the user when you click a button that says 'Claim Swap'
-        // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
-        db.TCM.findOne({where: {id: req.params.id, password: req.body.oldpwd }})
-        .then(function(tcm) {
-          console.log(tcm);
-          return tcm.update({
-            password: req.body.newPwd,
-          })
-        }).then(function(dbPost) {
-          res.json(dbPost);
-        })
-      })
-    
   //See All Open Trades available to claim
   app.get("/api/trades", function(req, res) {
-    db.Trade.findAll({   
-        where: {
-          tcmID_taker: null
-        }
+    
+    db.Trade.findAll({
+      where: {
+        tcmID_taker: null
+      }
     })
       .then(function(users) {
         res.json(users);
@@ -97,6 +66,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -113,6 +83,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
@@ -126,6 +97,7 @@ module.exports = function(app) {
     })
       .then(function(users) {
         res.json(users);
+        console.log(users);
       })
       .catch(err => res.status(422).json(err));
   });
