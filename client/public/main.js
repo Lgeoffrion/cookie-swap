@@ -8,6 +8,7 @@ $(document).ready(function () {
     $('.tabs').tabs();
     $('select').formSelect();
     $('.modal').modal();
+    
     // console.log("main.js linked")
     // M.updateTextFields();
 });
