@@ -202,7 +202,7 @@ class TCMInventory2 extends Component {
 
       window.location.reload();
     }else{
-      console.log("You do not have enough in stock to create a swap")
+      alert("You do not have enough in stock to create a swap")
     }
     
   }
