@@ -6,7 +6,7 @@ function Navbar(props) {
     <>
       <nav id="navbar">
         <div className="nav-wrapper" id="navWrapper">
-          <div className="brand-logo left" id="logo"><img class="GSImage" src="../../images/gstcslogo.png" alt="" />
+          <div className="brand-logo left" id="logo"><img className="GSImage" src="../../images/gstcslogo.png" alt="" />
           </div>
           <div className="brand-logo center hide-on-small-only" id="navTitle">{props.title}</div>
           {
@@ -70,7 +70,16 @@ function Navbar(props) {
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
                 </ul>
-              ) : ""
+              )
+              : props.page === 'profile' ?
+              (
+                <ul className='dropdown-content' id='dropdown-nav'>
+                    <li><a href="/TCM">Trade Cookies</a></li>
+                    <li><a href="/TCM2">Inventory</a></li>
+                  <li><a href="/Profile">Profile</a></li>
+                  <li><a href="/">Logout</a></li>
+                </ul>
+              ) :  ""
       }
     </>
   );
