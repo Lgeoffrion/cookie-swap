@@ -64,6 +64,7 @@ class TCMInventory extends Component {
             })
         );
     }
+
   };
 
     claimFormSubmit = (event, i) => {
@@ -78,6 +79,7 @@ class TCMInventory extends Component {
             cookie_type: "",
             cookie_amount: ""
         })
+        window.location.reload()
     }
 
     render() {

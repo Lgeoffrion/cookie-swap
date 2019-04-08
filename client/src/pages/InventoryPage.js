@@ -72,6 +72,7 @@ class TCMInventory2 extends Component {
       cookie: name,
       value: value
     })
+  
   }
 
   subInputChange = event => {
