@@ -61,4 +61,4 @@ typings/
 .next
 
 # yarn lock
-.lock
+yarn.lock
