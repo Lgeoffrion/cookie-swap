@@ -17,9 +17,13 @@ class SUMlanding extends Component {
         phone: "",
         city: "",
         email: "",
+        buttonDsbl: false,
+        firstCheck: true,
         sumid:""
     };
-
+    handleReset = event => {
+        document.location.href = "/SUM";
+    }
     componentDidMount() {
         this.troopInfo();
     }
@@ -39,34 +43,93 @@ class SUMlanding extends Component {
         }
 
     }
+    displayErr = () => {
+        var talert = document.getElementById("talert"),
+        calert = document.getElementById("calert"),
+        palert = document.getElementById("palert"),
+        lalert = document.getElementById("lalert"),
+        ealert = document.getElementById("ealert");
+
+        if (!this.state.troop){
+            talert.style.visibility = "visible"
+        }
+        else{
+            talert.style.visibility = "hidden"
+        }
+        if (!this.state.name){
+            calert.style.visibility = "visible"
+        }
+        else{
+            calert.style.visibility = "hidden"
+        }
+        if (!this.state.phone){
+            palert.style.visibility = "visible"
+        }
+        else{
+            palert.style.visibility = "hidden"
+        }
+        if (!this.state.city){
+            lalert.style.visibility = "visible"
+        }
+        else{
+            lalert.style.visibility = "hidden"
+        }
+        if (!this.state.email){
+            ealert.style.visibility = "visible"
+        }
+        else{
+            ealert.style.visibility = "hidden"
+        }
+    }
     handleInputChange = event => {
-        // const value = event.target.value;
+
         const name = event.target.name;
-        const value = event.target.value;
-        // const troop = event.target.troopnum;
-        // const phone = event.target.phone;
-        // const city = event.target.location;
-        // const email = event.target.email;
+        const value = event.target.value
 
         this.setState({
             [name]: value
         });
+        //checks the modal to see if there are inputs for all ======================
+        if(!this.state.firstCheck){
+            this.displayErr();
+        }
+        if (!(this.state.troop && this.state.name && this.state.phone && this.state.city && this.state.email)){
+            this.setState({
+                buttonDsbl: true
+
+            })
+        }
+        else{
+            this.setState({
+                buttonDsbl:false
+            })
+        }
+        
     }
 
     handleFormSubmit = event => {
         event.preventDefault();
+        //if the modal passes the input check, update the DB =======================
+        if (this.state.troop && this.state.name && this.state.phone && this.state.city && this.state.email){
+            API.tcmCreate(this.state);
+            this.setState({
+                name: "",
+                password: 'temporary',
+                troop: "",
+                phone: "",
+                city: "",
+                email: ""
+            })
+            alert("New profile created!")
+            this.handleReset()
+        }
+        else{
+            this.displayErr();
+            this.setState({
+                firstCheck: false
+            })
+        }
 
-        API.tcmCreate(this.state);
-        this.setState({
-            name: "",
-            password: 'temporary',
-            troop: "",
-            phone: "",
-            city: "",
-            email: ""
-        })
-        this.troopInfo();
-        // location.reload()
     }
     updateProfile = event => {
         // event.preventDefault();
@@ -93,6 +156,7 @@ class SUMlanding extends Component {
                 {/* Holds the search bar and the add troop button with the modal
                     passes prop for the modal form*/}
                 <SUMsearchAdd
+                    disabled= {this.state.buttonDsbl}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                     name={this.state.name}
@@ -103,7 +167,8 @@ class SUMlanding extends Component {
                 />
                 <MainWrapper id="SUMwrapper">
                     {/* pass table info from db through props in the rows */}
-                    <SUMtable>
+                    <SUMtable onChange={this.troopInfo}>
+                        
                         {this.state.troops.map(
                             troop => <SUMrow
                                 key={troop.id}
