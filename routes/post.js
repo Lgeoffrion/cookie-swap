@@ -62,6 +62,7 @@ module.exports = function(app) {
       password: req.body.password,
       phone: req.body.phone,
       city: req.body.city,
+      SUMId:req.body.userid,
       smores: "0",
       thin_mint: "0",
       shortbread: "0",
