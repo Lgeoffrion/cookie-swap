@@ -25,7 +25,7 @@ function SUMtable(props){
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody onChange={props.onChange}>
                     {props.children}
                 </tbody>
             </table>
