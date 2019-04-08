@@ -3,10 +3,18 @@
 
 // Requiring our models
 var db = require("../models");
+var sendEmail = require("../send-email")
 
 // Routes
 // =============================================================
 module.exports = function(app) {
+  // setting variables to email
+  var eAddress = "";
+  var eSubject = "";
+  var eBody = "";
+  var troop1 = "";
+  var troop2 = "";
+  var SUMemail = "";
   // Create an offer...
   app.post("/api/offer", function(req, res) {
     // Update the variables above based on the selected cookie on the form... req.params.cookies is a placeholder
@@ -53,6 +61,17 @@ module.exports = function(app) {
   app.post("/api/addtcm", function(req, res) {
     // Create a new TCM.
     // All fields are placeholders for like req.body.name or whatever
+    // Setting the email options and send out email when a new TCM is created
+    eAddress = req.body.email;
+    eSubject = "Cookie Swap Account Created";
+    eBody = "A Cookie Swap page has been created for your troop."+
+            "\nUsername: " + eAddress +
+            "\nPassword: temporary"+
+            "\nPlease go in and update your password."+
+            "\nThank you,"+
+            "\nGSCookieSwap"; 
+    sendEmail(eAddress,eSubject,eBody);            
+              
     console.log("creating new TCM", req.body);
     db.TCM.create({
       // sumId is a placeholder for the bridging of things from SUM
@@ -120,6 +139,18 @@ module.exports = function(app) {
 
   // Put route that lets you update your cookies inventory and destroy the trade after Completion
   app.put("/api/complete", function(req, res) {
+    // Setting the email options and send out email when a trade is complete
+    troop1 = req.body.email;
+    troop2 = "" // current user email from local storage
+    SUMemail = "";
+    eAddress = troop1+"," + troop2+","+SUMemail;
+    eSubject = "Cookie Swap completed";
+    eBody = `The cookie swap between ` + troop1 + ` and ` + troop2 + ` is completed.
+            \nPlease update your transfer in the ABC Cookie system within 24 hours.
+            Thank you,
+            GSCookieSwap`; 
+    sendEmail(eAddress,eSubject,eBody);
+
     // These params are placeholders
     let cookies = req.params.cookies;
     let amount = req.params.amount;
@@ -140,6 +171,16 @@ module.exports = function(app) {
 
   // Put route that lets you update your cookies inventory and destroy the trade after Canceling
   app.put("/api/cancel", function(req, res) {
+    // sends out an email when a swap is cancelled
+    troop1 = req.body.email;
+    troop2 = "" // email from local storage
+    eAddress = troop1+"," + troop2;
+    eSubject = "Cookie Swap completed";
+    eBody = `The cookie swap between ` + troop1 + ` and ` + troop2 + ` has been cancelled.
+            \nThank you,
+            GSCookieSwap`; 
+    sendEmail(eAddress,eSubject,eBody);
+
     // These params are placeholders
     let cookies = req.params.cookies;
     let amount = req.params.amount;
