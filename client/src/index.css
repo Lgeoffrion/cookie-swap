@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1 0 auto;
+}
+.page-footer 
+{
+  background-color:white;
+}
+.page-footer .container
+{
+  
+  height: 25vh;
+  padding-bottom:5px;
+  width: 100vw;
+  background-image: url("../src/images/Cookie_Footer_3.jpg");
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: 10vw;
+}
