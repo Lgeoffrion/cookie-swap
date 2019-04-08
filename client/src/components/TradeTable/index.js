@@ -12,10 +12,7 @@ function TradeTable(props) {
 //  put it into a data-value for the form to receive but... I can't figure that out.
 
 
-console.log(props.tradeDetails);
-
   for (var index = 0; index < props.tradeDetails.length; index++) {
-      console.log("You found me.");
       
     if (props.tradeDetails[index].id != props.currentUser) {
       if (props.tradeDetails[index].cookie_type === "lemonades") {
@@ -28,7 +25,7 @@ console.log(props.tradeDetails);
           props.tradeDetails[index].cookie_amount,
           <form> <a data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
+            onClick={((e) => props.claimFormSubmit(e))}
           >
             Claim
           </a></form>,
