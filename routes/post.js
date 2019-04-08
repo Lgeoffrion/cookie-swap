@@ -40,10 +40,9 @@ module.exports = function(app) {
   app.post("/api/claim", function(req, res) {
     // Identify the user when you click a button that says 'Claim Swap'
     // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
-    db.Trade.findOne({where: {id: req.body.claim.id}})
+    db.Trade.findOne({where: {id: req.body.id}})
     .then(function(claim) {
-      console.log(claim);
-      return claim.update({tcmID_taker: req.body.claimer})
+      return claim.update({tcmID_taker: req.body.userID})
     }).then(function(dbPost) {
       res.json(dbPost);
     })
@@ -53,7 +52,6 @@ module.exports = function(app) {
   app.post("/api/addtcm", function(req, res) {
     // Create a new TCM.
     // All fields are placeholders for like req.body.name or whatever
-    console.log("creating new TCM", req.body);
     db.TCM.create({
       // sumId is a placeholder for the bridging of things from SUM
       name: req.body.name,

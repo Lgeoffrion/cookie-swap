@@ -1,7 +1,6 @@
+// Imported elements
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-// import MainWrapper from "../components/MainWrapper"
-// import ExcessCookieBody from "../components/ExcessCookieBody"
 import TradeTable from "../components/TradeTable";
 import API from "../utils/API";
 
@@ -48,6 +47,8 @@ class TCMInventory extends Component {
                     userData[j].id !== this.state.userid
                   ) {
                     swaps.push({
+                      userID: this.state.userid,
+                      id: tradeData[i].id,
                       name: userData[j].name,
                       troop: userData[j].troop,
                       city: userData[j].city,
@@ -65,10 +66,18 @@ class TCMInventory extends Component {
     }
   };
 
-    claimFormSubmit = event => {
+    claimFormSubmit = (event, i) => {
         event.preventDefault();
-        // Trying to log the current info of JUST the claim you're clicking on, before we go further.
-        console.log(this.state.openTrade);
+        API.claimCookies(this.state.openTrade[event.target.getAttribute('data-value')]);
+        this.setState({
+            id: "",
+            name: "",
+            troop: "",
+            city: "",
+            tcmID_giver: "",
+            cookie_type: "",
+            cookie_amount: ""
+        })
     }
 
     render() {
