@@ -16,7 +16,7 @@ function SUMsearchAdd(props) {
                     <div className="nav-wrapper row">
                         <form className="green lighten-2" id="SUMsearch">
                             <div className="input-field">
-                                <input id="search" type="search" required />
+                                <input  id="search" type="search" required />
                                 <label className="label-icon" htmlFor="search">
 
                                     <i className="material-icons">search</i>

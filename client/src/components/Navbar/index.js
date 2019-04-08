@@ -16,9 +16,9 @@ function Navbar(props) {
             : props.page === 'tcm' ?
               <>
                 <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
-                <ul className="right hide-on-med-and-down">
-                <li><a href="/TCM">Swap Cookies</a></li>
-                <li><a href="/Trades">Your Swaps</a></li>
+                <ul id="navLinks" className="right hide-on-med-and-down">
+                  <li><a href="/TCM">Swap Cookies</a></li>
+                  <li><a href="/Trades">Your Swaps</a></li>
                   <li><a href="/TCM2">Inventory</a></li>
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
@@ -28,15 +28,15 @@ function Navbar(props) {
             : props.page === 'sum' ?
               <>
                 <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
-                <ul className="right hide-on-med-and-down">
+                <ul id="navLinks" className="right hide-on-med-and-down">
                   <li><a href="/">Logout</a></li>
                 </ul>
               </>
             : props.page === 'profile' ?
             <>
             <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
-                <ul className="right hide-on-med-and-down">
-                <li><a href="/TCM">Swap Cookies</a></li>
+                <ul id="navLinks" className="right hide-on-med-and-down">
+                  <li><a href="/TCM">Swap Cookies</a></li>
                   <li><a href="/TCM2">Inventory</a></li>
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
