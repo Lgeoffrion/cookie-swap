@@ -9,9 +9,19 @@ export default {
   getYourInventory: function(id) {
     return axios.get("/api/tcms/" + id);
   },
-
-  // get all the TCMS information from Db
-  getTCMS: function() {
+  myOpenTrades: function(id) {
+    console.log("/api/yourOpenTrades/"+ id)
+    return axios.get("/api/yourOpenTrades/"+ id);
+  },
+  myOutgoingTrades: function(id) {
+    console.log("/api/outgoingtrades/"+ id)
+    return axios.get("/api/outgoingtrades/"+ id);
+  },
+  myIncomingTrades: function(id) {
+    console.log("/api/incomingtrades/"+ id)
+    return axios.get("/api/incomingtrades/"+ id);
+  },
+  getTCMS: function(){
     return axios.get("/api/tcms");
   },
 

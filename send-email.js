@@ -15,7 +15,7 @@ oauth2Client.setCredentials({
     refresh_token: process.env.refreshToken
 });
 
-// get new access token
+// get new access token using the refresh token
 const accessToken = oauth2Client.getAccessToken();
 // create how we want to send the email using smtp and OAuth2
 var smtpTransporter = nodemailer.createTransport({
@@ -23,10 +23,10 @@ var smtpTransporter = nodemailer.createTransport({
   auth: {
     type: "OAuth2",
     user: 'GSCookieSwap@gmail.com',
-    clientId: process.env.clientId,
-    clientSecret: process.env.clientSecret,
-    refreshToken: process.env.refreshToken,
-    accessToken: accessToken
+    clientId: process.env.clientId,  // client ID that you get from google api
+    clientSecret: process.env.clientSecret, // client secret that you get from google api
+    refreshToken: process.env.refreshToken, // refresh token that you get from google api
+    accessToken: accessToken 
   },
   tls:{
       rejectUnauthorized: false
@@ -36,10 +36,10 @@ var smtpTransporter = nodemailer.createTransport({
 // email content 
 var mailOptions = {
   from: 'GSCookieSwap@gmail.com',
-  to: emailAddr,
-  subject: emailSubj,
-  text: emailBody
-  // html: '<h1>Hi Smartherd</h1><p>Your Messsage</p>'        
+  to: emailAddr,        // email addresses to send email
+  subject: emailSubj,   // subject line in the email
+  text: emailBody       // the email body
+          
 };
 // send the email
 smtpTransporter.sendMail(mailOptions, (error, response) => {
@@ -47,4 +47,5 @@ smtpTransporter.sendMail(mailOptions, (error, response) => {
     smtpTransporter.close();
 });
 };
-sendEmail("chongvlee@hotmail.com","Sending Email using Node.js","Testing, Testing");
+module.exports = sendEmail;
+//sendEmail("chongvlee@hotmail.com","Sending Email using Node.js","Testing, Testing");

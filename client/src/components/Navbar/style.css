@@ -1,17 +1,16 @@
-#navTitle{
+/* #navTitle{
   margin-top:1rem;
-  left:45%;
-}
-#tabBar{
+} */
+/* #tabBar{
   padding-top: 1.5rem;
-}
+} */
 #navbar{
  background-color:#00AE58;
  /* height: 15vh; */
 }
-#tabs{
+/* #tabs{
  background-color: #009447;
-}
+} */
 /* #logintopNav{
  padding-bottom: 1rem;
 } */
@@ -25,23 +24,20 @@
   padding-bottom: 50px !important;
 } */
 #navWrapper{
-  padding-top: 1rem;
+  /* margin-bottom: 100px; */
 }
+
 .nav-content{
  padding-left:0 !important;
  padding-right:0 !important;
 }
 
-@media only screen and (max-width: 600px){
-  #navTitle{
-    font-size: 1.3rem;
-    font-style: bolder;
-    left:60%;
-   }
+#logo{
+  margin-top: 5px;
 }
-@media only screen and (max-width: 768px){
-  nav a
-  {
-  margin-right: 50px !important;
-  }
+
+
+.GSImage{
+  width: 100px; 
+  height: auto; 
 }

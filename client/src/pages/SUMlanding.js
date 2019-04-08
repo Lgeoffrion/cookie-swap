@@ -17,7 +17,7 @@ class SUMlanding extends Component {
         phone: "",
         city: "",
         email: "",
-        // cdl:""
+        sumid:""
     };
 
     componentDidMount() {
@@ -30,8 +30,8 @@ class SUMlanding extends Component {
             document.location.href = "/";
         }
         else {
-            console.log("usernfo", SUM_userInfo.id);
-            this.setState({ userid: SUM_userInfo.id });
+            console.log("usernfo", SUM_userInfo);
+            this.setState({ userid: SUM_userInfo.user.id });
             API.getTCMS().then(res => {
                 // console.log(res);
                 this.setState({ troops: res.data });
@@ -65,6 +65,7 @@ class SUMlanding extends Component {
             city: "",
             email: ""
         })
+        this.troopInfo();
         // location.reload()
     }
     updateProfile = event => {
@@ -106,6 +107,7 @@ class SUMlanding extends Component {
                         {this.state.troops.map(
                             troop => <SUMrow
                                 key={troop.id}
+                                // sumid={}
                                 id={troop.id}
                                 name={troop.name}
                                 troop={troop.troop}
