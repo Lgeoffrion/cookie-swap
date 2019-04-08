@@ -35,7 +35,7 @@ class TCMTrades extends Component {
     
     //Pulls inventory of individual that is logged in
     myOpenTrades = () => {
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         // console.log("user ID :", userInfo.id);
 
         API.myOpenTrades(userInfo.id)
@@ -48,7 +48,7 @@ class TCMTrades extends Component {
     }
 
     myOutgoingTrades = () => {
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         // console.log("user ID :", userInfo.id);
 
         API.myOutgoingTrades(userInfo.id)
@@ -62,7 +62,7 @@ class TCMTrades extends Component {
 
 
     myIncomingTrades = () => {
-        var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         // console.log("user ID :", userInfo.id);
 
         API.myIncomingTrades(userInfo.id)
