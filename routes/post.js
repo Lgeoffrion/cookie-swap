@@ -93,6 +93,7 @@ module.exports = function(app) {
     eAddress = req.body.email;
     eSubject = "Cookie Swap Account Created";
     eBody = "A Cookie Swap account has been created for your troop."+
+
             "\nUsername: " + eAddress +
             "\nPassword: temporary"+
             "\nPlease go in and update your password."+
@@ -203,7 +204,8 @@ module.exports = function(app) {
     // sends out an email when a swap is cancelled
     troop1 = req.body.email;
     troop2 = "" // email from local storage
-    eAddress = troop1+", " + troop2;
+    eAddress = troop1+"," + troop2;
+
     eSubject = "Cookie Swap completed";
     eBody = `The cookie swap between ` + troop1 + ` and ` + troop2 + ` has been cancelled.
             \nThank you,
