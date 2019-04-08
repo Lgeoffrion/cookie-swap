@@ -17,7 +17,7 @@ export function ChangePwd(props) {
             {/* <!-- Modal Structure --> */}
             <div id="changePwd" className="modal">
                 <div className="modal-content">
-                    <h4 className="center">Change Password</h4>
+                    <h4 className="center">Change Password <a className="modal-close waves-effect waves-green btn-flat closeBtn"><i class="material-icons">close</i></a></h4>
                     <div className="row">
                         {/* Form inside of the modal to add new troop to the database */}
                         <form className="col s12">

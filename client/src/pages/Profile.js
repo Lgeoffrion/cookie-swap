@@ -79,22 +79,30 @@ class Profile extends Component {
         else if (this.state.newPwd != this.state.confirmPwd)
             this.setState({ pwdError: "Confirmation Password does not match " });
 
-        else if (this.state.newPwd == this.state.confirmPwd == this.state.oldPwd)
+        else if (this.state.newPwd == this.state.oldPwd)
             this.setState({ pwdError: "New Password can not be same as the old Password" });
 
-        else this.setState({ pwdError: "" });
+        else {
+            this.setState({ pwdError: "" });
 
-        API.tcmProfilePwdUpdate(this.state.userid, 
-                {oldPwd : this.state.oldPwd, newPwd: this.state.newPwd})
-            .then(res => {
-                console.log("res", res);
-            });
+            API.tcmProfilePwdUpdate(this.state.userid,
+                { oldPwd: this.state.oldPwd, newPwd: this.state.newPwd })
+                .then(res => {
+                    console.log("res", res);
+                    if (res.status === 200) {
+                        this.setState({ pwdError: "Your Password is updated" });
+                    }
+                    else {
+                        this.setState({ pwdError: "Something went Wrong, Please refresh the page and try again" });
+                    }
+                });
 
-        this.setState({ profileChanged: false });
-        this.setState({ updateMsg: "Your Profile has been updated" })
-        setTimeout(() => {
-            this.setState({ updateMsg: "" })
-        }, 3000);
+            this.setState({ profileChanged: false });
+            // this.setState({ updateMsg: "Your Profile has been updated" })
+            setTimeout(() => {
+                this.setState({ updateMsg: "" })
+            }, 3000);
+        }
     }
 
 
