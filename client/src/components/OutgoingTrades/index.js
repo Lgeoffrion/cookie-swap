@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 
 
-function TradeTable(props) {
+function TradeTable2(props) {
     console.log("props.tcmInfo: ", props.tcmInfo);
     console.log("props.tradeDetails: ", props.tradeDetails);
     // console.log("Trade Table of 0: ", props.tradeDetails);
@@ -27,7 +27,6 @@ for (var index in props.tradeDetails) {
         props.tradeDetails[index].cookie_type, 
         props.tradeDetails[index].cookie_amount,
         <a class="waves-effect waves-light btn"> Cancel</a>,
-        <a class="waves-effect waves-light btn">Complete Trade</a>
     ])
 }
 
@@ -61,7 +60,6 @@ console.log("traderow: ",tradeRow );
                         <td class="namesize"> {obj[6]}</td>
                         <td class="numbersize"> {obj[7]}</td>
                         <td class="buttonsize"> {obj[8]}</td>
-                        <td class="buttonsize"> {obj[9]}</td>
                    </tr>
                    
                 )) : <tr><td></td></tr>}
@@ -71,7 +69,6 @@ console.log("traderow: ",tradeRow );
     );
 }
 
-export default TradeTable
-
+export default TradeTable2
 
 
