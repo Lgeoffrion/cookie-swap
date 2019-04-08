@@ -1,16 +1,16 @@
-#navTitle{
+/* #navTitle{
   margin-top:1rem;
-}
-#tabBar{
+} */
+/* #tabBar{
   padding-top: 1.5rem;
-}
+} */
 #navbar{
  background-color:#00AE58;
  /* height: 15vh; */
 }
-#tabs{
+/* #tabs{
  background-color: #009447;
-}
+} */
 /* #logintopNav{
  padding-bottom: 1rem;
 } */
@@ -24,9 +24,20 @@
   padding-bottom: 50px !important;
 } */
 #navWrapper{
-  padding-top: 1rem;
+  /* margin-bottom: 100px; */
 }
+
 .nav-content{
  padding-left:0 !important;
  padding-right:0 !important;
+}
+
+#logo{
+  margin-top: 5px;
+}
+
+
+.GSImage{
+  width: 100px; 
+  height: auto; 
 }

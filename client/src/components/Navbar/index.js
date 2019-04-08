@@ -4,11 +4,11 @@ import "./style.css";
 function LoginNav(props) {
   return (
     <>
-      <nav className="nav-extended" id="navbar">
+      <nav id="navbar">
         <div className="nav-wrapper" id="navWrapper">
-          <div className="brand-logo left" id="logo"><img width="100" height="auto" src="../../images/gstcslogo.png" alt="" />
+          <div className="brand-logo left" id="logo"><img class="GSImage" src="../../images/gstcslogo.png" alt="" />
           </div>
-          <h1 className="brand-logo center hide-on-small-only" id="navTitle">{props.title}</h1>
+          <div className="brand-logo center hide-on-small-only" id="navTitle">{props.title}</div>
           {
             props.page === 'login' ?
               ""
@@ -17,6 +17,7 @@ function LoginNav(props) {
                 <a href="#" data-target="dropdown-nav" id="navDrop" className="dropdown-trigger hide-on-large-only right"><i className="material-icons">menu</i></a>
                 <ul className="right hide-on-med-and-down">
                 <li><a href="/TCM">Trade Cookies</a></li>
+                <li><a href="/Trades">Your Trades</a></li>
                   <li><a href="/TCM2">Inventory</a></li>
                   <li><a href="/Profile">Profile</a></li>
                   <li><a href="/">Logout</a></li>
@@ -32,27 +33,9 @@ function LoginNav(props) {
                   : ""
           }
         </div>
-        {/* Tabs beneath the navbar */}
-        <div className="nav-content" id="tabBar">
-          {
-            props.page === 'login' ?
-              ""
-              : props.page === 'tcm' ?
 
-                <ul className="tabs tabs-transparent tabs-fixed-width z-depth-1" id="tabs">
-                  <li className="tab"><a href="#cookieTrade">Trading Cookie</a></li>
-                  <li className="tab"><a href="#yourinventory">Your Invertory</a></li>
-                </ul>
-                : props.page === 'sum' ?
-
-                  <ul className="tabs tabs-transparent tabs-fixed-width z-depth-1" id="tabs">
-                    <li className="tab"><a href="#contacts">Contacts</a></li>
-                    <li className="tab"><a href="#swapreport">View Swap Report</a></li>
-                  </ul>
-                  : ""
-          }
-        </div>
       </nav>
+
       {/* Dropdown content */}
       {
         props.page === 'login' ?
@@ -61,6 +44,7 @@ function LoginNav(props) {
             (
               <ul className='dropdown-content' id='dropdown-nav'>
                     <li><a href="/TCM">Trade Cookies</a></li>
+                    <li><a href="/Trades">Your Trades</a></li>
                   <li><a href="/TCM2">Inventory</a></li>
                 <li><a href="/Profile">Profile</a></li>
                 <li><a href="/">Logout</a></li>

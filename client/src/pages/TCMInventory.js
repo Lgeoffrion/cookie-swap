@@ -9,7 +9,7 @@ class TCMInventory extends Component {
     // Take from database and pass to state as troopInv
     state = {
         troopInv: "",
-        openTrades :"",
+        openTrade :"",
         userid:""
     };
     componentDidMount() {

@@ -1,0 +1,9 @@
+.name{
+    max-width: auto;
+    min-width: 150px;
+}
+
+.number{
+    max-width: 10%;
+    min-width: 5%;
+}

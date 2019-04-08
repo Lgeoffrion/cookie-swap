@@ -80,7 +80,8 @@ module.exports = function (app) {
       app.get("/api/outgoingtrades/:id", function (req, res) {
         db.Trade.findAll({
       where: {
-        tcmID_giver: req.params.id
+        tcmID_giver: req.params.id,
+        tcmID_taker: {[Op.ne]: null},
       }
        })
         .then(function (users) {
