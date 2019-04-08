@@ -46,6 +46,35 @@ module.exports = function(app) {
 
   // Put route that claims an open trade by updating the update trade with TCM 2 ID
   app.post("/api/claim", function(req, res) {
+    // Find the user that has available cookies to get their email address
+    db.TCM.findOne({where: {id: req.body.tcmID_giver}})
+    .then(function(user1){
+      troop1 = user1.email;
+        // Find the email of the current user
+      db.TCM.findOne({where: {id: req.body.userID}})
+      .then(function(user2){
+      troop2 = user2.email;
+
+    // Setting the email options and send out email when a new TCM is created
+      eAddress = troop1;
+      eSubject = troop2 + " wants your cookies!";
+      eBody = troop2 +" wants your "+ req.body.cookie_type+" cookies."+
+              "\nPlease email " + troop2 + " to confirm and set up swap time and location." +
+              "\nThank you,"+
+              "\nGSCookieSwap"; 
+      console.log(eAddress);
+      console.log(eSubject);
+      console.log(eBody);
+  
+      sendEmail(eAddress,eSubject,eBody);
+    });
+    });
+    // Find the email of the current user
+    //   db.TCM.findOne({where: {id: req.body.userID}})
+    //   .then(function(user2){
+    //   troop2 = user2.email;
+    // });
+
     // Identify the user when you click a button that says 'Claim Swap'
     // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
     db.Trade.findOne({where: {id: req.body.id}})
@@ -60,11 +89,10 @@ module.exports = function(app) {
   app.post("/api/addtcm", function(req, res) {
     // Create a new TCM.
     // All fields are placeholders for like req.body.name or whatever
-<<<<<<< HEAD
     // Setting the email options and send out email when a new TCM is created
     eAddress = req.body.email;
     eSubject = "Cookie Swap Account Created";
-    eBody = "A Cookie Swap page has been created for your troop."+
+    eBody = "A Cookie Swap account has been created for your troop."+
             "\nUsername: " + eAddress +
             "\nPassword: temporary"+
             "\nPlease go in and update your password."+
@@ -73,8 +101,6 @@ module.exports = function(app) {
     sendEmail(eAddress,eSubject,eBody);            
               
     console.log("creating new TCM", req.body);
-=======
->>>>>>> 5800bb98ccca689ecf4db45731c3c3dd0cdf083d
     db.TCM.create({
       // sumId is a placeholder for the bridging of things from SUM
       name: req.body.name,
@@ -177,7 +203,7 @@ module.exports = function(app) {
     // sends out an email when a swap is cancelled
     troop1 = req.body.email;
     troop2 = "" // email from local storage
-    eAddress = troop1+"," + troop2;
+    eAddress = troop1+", " + troop2;
     eSubject = "Cookie Swap completed";
     eBody = `The cookie swap between ` + troop1 + ` and ` + troop2 + ` has been cancelled.
             \nThank you,
