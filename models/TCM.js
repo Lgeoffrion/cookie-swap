@@ -1,4 +1,6 @@
-var bcrypt = require("bcrypt-nodejs");
+// Requiring bcrypt for password hashing. Using the bcrypt-nodejs version as the regular bcrypt module
+// sometimes causes errors on Windows machines
+// var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(sequelize, DataTypes) {
   var TCM = sequelize.define("TCM", {
@@ -16,6 +18,9 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false,
           unique: true,
+             validate: {
+        isEmail: true
+      }
         },
         password: {
             type: DataTypes.STRING,
@@ -87,8 +92,6 @@ module.exports = function(sequelize, DataTypes) {
         // console.log("Password from the Client :" , password)
         return (this.password === password)
       }
-
-
 
   //    TCM.prototype.validPassword = function (password) {
   //   return bcrypt.compareSync(password, this.password);

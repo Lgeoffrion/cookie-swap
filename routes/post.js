@@ -53,7 +53,7 @@ module.exports = function(app) {
   app.post("/api/addtcm", function(req, res) {
     // Create a new TCM.
     // All fields are placeholders for like req.body.name or whatever
-    
+    console.log("creating new TCM", req.body);
     db.TCM.create({
       // sumId is a placeholder for the bridging of things from SUM
       name: req.body.name,

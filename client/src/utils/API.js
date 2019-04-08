@@ -36,8 +36,18 @@ export default {
   },
 
   // Add a new TCM to the TCM table
-  tcmCreate: function(tcm) {
-    return axios.post("/api/addtcm", tcm);
+  tcmCreate : function(tcm) {
+    console.log("Tcm Create",tcm);
+    return axios.post("/api/addtcm",tcm)
+  },
+
+  // Add a new TCM to the TCM table
+  tcmProfileUpdate : function(id,tcm) {
+    return axios.post(" /api/update_tcm/" + id,tcm);
+  },
+
+  tcmProfilePwdUpdate : function(id,pwds) {
+    return axios.post(" /api/update_pwd_tcm/"+ id, pwds );
   },
 
   // Add the number of cookies in the inventory

@@ -16,7 +16,8 @@ class SUMlanding extends Component {
         troop: "",
         phone: "",
         city: "",
-        email: ""
+        email: "",
+        // cdl:""
     };
 
     componentDidMount() {
@@ -49,7 +50,7 @@ class SUMlanding extends Component {
 
         this.setState({
             [name]: value
-        })
+        });
     }
 
     handleFormSubmit = event => {
@@ -66,13 +67,26 @@ class SUMlanding extends Component {
         })
         // location.reload()
     }
+    updateProfile = event => {
+        // event.preventDefault();
+        // console.log(this.state);
+        // API.tcmCreate(this.state);
+        // this.setState({
+        //     name: "",
+        //     password: 'temporary',
+        //     troop: "",
+        //     phone: "",
+        //     city: "",
+        //     email: ""
+        // })
+        // location.reload()
+    }
     render() {
         return (
             <>
                 {/* Navbar props, which will be the navbar title, and page its on */}
                 <Navbar
                     title={'Service Unit Manager'}
-                    ahref={'/'}
                     page={'sum'}
                 />
                 {/* Holds the search bar and the add troop button with the modal
@@ -91,6 +105,7 @@ class SUMlanding extends Component {
                     <SUMtable>
                         {this.state.troops.map(
                             troop => <SUMrow
+                                key={troop.id}
                                 id={troop.id}
                                 name={troop.name}
                                 troop={troop.troop}
@@ -106,6 +121,7 @@ class SUMlanding extends Component {
                                 sm={troop.smores}
                                 tal={troop.thanks_a_lot}
                                 tm={troop.thin_mint}
+                                // updateProfile={this.updateProfile}
                             />
                         )}
                     </SUMtable>

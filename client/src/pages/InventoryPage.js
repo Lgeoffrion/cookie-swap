@@ -155,9 +155,12 @@ class TCMInventory2 extends Component {
   render() {
     return (
       <>
-        <Navbar title={"Troop Cookie Manager"} ahref={"/"} page={"tcm"} />
+         {/* Navbar passes a prop which will be the navbar title */}
+        <Navbar title={"Troop Cookie Manager"} page={"tcm"} />
         <div className="row">
           <div className="col col l10 push-l1 s12">
+            {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
+                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
             {/* <MainWrapper id="yourinventory">
                 </MainWrapper> */}
             <InventoryTable
@@ -172,10 +175,9 @@ class TCMInventory2 extends Component {
             />
           </div>
         </div>
-        {/* Navbar passes a prop which will be the navbar title */}
+     
 
-        {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
+      
         {/* <MainWrapper id="cookieTrade"> */}
         {/* Table for excess cookie data, will pull from database and 
                         pass props through state to populate table
