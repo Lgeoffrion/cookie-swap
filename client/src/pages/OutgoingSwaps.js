@@ -42,7 +42,7 @@ class TCMTrades extends Component {
             var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
             API.myOutgoingTrades(userInfo.id)
             .then(res => {
-                this.setState({ doneLoading: true, outgoingTrades: res.data });
+                this.setState({ outgoingTrades: res.data });
             });
           
         }

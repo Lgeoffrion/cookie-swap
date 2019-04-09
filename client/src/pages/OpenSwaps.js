@@ -32,7 +32,7 @@ tcmInfo = () => {
     API.getTCMS()
     .then(res => {
         this.setState({tcmInfo: res.data})
-        console.log("Test 1:", res.data);    
+       
     }).then(
         this.myOpenTrades()
     ).then(setTimeout(()=>{
@@ -48,7 +48,7 @@ tcmInfo = () => {
         API.myOpenTrades(userInfo.id)
        .then(res => {
             this.setState({ openTrades: res.data });
-            console.log("Test 2:", res.data);  
+            
         });
     }
 
