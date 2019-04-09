@@ -1,18 +1,17 @@
-# Project 3 - Cookie Swap
+# Project 3 - Girl Scout Cookie Swap
 
+During Girl Scout Cookie season, a cookie manager is always looking at their inventory to make sure that they can sell all the cookies before the end of selling season.  If troops don't think they can sell all their inventory, they need to determine how many boxes of cookies they need to send to other troops so they don't have to pay for the cookies they can't sell. They work with these troops to meet up and transfer cookies to the other troops. The local council has a swap app, but it is not very useful and many troops don't use it. The service unit uses google spreadsheet and the service unit manager doesn't know when there is a swap.  So if the troops don't transfer the cookies in the ABC Cookie system, their numbers will be off at the end of cookie season and it is harder to reconcile these issues. 
 
+This app facilitates the swap between troops and keeps the service unit manager in the loop in case there are descrepancies at the end of the season.  
 
+The app admin will add the Service Unit Manager, SUM, into the SUM table and then the SUM can add the troops in their service unit.  Once the SUM adds the troop, the app will send out an email to the troop cookie manager, TCM, that an account has been created for them and please go in and change their password.  
 
-* Sleep bar will decrease every 6 hours
-* Play bar will decrease every 3 hours
-* hungry bar will decrease every 2 hours
-
-![Image of PetPark](https://github.com/JoshVanOverbeke/Project2/blob/master/public/assets/img/petpark.gif)
+Once the TCM logs in and updates their password, they can add cookies to their inventory, let others know by putting up their cookies for swap, or remove cookies from their inventory.  The TCM can also update their profile and see all their swaps.  They also have a view of all the available cookies if they need any and can claim the cookies for their troop.  Once they click the claim button, an email is sent to the other troop to let them know there is an interested taker and to contact that person.
 
 ## Links
 
-- Deployment page: https://pet-park.herokuapp.com/
-- Repository: https://github.com/JoshVanOverbeke/Project2
+- Deployment page: https://gs-cookie-swap.herokuapp.com/
+- Repository: https://github.com/cvanglee/cookie-swap
 
 ## Installing / Getting started
 
@@ -20,128 +19,80 @@ This application doesn't require any other installation for a user.
 
 ## Initial Configuration
 
-Before starting development of this application, we needed to npm install express-jwt, express, moment, express-handlebars, mysqul2, and sequelize packages. We created the database on jawsDB and deployed to Heroku.
+Before starting development of this application, we needed to npm install express, dotenv, express-session, googleapis, mysqul2, moment, if-env, mysql, nodemailer, passport, path and sequelize packages. We created the database on jawsDB and deployed to Heroku.
+
+## Service Unit Manager user name and password
+
+You will need a service unit manager login to be able to run this app.  We are using email address as the username.
+
+username : JA@gmail.com
+password : password1
+
 
 ## Things that worked well
 
 A couple of things that worked well for us are listed below.
-* checkToken function: show the buttons according to whether there is a token in the local storage
 
-* timeout for thunder gif and boom gif after clicking resurrect and hard kill
-
-* See the code snippet for these two below under code snippet 2 and 3
+* nodemailer was fairly easy to implement and use - code snippet below
 
 ## Running the tests
 
-We ran tests creating a user and creating a pet.  Made pets with all of our gifs. We fed, played, and napped a pet to make sure the bars increase.  We also killed a pet and resurrected it.  Changed our time to minutes to simulate time passing to make sure that the feed, sleep, play, and hp decreases if it has been too long.  Made sure authentication works and a user needs to be logged in before they can play with the pet.  
+We ran tests creating a TCM, updating the profile, adding inventory, removing inventory, putting inventory up for swap, changing the user's password, and making sure emails are being generated and sent out.
 
 ## Code Snippet
 
 * Code Snippet 1
 ```
-// increment hungry by one
-     db.Pet.findOne(
-        {
-            where: {
-                id:req.params.id
-            }
-        })
-        .then(function(foundPet) {
-        return foundPet.update({hungry: parseInt(foundPet.hungry)+1})
-        })
-        .then(function(result) {
-        console.log("results: ", result)
-        });
+// set up OAuth client
+const oauth2Client = new OAuth2(
+  process.env.clientId, // ClientID
+  process.env.clientSecret, // Secret
+    "https://developers.google.com/oauthplayground" // Redirect URL
+);
+
+oauth2Client.setCredentials({
+    refresh_token: process.env.refreshToken
+});
+
+// get new access token using the refresh token
+const accessToken = oauth2Client.getAccessToken();
+// create how we want to send the email using smtp and OAuth2
+var smtpTransporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: "OAuth2",
+    user: 'GSCookieSwap@gmail.com',
+    clientId: process.env.clientId,  // client ID that you get from google api
+    clientSecret: process.env.clientSecret, // client secret that you get from google api
+    refreshToken: process.env.refreshToken, // refresh token that you get from google api
+    accessToken: accessToken 
+  },
+  tls:{
+      rejectUnauthorized: false
+  }
+});
+
+// email content 
+var mailOptions = {
+  from: 'GSCookieSwap@gmail.com',
+  to: emailAddr,        // email addresses to send email
+  subject: emailSubj,   // subject line in the email
+  text: emailBody       // the email body
+          
+};
+// send the email
+smtpTransporter.sendMail(mailOptions, (error, response) => {
+    error ? console.log(error) : console.log(response);
+    smtpTransporter.close();
+});
 ```
-* Code Snippet 2
-```
-//////////// manage btns on the page================================================================
-// a function that check if there is a token in localstorage
-// if is display log-out btn
-// if not display log-in and sign-up btns
-function checkToken() {
-    console.log(localStorage.getItem("token"))
-    if (localStorage.getItem("token") === null) {
-        $("#logoutBtn").css("display", "none")
-        $("#loginModalBtn").attr("style", "display:inline!important")
-        $("#signinModalBtn").attr("style", "display:inline!important")
-    } else {
-        $("#logoutBtn").css("display", "inline")
-        $("#loginModalBtn").attr("style", "display:none!important")
-        $("#signinModalBtn").attr("style", "display:none!important")
-    }
-}
-```
-* Code Snippet 3
-```
-// click handler for resurrecting the pet
-    $("#resurrectBtn").on("click", function (e) {
-        e.preventDefault()
-        console.log("click")
-        // hide the modal
-        $('#petStatus').modal('hide')
-        var id = $(this).data("id")
-        // show the thunder
-        let thunderImg = `<div><img src="/assets/img/thunder.gif" id="thunder"  style="width:80%"></div>`
-        $(".grave[data-id=" + id + "]").append(thunderImg)
-        //remove the thunder and reload the dom to show the resurrected pet
-        setTimeout(function () {
-            $('#thunder').remove()
-            // a PUT request to change the pet back to alive
-            let requestBody = {
-                action: "Resurrect"
-            }
-            console.log(requestBody)
-            // PUT: change specific data of specific pet
-            $.ajax({
-                url: "/api/pets/" + id,
-                type: 'PUT',
-                data: requestBody,
-            }).then(function (result) {
-                console.log("The pet is resurrected!");
-                location.reload()
-            })
-        }, 1200)
-    })
-    // clickhandler for hard kill the pet
-    $("#hardKillBtn").on("click", function (e) {
-        e.preventDefault()
-        if (localStorage.getItem("token") === null) {
-            alert("You need to log in to hard kill a pet!")
-        } else {
-            var id = $(this).data("id")
-            // DELETE: remove a pet from the database
-            $.ajax({
-                url: "/api/pet/" + id,
-                type: 'DELETE',
-            }).then(function (result) {
-                if (result === "notOwner") {
-                    alert("Sorry, you're not the owner!")
-                } else {
-                    // hide the modal
-                    $('#petStatus').modal('hide')
-                    // show the boom and remove it and reload
-                    let boomImg = `<div><img src="/assets/img/boom.png" id="boom"></div>`
-                    $(".grave[data-id=" + id + "]").append(boomImg)
-                    setTimeout(function () {
-                        $('#boom').remove()
-                        location.reload()
-                    }, 800)
-                }
-            })
-        }
-    })
-```
+
 ## Built With
-* jquery
-* Bootstrap
-* express-handlebars
+* react
+* Materialize
+* nodemailer
 * express
 * moment
 * sequelize
-* express-jwt
-* jwt
-
-## Happy Users
-
-![Image of PetPark](https://github.com/JoshVanOverbeke/Project2/blob/master/public/assets/img/happyusers.jpeg)
+* passport
+* googlapis
