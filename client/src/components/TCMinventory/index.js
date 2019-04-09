@@ -56,7 +56,6 @@ function InventoryTable(props) {
     <form><input value={props.add} onChange={props.addInputChange} name="thin_mint" type="text" id="input_text" class="input1"  placeholder="Amount" /><a class="waves-effect waves-light btn-small" onClick={props.addFormSubmit}>Add+</a></form>,
     <form><input value={props.sub} onChange={props.subInputChange} name="thin_mint" type="text" class="input1" placeholder="Amount" /><a currnum={props.tradeDetails["thin_mint"]} class="waves-effect waves-light btn-small" onClick={props.subFormSubmit}>Remove-</a></form>, 
     <form><input value={props.swap} onChange={props.swapInputChange} name="thin_mint" type="text" width="10px" class="input1"  placeholder="Amount"/><a currnum={props.tradeDetails["thin_mint"]} class="waves-effect waves-light btn-small" onClick={props.swapFormSubmit}>Place Up For Trade</a></form>]);
-    
 }
 
     // console.log("test", props);

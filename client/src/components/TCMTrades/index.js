@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import CookieName from "../../utils/CookieName";
 
 
 function TradeTable(props) {
@@ -12,6 +13,8 @@ for (var index in props.tradeDetails) {
     // console.log("TCM Props Name: ", props.tcmInfo[index].name);
     let index2 = props.tradeDetails[index].tcmID_giver - 1;
     let index3 = props.tradeDetails[index].tcmID_taker - 1;
+    let curCookie = props.tradeDetails[index].cookie_type;
+
     tradeRow.push([
         props.tcmInfo[index2].name,
         props.tcmInfo[index2].city,
@@ -19,7 +22,7 @@ for (var index in props.tradeDetails) {
         props.tcmInfo[index3].name,
         props.tcmInfo[index3].city,
         props.tcmInfo[index3].troop,
-        props.tradeDetails[index].cookie_type, 
+        CookieName.cookieNamer(curCookie), 
         props.tradeDetails[index].cookie_amount,
         <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.completeFormSubmit}>Complete Swap</a>,
         <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}>Cancel</a>
