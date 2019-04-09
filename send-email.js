@@ -4,7 +4,7 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
 function sendEmail(emailAddr,emailSubj,emailBody){
-  // set up OAuth client
+// set up OAuth client
 const oauth2Client = new OAuth2(
   process.env.clientId, // ClientID
   process.env.clientSecret, // Secret
@@ -48,4 +48,3 @@ smtpTransporter.sendMail(mailOptions, (error, response) => {
 });
 };
 module.exports = sendEmail;
-//sendEmail("chongvlee@hotmail.com","Sending Email using Node.js","Testing, Testing");

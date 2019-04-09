@@ -4,21 +4,24 @@ import CookieName from "../../utils/CookieName";
 
 
 function OpenTradeTable(props) {
+
    var tradeRow = [];
+   const tradeDetails = props.tradeDetails;
+   const tcmInfo = props.tcmInfo;
 
 
    //displays open trades for the individual that is logged in
-for (var index in props.tradeDetails) {
-    let index2 = props.tradeDetails[index].tcmID_giver - 1;
-    let curCookie = props.tradeDetails[index].cookie_type;
+for (let index in tradeDetails) {
+   let index2 = tradeDetails[index].tcmID_giver - 1;
+   let curCookie = tradeDetails[index].cookie_type;
 
     tradeRow.push([
-        props.tcmInfo[index2].name,
-        props.tcmInfo[index2].city,
-        props.tcmInfo[index2].troop,
+        tcmInfo[index2].name,
+        tcmInfo[index2].city,
+        tcmInfo[index2].troop,
         CookieName.cookieNamer(curCookie), 
-        props.tradeDetails[index].cookie_amount,
-        <a data-value={[props.tradeDetails[index].id, index2]} className="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>
+        tradeDetails[index].cookie_amount,
+        <a data-value={[tradeDetails[index].id, index2]} className="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>
     ]);
 
 }

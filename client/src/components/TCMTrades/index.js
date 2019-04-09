@@ -6,26 +6,27 @@ import CookieName from "../../utils/CookieName";
 function TradeTable(props) {
     
    var tradeRow = [];
-
+const tradeDetails = props.tradeDetails;
+const tcmInfo = props.tcmInfo;
 
    //displays trades for the individual that is logged in
-for (var index in props.tradeDetails) {
+for (let index in tradeDetails) {
  
-    let index2 = props.tradeDetails[index].tcmID_giver - 1;
-    let index3 = props.tradeDetails[index].tcmID_taker - 1;
-    let curCookie = props.tradeDetails[index].cookie_type;
+    let index2 = tradeDetails[index].tcmID_giver - 1;
+    let index3 = tradeDetails[index].tcmID_taker - 1;
+    let curCookie = tradeDetails[index].cookie_type;
 
     tradeRow.push([
-        props.tcmInfo[index2].name,
-        props.tcmInfo[index2].city,
-        props.tcmInfo[index2].troop,
-        props.tcmInfo[index3].name,
-        props.tcmInfo[index3].city,
-        props.tcmInfo[index3].troop,
+        tcmInfo[index2].name,
+        tcmInfo[index2].city,
+        tcmInfo[index2].troop,
+        tcmInfo[index3].name,
+        tcmInfo[index3].city,
+        tcmInfo[index3].troop,
         CookieName.cookieNamer(curCookie), 
-        props.tradeDetails[index].cookie_amount,
-        <a data-value={[props.tradeDetails[index].id, index2, index3]} className="waves-effect waves-light btn" onClick={props.completeFormSubmit}>Complete Swap</a>,
-        <a data-value={[props.tradeDetails[index].id, index2, index3]} className="waves-effect waves-light btn" onClick={props.cancelFormSubmit}>Cancel</a>
+        tradeDetails[index].cookie_amount,
+        <a data-value={[tradeDetails[index].id, index2, index3]} className="waves-effect waves-light btn" onClick={props.completeFormSubmit}>Complete Swap</a>,
+        <a data-value={[tradeDetails[index].id, index2, index3]} className="waves-effect waves-light btn" onClick={props.cancelFormSubmit}>Cancel</a>
     ])
 }
 

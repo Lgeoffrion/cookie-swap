@@ -32,7 +32,10 @@ tcmInfo = () => {
         this.setState({tcmInfo: res.data})
     }).then(
         this.myIncomingTrades()
-    );
+    ).then(setTimeout(()=>{
+        this.setState({ doneLoading: true })
+        }, 500)
+        );
 }
     
 
@@ -41,7 +44,7 @@ tcmInfo = () => {
     var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
     API.myIncomingTrades(userInfo.id)
     .then(res => {
-        this.setState({ doneLoading: true, incomingTrades: res.data });
+        this.setState({ incomingTrades: res.data });
     });
 }
     cancelFormSubmit = (event, i) => {
@@ -83,7 +86,6 @@ tcmInfo = () => {
                         </TradeTable>
                     }
                     </div></div>
-              
             </>
 
         )

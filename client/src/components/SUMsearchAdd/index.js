@@ -39,7 +39,7 @@ function SUMsearchAdd(props) {
                         <div className="row">
                             {/* Form inside of the modal to add new troop to the database */}
                             <form className="col s12">
-                                <div className="row modal-form-row">
+                                <div className="row modal-form-row addRow">
                                     <div className="input-field col s5">
                                         <input name="troop" value={props.troop} type="number"  onChange={props.handleInputChange} className="validate" />
                                         <label htmlFor="troop">Troop #*</label>
@@ -52,7 +52,7 @@ function SUMsearchAdd(props) {
                                         <div id="calert" className="red-text text-accent-4">Please input cookie manager.</div>
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="row addRow">
                                     <div className="input-field col s5">
                                         <input name="phone" type="text" 
                                         // value={props.phone} 
@@ -73,7 +73,7 @@ function SUMsearchAdd(props) {
                                         <div id="lalert" className="red-text text-accent-4">Please input a city/location.</div>
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="row addRow">
                                     <div className="input-field col s11">
                                         <input name="email" type="email" value={props.email} onChange={props.handleInputChange} className="validate"></input>
                                         <label htmlFor="email">Email*</label>
