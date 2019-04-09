@@ -3,7 +3,7 @@ var passport = require("../config/passport");
 var UserInfo;
 
 module.exports = function (app) {
-
+// Use the Passsport authentication for checking Login Access
     app.post("/api/tcm/login", passport.authenticate("tcm-user", { failureRedirect: "/" }), function (req, res) {
         if(req.user)
        { 
@@ -34,6 +34,7 @@ module.exports = function (app) {
     //         .catch(err => res.status(422).json(err));
     // });
 
+    // Use the Passsport authentication for checking Login Access
     app.post("/api/sum/login", passport.authenticate("sum-user", { failureRedirect: "/" }), function (req, res) {
         if(req.user)
        { 
