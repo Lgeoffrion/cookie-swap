@@ -32,7 +32,10 @@ tcmInfo = () => {
         this.setState({tcmInfo: res.data})
     }).then(
         this.myIncomingTrades()
-    );
+    ).then(setTimeout(()=>{
+        this.setState({ doneLoading: true })
+        }, 500)
+        );
 }
     
 
@@ -82,22 +85,7 @@ tcmInfo = () => {
                         </TradeTable>
                     }
                     </div></div>
-                {/* Navbar passes a prop which will be the navbar title */}
-               
-                {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
-                {/* <MainWrapper id="cookieTrade"> */}
-                    {/* Table for excess cookie data, will pull from database and 
-                        pass props through state to populate table
-                        Data will be passed through state and props to here, could use separate 
-                        component for table and thead then use props.children to fill with map
-                        of the rows */}
-                    
 
-                {/* </MainWrapper> */}
-                {/* Wrapper for invetory of logged in troop, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id */}
-              
             </>
 
         )
