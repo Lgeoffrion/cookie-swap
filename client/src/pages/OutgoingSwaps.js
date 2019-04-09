@@ -47,6 +47,8 @@ class TCMTrades extends Component {
           
         }
 
+
+        //button handlers
     cancelFormSubmit = (event, i) => {
         event.preventDefault();
         let cancelArray = event.target.getAttribute('data-value').split(",")
