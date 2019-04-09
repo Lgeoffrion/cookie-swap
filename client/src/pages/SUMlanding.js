@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import MainWrapper from "../components/MainWrapper"
 import SUMsearchAdd from "../components/SUMsearchAdd"
-// import ExcessCookieBody from "../components/ExcessCookieBody"
 import SUMtable from "../components/SUMtable"
-import SUMrow from "../components/SUMrow"
 import API from "../utils/API";
 
 class SUMlanding extends Component {
     // Take from database and pass to state as troopInv
     state = {
         troops: [],
+        filtTroop:[],
         name: "",
         password: 'temporary',
         troop: "",
@@ -20,7 +19,8 @@ class SUMlanding extends Component {
         phoneErrorMsg: "valid",
         buttonDsbl: false,
         firstCheck: true,
-        sumid:""
+        sumid:"",
+        search:""
     };
     // Refeshing the Location of the page
     handleReset = event => {
@@ -48,13 +48,17 @@ class SUMlanding extends Component {
             this.setState({ userid: SUM_userInfo.user.id });
             API.getTCMS().then(res => {
                 // console.log(res);
-                this.setState({ troops: res.data });
+                this.setState({ 
+                    troops: res.data,
+                    filtTroop: res.data,
+                });
             });
+            console.log("troopinfor")
         }
 
     }
-
-    // Check for Errors and  Display Error Message
+    //=============Modal listerns/functions=========================================
+    //error displays for if fields are not filled in the add tcm modal
     displayErr = () => {
         var talert = document.getElementById("talert"),
         calert = document.getElementById("calert"),
@@ -100,8 +104,7 @@ class SUMlanding extends Component {
             eformatalert.style.visibility = "hidden"; 
         }
     }
-
-    // When someone change an input type
+    //modal input onChange handler
     handleInputChange = event => {
 
         const name = event.target.name;
@@ -142,8 +145,7 @@ class SUMlanding extends Component {
         }
         
     }
-
-
+    
     // Checking Phone number format while typing the Phone number and displaying error Message
     handleInputPhoneChange = event => {
         const { name, value } = event.target;
@@ -190,8 +192,49 @@ class SUMlanding extends Component {
                 firstCheck: false
             })
         }
-
     }
+    //==========Search Bar listerns/functions========================================
+    //specific input change handler for the search bar
+    handleSearchInputChange = event => {
+
+        const name = event.target.name;
+        const value = event.target.value
+
+        this.setState({
+            [name]: value
+        });
+    }
+    //search handler for when search is entered
+    handleSearch = (event) => {
+        event.preventDefault();
+        // if nothing is inputted show all 
+        if (this.state.search === ""){
+            console.log("empty");
+            this.setState({
+                filtTroop: this.state.troops
+            })
+        }
+        //else search for either the troop number or the cookie manager
+        else{
+            var fTroop =  this.state.troops.filter(troop => {
+                return troop.name == this.state.search || troop.troop == this.state.search;
+            });
+            console.log("filter troop", fTroop);
+            this.setState({
+                filtTroop: fTroop,
+            })
+        }
+        window.stop();
+    }
+    //handler for the x in the search bar
+    searchX = (event) => {
+        event.preventDefault();
+        this.setState({
+            filtTroop: this.state.troops,
+        })
+    }
+    //====================================================================================
+
     render() {
         return (
             <>
@@ -203,6 +246,7 @@ class SUMlanding extends Component {
                 {/* Holds the search bar and the add troop button with the modal
                     passes prop for the modal form*/}
                 <SUMsearchAdd
+                    id={"searchBar"}
                     disabled= {this.state.buttonDsbl}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
@@ -212,33 +256,15 @@ class SUMlanding extends Component {
                     phone={this.state.phone}
                     city={this.state.city}
                     email={this.state.email}
+                    handleSearchInputChange={this.handleSearchInputChange}
+                    handleSearch={element=>(element||{}).onsearch=this.handleSearch}
+                    handleSeachClick={this.handleSearch}
+                    searchX={this.searchX}
+                    search={this.state.search}
                 />
                 <MainWrapper id="SUMwrapper">
                     {/* pass table info from db through props in the rows */}
-                    <SUMtable onChange={this.troopInfo}>
-                        
-                        {this.state.troops.map(
-                            troop => <SUMrow
-                                key={troop.id}
-                                // sumid={}
-                                id={troop.id}
-                                name={troop.name}
-                                troop={troop.troop}
-                                email={troop.email}
-                                phone={troop.phone}
-                                city={troop.city}
-                                cdl={troop.samoas}
-                                gf={troop.caramel_chocolate_chip}
-                                lem={troop.lemonades}
-                                pbp={troop.peanut_butter_patties}
-                                pbs={troop.peanut_butter_sandwich}
-                                sb={troop.shortbread}
-                                sm={troop.smores}
-                                tal={troop.thanks_a_lot}
-                                tm={troop.thin_mint}
-                            />
-                        )}
-                    </SUMtable>
+                    <SUMtable troops={this.state.filtTroop}/>
                 </MainWrapper>
             </>
 

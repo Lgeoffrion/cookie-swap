@@ -67,7 +67,7 @@ export default {
   // Once request is made, create Trade in trade table
   claimCookies: function(claim) {
     // let prom = axios.post("api/claim", claim)
-    // console.log(claim);
+
     return axios.post("api/claim", claim);
   },
   // Cancel a cookie trade you are involved in
