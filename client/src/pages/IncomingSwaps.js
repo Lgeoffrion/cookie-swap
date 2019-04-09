@@ -44,7 +44,7 @@ tcmInfo = () => {
     var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
     API.myIncomingTrades(userInfo.id)
     .then(res => {
-        this.setState({ doneLoading: true, incomingTrades: res.data });
+        this.setState({ incomingTrades: res.data });
     });
 }
     cancelFormSubmit = (event, i) => {
