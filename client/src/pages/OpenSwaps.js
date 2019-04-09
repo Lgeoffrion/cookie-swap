@@ -14,8 +14,8 @@ class TCMTrades extends Component {
         openTrades:"",
         outgoingTrades:"",
         incomingTrades:"",
-        tcmInfo: ""
-  
+        tcmInfo: "",
+        doneLoading: false
     };
 
 
@@ -31,19 +31,21 @@ class TCMTrades extends Component {
     }
 
 //pulls all TCM data
-    tcmInfo = () => {
-        API.getTCMS()
-        .then(res => {
-            this.setState({tcmInfo: res.data})
-        });
-    }
-    
+tcmInfo = () => {
+    API.getTCMS()
+    .then(res => {
+        this.setState({tcmInfo: res.data})
+    }).then(
+        this.myOpenTrades()
+    );
+}
+
 //pulls open trades made by the user
     myOpenTrades = () => {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         API.myOpenTrades(userInfo.id)
         .then(res => {
-            this.setState({ openTrades: res.data });
+            this.setState({ doneLoading: true, openTrades: res.data });
         });
       
     }
@@ -95,13 +97,14 @@ class TCMTrades extends Component {
                     <div className="col col l10 push-l1 s12">
                    
                         <h3 class="tradeh3">Open Cookie Swaps</h3>
+                        {this.state.doneLoading &&
                         <OpenTradeTable tradeDetails={this.state.openTrades} 
                         tcmInfo={this.state.tcmInfo}
                         currentUser={this.state.userid}
                         cancelFormSubmit={this.cancelFormSubmit}
                         completeFormSubmit={this.completeFormSubmit}>
                         </OpenTradeTable>
-
+                        }
                         {/* <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
                         <TradeTable2 
                             tradeDetails={this.state.outgoingTrades} 

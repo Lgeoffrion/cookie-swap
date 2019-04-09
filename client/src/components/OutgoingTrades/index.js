@@ -5,10 +5,9 @@ import "./style.css";
 
 function TradeTable2(props) {
    var tradeRow = [];
-   console.log("tradeRow Array: ", tradeRow);
-   console.log("props.tcmInfo Data: ", props.tcmInfo);
-   console.log("props.tradeDetails Data: ", props.tradeDetails);
+
    
+
    //displays trades for the individual that is logged in
 for (var index in props.tradeDetails) {
   
@@ -28,9 +27,6 @@ for (var index in props.tradeDetails) {
         <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>,
     ])
 }
-
-
-console.log("traderow: ",tradeRow );
 
     return (
 
