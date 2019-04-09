@@ -4,13 +4,13 @@ import CookieName from "../../utils/CookieName";
 
 
 function TradeTable(props) {
-    // console.log("Trade Table of 0: ", props.tradeDetails);
+    
    var tradeRow = [];
 
 
    //displays trades for the individual that is logged in
 for (var index in props.tradeDetails) {
-    // console.log("TCM Props Name: ", props.tcmInfo[index].name);
+ 
     let index2 = props.tradeDetails[index].tcmID_giver - 1;
     let index3 = props.tradeDetails[index].tcmID_taker - 1;
     let curCookie = props.tradeDetails[index].cookie_type;
@@ -24,42 +24,41 @@ for (var index in props.tradeDetails) {
         props.tcmInfo[index3].troop,
         CookieName.cookieNamer(curCookie), 
         props.tradeDetails[index].cookie_amount,
-        <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.completeFormSubmit}>Complete Swap</a>,
-        <a data-value={[props.tradeDetails[index].id, index2, index3]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}>Cancel</a>
+        <a data-value={[props.tradeDetails[index].id, index2, index3]} className="waves-effect waves-light btn" onClick={props.completeFormSubmit}>Complete Swap</a>,
+        <a data-value={[props.tradeDetails[index].id, index2, index3]} className="waves-effect waves-light btn" onClick={props.cancelFormSubmit}>Cancel</a>
     ])
 }
 
 
-console.log("traderow: ",tradeRow );
 
     return (
 
         <table  className='tradecol striped' >
             <thead>
                 <tr>
-                    <th class="tablebody">Cookie <br/>Giver</th>
-                    <th class="tablebody">Location</th>
-                    <th class="tablebody">Giver <br/>Troop <br/>Number</th>
-                    <th class="tablebody">Cookie <br/>Reciever</th>
-                    <th class="tablebody">Location</th>
-                    <th class="tablebody">Reciever <br/>Troop <br/>Number</th>
-                    <th class="tablebody">Cookie <br/>Type</th>
-                    <th class="tablebody">Amount <br/>of Boxes</th>
+                    <th className="tablebody">Cookie <br/>Giver</th>
+                    <th className="tablebody">Location</th>
+                    <th className="tablebody">Giver <br/>Troop <br/>Number</th>
+                    <th className="tablebody">Cookie <br/>Reciever</th>
+                    <th className="tablebody">Location</th>
+                    <th className="tablebody">Reciever <br/>Troop <br/>Number</th>
+                    <th className="tablebody">Cookie <br/>Type</th>
+                    <th className="tablebody">Amount <br/>of Boxes</th>
                 </tr>
             </thead>
             <tbody>
                 {props.tradeDetails ? tradeRow.map((obj,index) => (
                     <tr key={obj[0]+index}>
-                        <td class="namesize"> {obj[0]}</td>
-                        <td class="namesize"> {obj[1]}</td>
-                        <td class="numbersize"> {obj[2]}</td>
-                        <td class="namesize"> {obj[3]}</td>
-                        <td class="namesize"> {obj[4]}</td>
-                        <td class="numbersize"> {obj[5]}</td>
-                        <td class="namesize"> {obj[6]}</td>
-                        <td class="numbersize"> {obj[7]}</td>
-                        <td class="buttonsize"> {obj[8]}</td>
-                        <td class="buttonsize"> {obj[9]}</td>
+                        <td className="namesize"> {obj[0]}</td>
+                        <td className="namesize"> {obj[1]}</td>
+                        <td className="numbersize"> {obj[2]}</td>
+                        <td className="namesize"> {obj[3]}</td>
+                        <td className="namesize"> {obj[4]}</td>
+                        <td className="numbersize"> {obj[5]}</td>
+                        <td className="namesize"> {obj[6]}</td>
+                        <td className="numbersize"> {obj[7]}</td>
+                        <td className="buttonsize"> {obj[8]}</td>
+                        <td className="buttonsize"> {obj[9]}</td>
                    </tr>
                    
                 )) : <tr><td></td></tr>}

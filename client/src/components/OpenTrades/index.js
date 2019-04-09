@@ -18,13 +18,11 @@ for (var index in props.tradeDetails) {
         props.tcmInfo[index2].troop,
         CookieName.cookieNamer(curCookie), 
         props.tradeDetails[index].cookie_amount,
-        <a data-value={[props.tradeDetails[index].id, index2]} class="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>
+        <a data-value={[props.tradeDetails[index].id, index2]} className="waves-effect waves-light btn" onClick={props.cancelFormSubmit}> Cancel</a>
     ]);
 
 }
 
-
-    // console.log("test", props);
 
     return (
         <table  className='tradecol striped' >
@@ -40,12 +38,12 @@ for (var index in props.tradeDetails) {
             <tbody>
                 {props.tradeDetails ? tradeRow.map((obj,index) => (
                     <tr key={obj[0]+index}>
-                        <td class="name"> {obj[0]}</td>
-                        <td class="name"> {obj[1]}</td>
-                        <td class="number"> {obj[2]}</td>
-                        <td class="name"> {obj[3]}</td>
-                        <td class="number"> {obj[4]}</td>
-                        <td class="number"> {obj[5]}</td>
+                        <td className="name"> {obj[0]}</td>
+                        <td className="name"> {obj[1]}</td>
+                        <td className="number"> {obj[2]}</td>
+                        <td className="name"> {obj[3]}</td>
+                        <td className="number"> {obj[4]}</td>
+                        <td className="number"> {obj[5]}</td>
                    </tr>
                 )) : <tr><td></td></tr>}
             </tbody>
