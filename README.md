@@ -33,7 +33,9 @@ password : password1
 
 A couple of things that worked well for us are listed below.
 
-* nodemailer was fairly easy to implement and use - code snippet below
+* Implementing nodemailer was fairly easy to implement and use - code snippet 1 below
+
+* The code for the complete button worked well and was implemented with very few lines of code. - See code snippet 2
 
 ## Running the tests
 
@@ -86,13 +88,39 @@ smtpTransporter.sendMail(mailOptions, (error, response) => {
     smtpTransporter.close();
 });
 ```
-
+* Code Snippet 2
+```
+db.Trade.findOne({
+      where: { id: trade }
+    })
+    // Redefine the cookies.
+      .then(function(redefine) {
+        cookies = redefine.dataValues.cookie_type;
+        amount = redefine.dataValues.cookie_amount;
+      })
+      // Then find the recipient's ID in the TCM
+      .then(
+        db.TCM.findOne({
+          where: { id: taker }
+          // And increment the cookies by the amount and type of cookies of the trade.
+        }).then(function(updating) {
+          updating.increment(cookies, { by: amount });
+          // Then destroy the trade.
+          db.Trade.destroy({ where: { id: trade } });
+        })
+      );
+```
 ## Built With
 * react
 * Materialize
 * nodemailer
 * express
-* moment
 * sequelize
 * passport
 * googlapis
+
+## Future Developments
+
+The cookie season is done for this year so there is some time to clean up and add some other functionalities before next year.
+
+We would like to add double handshake when the swap is complete, add the email functionality to the rest of the click handlers that need it, ability to request partial cookies that has been offered up, default display when there are no swaps to display, more secure password encryption, and send emails to the SUM when the the transfer is complete.
