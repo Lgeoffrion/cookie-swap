@@ -199,15 +199,14 @@ module.exports = function(app) {
       .then(
         db.TCM.findOne({
           where: { id: taker }
+        }).then(function(updating) {
+          // Adds how many you swapped to your current cookie inventory variables
+          // console.log(updating);
+
+          updating.increment(cookies, { by: amount });
+          // where this trade ID is from the button
+          db.Trade.destroy({ where: { id: trade } });
         })
-          .then(function(updating) {
-            // Adds how many you swapped to your current cookie inventory variables
-            updating.increment(cookies, { by: amount });
-          })
-          .then(
-            // where this trade ID is from the button
-            db.Trade.destroy({ where: { id: trade } })
-          )
       );
   });
 
@@ -223,20 +222,18 @@ module.exports = function(app) {
       .then(function(redefine) {
         cookies = redefine.dataValues.cookie_type;
         amount = redefine.dataValues.cookie_amount;
-        console.log(cookies, amount, giver, trade);
       })
       .then(
-        db.TCM.findOne(
-          {
-            where: { id: giver }
-          }).then(function(updating) {
-            // Adds how many you swapped to your current cookie inventory variables
-            // console.log(updating);
+        db.TCM.findOne({
+          where: { id: giver }
+        }).then(function(updating) {
+          // Adds how many you swapped to your current cookie inventory variables
+          // console.log(updating);
 
-            updating.increment(cookies, { by: amount })
-              // where this trade ID is from the button
-              db.Trade.destroy({ where: { id: trade } });
-          })
+          updating.increment(cookies, { by: amount });
+          // where this trade ID is from the button
+          db.Trade.destroy({ where: { id: trade } });
+        })
       );
 
     // sends out an email when a swap is cancelled
