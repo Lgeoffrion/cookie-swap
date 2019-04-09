@@ -4,7 +4,7 @@ import "./style.css";
 function SUMtable(props){
     return(
         <div className="col s10 offset-s1" id="SUMtable">
-            <table>
+            <table className="striped">
                 <thead>
                 <tr>
                     <th>TROOP #</th>
