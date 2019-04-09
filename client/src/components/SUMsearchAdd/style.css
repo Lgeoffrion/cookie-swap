@@ -10,3 +10,6 @@
 #lalert, #talert, #calert, #palert, #ealert{
     visibility: hidden
 }
+#AddTroop{
+    padding-top:0.5rem;
+}
