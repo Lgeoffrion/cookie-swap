@@ -9,7 +9,8 @@ class TCMTrades extends Component {
     state = {
         userid:"",
         outgoingTrades:"",
-        tcmInfo: ""
+        tcmInfo: "",
+        doneLoading: false
   
     };
 
@@ -25,12 +26,14 @@ class TCMTrades extends Component {
     }
 
 //pulls all TCM data
-    tcmInfo = () => {
-        API.getTCMS()
-        .then(res => {
-            this.setState({tcmInfo: res.data})
-        });
-    }
+tcmInfo = () => {
+    API.getTCMS()
+    .then(res => {
+        this.setState({tcmInfo: res.data})
+    }).then(
+        this.myIncomingTrades()
+    );
+}
     
 
  //pulls incoming trades claimed by the user
@@ -38,7 +41,7 @@ class TCMTrades extends Component {
     var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
     API.myIncomingTrades(userInfo.id)
     .then(res => {
-        this.setState({ incomingTrades: res.data });
+        this.setState({ doneLoading: true, incomingTrades: res.data });
     });
 }
     cancelFormSubmit = (event, i) => {
@@ -69,7 +72,8 @@ class TCMTrades extends Component {
                     <div className="col col l10 push-l1 s12">
                    
 
-                    <h3 class="tradeh3">Incoming Cookie Swaps</h3>
+                    <h3 className="tradeh3">Incoming Cookie Swaps</h3>
+                    {this.state.doneLoading &&
                         <TradeTable 
                             tradeDetails={this.state.incomingTrades} 
                             tcmInfo={this.state.tcmInfo}
@@ -77,7 +81,7 @@ class TCMTrades extends Component {
                             cancelFormSubmit={this.cancelFormSubmit}
                             completeFormSubmit={this.completeFormSubmit}>
                         </TradeTable>
-
+                    }
                     </div></div>
               
             </>

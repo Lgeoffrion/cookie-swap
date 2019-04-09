@@ -3,16 +3,9 @@ import "./style.css";
 
 
 function ProfileTable(props) {
-
-   //displays cookie inventorys of the individual logged in
-    if (props.profileInfo) {
-        // console.log("props.profileInfo", props.profileInfo);
-        // props.profileInfo["name"]
-    }
-
     return (
         <div className="row profilePageRow">
-            {/* Form inside of the modal to add new troop to the database */}
+            {/* Get all the Details from Profile Info and Display it in the page */}
             {props.profileInfo &&
                 <form className="col s12">
                     <div className="row">
@@ -29,7 +22,6 @@ function ProfileTable(props) {
                         <div className="input-field inline col s5">
                             <input name="name" type="text" className="profilePageInput"
                                 defaultValue={props.profileInfo["name"]}
-                                // onClick={props.inputChange}
                                 onChange={props.inputChange}
                                  />
                         </div>

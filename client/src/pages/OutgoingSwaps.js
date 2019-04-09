@@ -9,39 +9,40 @@ class TCMTrades extends Component {
     state = {
         userid:"",
         outgoingTrades:"",
-        tcmInfo: ""
-  
+        tcmInfo: "",
+        doneLoading: false
     };
 
 
 
-    componentDidMount() {
+    async componentDidMount() {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         this.setState({ userid: userInfo.id });
         this.tcmInfo();
-
-        this.myOutgoingTrades();
- 
+       
     }
 
-//pulls all TCM data
-    tcmInfo = () => {
-        API.getTCMS()
-        .then(res => {
-            this.setState({tcmInfo: res.data})
-        });
-    }
+        //pulls all TCM data
+        tcmInfo = () => {
+            
+            API.getTCMS()
+            .then(res => {
+                this.setState({tcmInfo: res.data})
+            }).then(
+                this.myOutgoingTrades()
+            );
+        }
+        
     
-
-    //pulls outgoing trades made by the user
-    myOutgoingTrades = () => {
-        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
-        API.myOutgoingTrades(userInfo.id)
-        .then(res => {
-            this.setState({ outgoingTrades: res.data });
-        });
-      
-    }
+        //pulls outgoing trades made by the user
+        myOutgoingTrades = () => {
+            var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
+            API.myOutgoingTrades(userInfo.id)
+            .then(res => {
+                this.setState({ doneLoading: true, outgoingTrades: res.data });
+            });
+          
+        }
 
     cancelFormSubmit = (event, i) => {
         event.preventDefault();
@@ -58,7 +59,8 @@ class TCMTrades extends Component {
     }
 
     render() {
-
+    
+    
         return (
             <>
              <Navbar
@@ -70,7 +72,8 @@ class TCMTrades extends Component {
                     <div className="col col l10 push-l1 s12">
                    
 
-                        <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
+                        <h3 className="tradeh3">Outgoing Cookie Swaps</h3>
+                        {this.state.doneLoading &&
                         <TradeTable2 
                             tradeDetails={this.state.outgoingTrades} 
                             tcmInfo={this.state.tcmInfo}
@@ -78,29 +81,14 @@ class TCMTrades extends Component {
                             cancelFormSubmit={this.cancelFormSubmit}
                             completeFormSubmit={this.completeFormSubmit}>
                         </TradeTable2>
-
-
+                        }
                     </div></div>
-                {/* Navbar passes a prop which will be the navbar title */}
-               
-                {/* Wrapper for the excess inventory, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id*/}
-                {/* <MainWrapper id="cookieTrade"> */}
-                    {/* Table for excess cookie data, will pull from database and 
-                        pass props through state to populate table
-                        Data will be passed through state and props to here, could use separate 
-                        component for table and thead then use props.children to fill with map
-                        of the rows */}
-                    
-
-                {/* </MainWrapper> */}
-                {/* Wrapper for invetory of logged in troop, passes a prop which ids the wrapper 
-                    tabs from the Navbar then swap which wrapper is seen based off this id */}
               
             </>
 
         )
     }
+
 
 }
 

@@ -39,10 +39,9 @@ module.exports = function(app) {
   });
 
 
-    // Put route that claims an open trade by updating the update trade with TCM 2 ID
+    // Update the TCM profile Details
     app.post("/api/update_tcm/:id", function(req, res) {
-      // Identify the user when you click a button that says 'Claim Swap'
-      // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
+  //  Find the current user TCM and then update the record with new details
       db.TCM.findOne({where: {id: req.params.id}})
       .then(function(tcm) {
         return tcm.update({
@@ -57,10 +56,9 @@ module.exports = function(app) {
       })
     })
 
-      // Put route that claims an open trade by updating the update trade with TCM 2 ID
+  // Update the password for the current TCM profile 
       app.post("/api/update_pwd_tcm/:id", function(req, res) {
-        // Identify the user when you click a button that says 'Claim Swap'
-        // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
+  //  Find the current user TCM and then update the password for that account
         db.TCM.findOne({
           where: {
             id: req.params.id }

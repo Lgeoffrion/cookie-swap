@@ -16,20 +16,27 @@ class SUMlanding extends Component {
         phone: "",
         city: "",
         email: "",
+        phoneErrorMsg: "valid",
         buttonDsbl: false,
         firstCheck: true,
         sumid:"",
         search:""
     };
-    //page reload function
+    // Refeshing the Location of the page
     handleReset = event => {
         document.location.href = "/SUM";
     }
-    //load troop data for table on mount
+
+    // As soon as Page hide some messages and also Do API call to display TCMs information in the Page
     componentDidMount() {
         this.troopInfo();
+        var pformatalert = document.getElementById("pformatalert");
+        pformatalert.style.visibility = "hidden";
+        var eformatalert = document.getElementById("eformatalert");
+        eformatalert.style.visibility = "hidden";
     }
-    //get troop infor from the DB
+
+    // API call for getting the TCM Details from the database
     troopInfo = () => {
         var SUM_userInfo = JSON.parse(sessionStorage.getItem('SUM_userInfo'));
 
@@ -50,7 +57,7 @@ class SUMlanding extends Component {
         }
 
     }
-        //=============Modal listerns/functions=========================================
+    //=============Modal listerns/functions=========================================
     //error displays for if fields are not filled in the add tcm modal
     displayErr = () => {
         var talert = document.getElementById("talert"),
@@ -58,6 +65,8 @@ class SUMlanding extends Component {
         palert = document.getElementById("palert"),
         lalert = document.getElementById("lalert"),
         ealert = document.getElementById("ealert");
+        var pformatalert = document.getElementById("pformatalert");
+        var eformatalert = document.getElementById("eformatalert");
 
         if (!this.state.troop){
             talert.style.visibility = "visible"
@@ -72,10 +81,12 @@ class SUMlanding extends Component {
             calert.style.visibility = "hidden"
         }
         if (!this.state.phone){
-            palert.style.visibility = "visible"
+            palert.style.visibility = "visible";
+            pformatalert.style.visibility = "hidden";
         }
         else{
             palert.style.visibility = "hidden"
+             
         }
         if (!this.state.city){
             lalert.style.visibility = "visible"
@@ -84,10 +95,13 @@ class SUMlanding extends Component {
             lalert.style.visibility = "hidden"
         }
         if (!this.state.email){
-            ealert.style.visibility = "visible"
+            ealert.style.visibility = "visible";
+            eformatalert.style.visibility = "hidden";
         }
-        else{
+        else
+        {
             ealert.style.visibility = "hidden"
+            eformatalert.style.visibility = "hidden"; 
         }
     }
     //modal input onChange handler
@@ -99,6 +113,21 @@ class SUMlanding extends Component {
         this.setState({
             [name]: value
         });
+
+        // Email Validation while typing Email
+        var eformatalert = document.getElementById("eformatalert");
+        var ealert = document.getElementById("ealert");
+        
+        if (name == "email") {
+            if (!value.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,3})$/)) {
+                ealert.style.visibility = "hidden"
+                eformatalert.style.visibility = "visible";
+            }
+            else {
+                ealert.style.visibility = "hidden"
+                eformatalert.style.visibility = "hidden";
+            }
+        }
         //checks the modal to see if there are inputs for all ======================
         if(!this.state.firstCheck){
             this.displayErr();
@@ -116,7 +145,31 @@ class SUMlanding extends Component {
         }
         
     }
-    //modal submit click handler
+    
+    // Checking Phone number format while typing the Phone number and displaying error Message
+    handleInputPhoneChange = event => {
+        const { name, value } = event.target;
+        var pformatalert = document.getElementById("pformatalert");
+        var palert = document.getElementById("palert");
+        if (name == "phone" &&
+            (event.key.match(/[0-9]/) || event.keyCode == 8 || event.keyCode == 189)
+            && (event.keyCode == 8 || value.length < 12)) {
+            var newphone = value + event.key;
+            this.setState({ phone: newphone });
+            if (newphone.match(/([0-9]{3})\-([0-9]{3})-([0-9]{4})$/))
+            { 
+                palert.style.visibility = "hidden";
+                pformatalert.style.visibility = "hidden"; 
+            }
+            else { palert.style.visibility = "hidden";
+            pformatalert.style.visibility = "visible"; } 
+        }
+        else {
+            event.preventDefault();
+        }
+    };
+
+    // Handle click on the submit button
     handleFormSubmit = event => {
         event.preventDefault();
         //if the modal passes the input check, update the DB =======================
@@ -197,6 +250,7 @@ class SUMlanding extends Component {
                     disabled= {this.state.buttonDsbl}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
+                    inputPhoneChange={this.handleInputPhoneChange}
                     name={this.state.name}
                     troop={this.state.troop}
                     phone={this.state.phone}

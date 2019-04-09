@@ -41,7 +41,7 @@ function SUMsearchAdd(props) {
                             <form className="col s12">
                                 <div className="row modal-form-row">
                                     <div className="input-field col s5">
-                                        <input name="troop" value={props.troop} type="number" onChange={props.handleInputChange} className="validate" />
+                                        <input name="troop" value={props.troop} type="number"  onChange={props.handleInputChange} className="validate" />
                                         <label htmlFor="troop">Troop #*</label>
                                         <div id="talert" className="red-text text-accent-4">Please input troop.</div>
                                     </div>
@@ -54,9 +54,17 @@ function SUMsearchAdd(props) {
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s5">
-                                        <input name="phone" type="text" value={props.phone} onChange={props.handleInputChange} className="validate" />
+                                        <input name="phone" type="text" 
+                                        // value={props.phone} 
+                                        // onChange={props.handleInputChange}
+                                        // className="validate" 
+                                        className={props.phoneErrorMsg}
+                                        defaultValue={props.phone}
+                                        onKeyDown={props.inputPhoneChange}
+                                        />
                                         <label htmlFor="phone">Phone*</label>
                                         <div id="palert" className="red-text text-accent-4">Please input phone number.</div>
+                                        <div id="pformatalert" className="red-text text-accent-4">Please input phone number in format(123-456-7890).</div>
                                     </div>
 
                                     <div className="input-field col s6">
@@ -70,6 +78,7 @@ function SUMsearchAdd(props) {
                                         <input name="email" type="email" value={props.email} onChange={props.handleInputChange} className="validate"></input>
                                         <label htmlFor="email">Email*</label>
                                         <div id="ealert" className="red-text text-accent-4">Please input an email.</div>
+                                        <div id="eformatalert" className="red-text text-accent-4"> Please input Email in Format (abc@xyz.com)</div>
                                     </div>
                                 </div>
                             </form>
