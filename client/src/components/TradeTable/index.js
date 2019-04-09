@@ -1,171 +1,38 @@
 import React, { Component } from "react";
+import CookieName from "../../utils/CookieName";
 
 // import "./style.css";
 //will pass props to populate table row with real data sometime
 
 function TradeTable(props) {
-
   var tradeRow = [];
 
-//   Several if conditionals to rewrite the name of the cookie as its brought in
-// Some attempts, like indNumber=index, to save the index number so you can then...
-//  put it into a data-value for the form to receive but... I can't figure that out.
-
+  //   Several if conditionals to rewrite the name of the cookie as its brought in
+  // Some attempts, like indNumber=index, to save the index number so you can then...
+  //  put it into a data-value for the form to receive but... I can't figure that out.
 
   for (var index = 0; index < props.tradeDetails.length; index++) {
-      
+    let curCookie = props.tradeDetails[index].cookie_type;
     if (props.tradeDetails[index].id != props.currentUser) {
-      if (props.tradeDetails[index].cookie_type === "lemonades") {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Lemonades",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
+      let indNumber = index;
+      tradeRow.push([
+        props.tradeDetails[index].name,
+        props.tradeDetails[index].troop,
+        props.tradeDetails[index].city,
+        CookieName.cookieNamer(curCookie),
+        props.tradeDetails[index].cookie_amount,
+        <form>
+          {" "}
+          <a
+            data-value={[indNumber]}
             className="waves-effect waves-light btn-small"
-            onClick={((e) => props.claimFormSubmit(e))}
+            onClick={e => props.claimFormSubmit(e)}
           >
             Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (props.tradeDetails[index].cookie_type === "smores") {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Smores",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (props.tradeDetails[index].cookie_type === "thin_mint") {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Thin Mints",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (props.tradeDetails[index].cookie_type === "shortbread") {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Shortbread",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (
-        props.tradeDetails[index].cookie_type === "peanut_butter_sandwich"
-      ) {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Peanut Butter Sandwich",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (props.tradeDetails[index].cookie_type === "thanks_a_lot") {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Thanks a Lot",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (props.tradeDetails[index].cookie_type === "samoas") {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Caramel Delights",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (
-        props.tradeDetails[index].cookie_type === "peanut_butter_patties"
-      ) {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Peanut Butter Patties",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      } else if (
-        props.tradeDetails[index].cookie_type === "caramel_chocolate_chip"
-      ) {
-        let indNumber=index;
-        tradeRow.push([
-          props.tradeDetails[index].name,
-          props.tradeDetails[index].troop,
-          props.tradeDetails[index].city,
-          "Gluten Free",
-          props.tradeDetails[index].cookie_amount,
-          <form> <a data-value={[indNumber]}
-            className="waves-effect waves-light btn-small"
-            onClick={props.claimFormSubmit}
-          >
-            Claim
-          </a></form>,
-          <a className="waves-effect waves-light btn disabled">Status</a>
-        ]);
-      }
+          </a>
+        </form>,
+        <a className="waves-effect waves-light btn disabled">Status</a>
+      ]);
     }
   }
 
