@@ -16,6 +16,8 @@ class TCMInventory extends Component {
   componentDidMount() {
     this.openSwaps();
   }
+
+  // Function to run all the open swaps onto the page
   openSwaps = () => {
     // Check if the user is logged in and if they are not looged in then send them to Login Page
     var TCM_userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
@@ -23,7 +25,6 @@ class TCMInventory extends Component {
       document.location.href = "/";
     } else {
       // If the user has logged in then save the logged in User Id for future use
-
       this.setState({ userid: TCM_userInfo.id });
       let tradeData;
       let userData;
@@ -67,6 +68,7 @@ class TCMInventory extends Component {
 
   };
 
+    // Handles form submit
     claimFormSubmit = (event, i) => {
         event.preventDefault();
         API.claimCookies(this.state.openTrade[event.target.getAttribute('data-value')]);
@@ -82,9 +84,8 @@ class TCMInventory extends Component {
         window.location.reload()
     }
 
+    // Renders page
     render() {
-    // this.tradeCookie();
-
     return (
       <>
         <Navbar title={"Troop Cookie Manager"} ahref={"/"} page={"tcm"} />

@@ -1,8 +1,10 @@
    
+// Requires
    var db = require("../models");
    const Sequelize = require('sequelize');
    const Op = Sequelize.Op;
    
+  //  Export everything
    module.exports = function (app) {
    
 
@@ -15,9 +17,6 @@
         })
         .catch(err => res.status(422).json(err));
       });
-
-
-
 
    //See All User Trades that are currently open
    app.get("/api/tradesInProgress", function (req, res) {

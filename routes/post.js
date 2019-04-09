@@ -17,13 +17,13 @@ module.exports = function(app) {
   var SUMemail = "";
   // Create an offer...
   app.post("/api/offer", function(req, res) {
-    // Update the variables above based on the selected cookie on the form... req.params.cookies is a placeholder
+    // 'Global' variables for Offer, 
+      // saving the kind of cookies and the amount of cookies offered
+      // and the id of the offerer.
     let cookies = req.body.cookie;
     let amount = req.body.value;
     let id = req.body.userid;
-    // etc etc...
-    // Find your current database values, searching for your username...
-    // req.params.id is a placeholder, that's YOU THE TRADE MAKER's logged in ID
+    // Find your current database values, searching for your username.
     db.TCM.findOne({ where: { id: id } })
       // Then use the info we found to update all the fields appropriately.
       .then(function(offer) {
@@ -32,8 +32,6 @@ module.exports = function(app) {
       })
       // Then makes a new entry into Trade.
       .then(
-        // req.params.id is a placeholder, that's YOU THE TRADE MAKER's logged in ID
-        // req.params.cookie is a placeholder for cookie chosen
         db.Trade.create({
           tcmID_giver: id,
           cookie_type: cookies,
@@ -44,7 +42,7 @@ module.exports = function(app) {
       );
   });
 
-  // Put route that claims an open trade by updating the update trade with TCM 2 ID
+  // Put route that claims an open trade by updating the update trade with claiming TCM's ID
   app.post("/api/claim", function(req, res) {
     // Find the user that has available cookies to get their email address
     // db.TCM.findOne({where: {id: req.body.tcmID_giver}})
@@ -76,9 +74,9 @@ module.exports = function(app) {
     // });
 
     // Identify the user when you click a button that says 'Claim Swap'
-    // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
     db.Trade.findOne({ where: { id: req.body.id } })
       .then(function(claim) {
+      // Then append that entry's tcmID_taker field with the ID of the user you're logged in as
         return claim.update({ tcmID_taker: req.body.userID });
       })
       .then(function(dbPost) {
@@ -88,8 +86,6 @@ module.exports = function(app) {
 
   // Add a new Troop Cookie Manager
   app.post("/api/addtcm", function(req, res) {
-    // Create a new TCM.
-    // All fields are placeholders for like req.body.name or whatever
     // Setting the email options and send out email when a new TCM is created
     eAddress = req.body.email;
     eSubject = "Cookie Swap Account Created";
@@ -103,9 +99,9 @@ module.exports = function(app) {
       "\nGSCookieSwap";
     sendEmail(eAddress, eSubject, eBody);
 
-    console.log("creating new TCM", req.body);
+    // Create a new TCM.
+    alert("creating new TCM named", req.body.name);
     db.TCM.create({
-      // sumId is a placeholder for the bridging of things from SUM
       name: req.body.name,
       troop: req.body.troop,
       email: req.body.email,
@@ -129,18 +125,18 @@ module.exports = function(app) {
 
   // Put route that lets you update your cookies inventory
   app.put("/api/add", function(req, res) {
-    // These params are placeholders
+    // 'Global' variables saving cookies, amount, and your ID.
     let cookies = req.body.cookie;
     let amount = req.body.value;
     let id = req.body.userid;
 
+    // Find your entry on the TCM table
     db.TCM.findOne({
       // req.params.id is a placeholder for your logged in ID
       where: { id: id }
     })
-      // Finds all your current amounts of cookies and saves them as variables
       .then(function(updating) {
-        // Adds how many you swapped to your current cookie inventory variables
+        // Adds however many cookies you said of the cookie type you specified
         updating.increment(cookies, { by: amount });
       })
       .then(function(result) {
@@ -150,18 +146,16 @@ module.exports = function(app) {
 
   // Put route that lets you update your cookies inventory
   app.put("/api/sub", function(req, res) {
-    // These params are placeholders
+    // 'Global' variables for cookies, amount, and ID
     let cookies = req.body.cookie;
     let amount = req.body.value;
     let id = req.body.userid;
 
     db.TCM.findOne({
-      // req.params.id is a placeholder for your logged in ID
       where: { id: id }
     })
-      // Finds all your current amounts of cookies and saves them as variables
       .then(function(updating) {
-        // Adds how many you swapped to your current cookie inventory variables
+        // Deletes how many cookies you said of the cookie type you specified
         updating.decrement(cookies, { by: amount });
       })
       .then(function(result) {
@@ -171,7 +165,7 @@ module.exports = function(app) {
 
   // Put route that lets you update your cookies inventory and destroy the trade after Completion
   app.put("/api/complete", function(req, res) {
-    // // Setting the email options and send out email when a trade is complete
+    // Setting the email options and send out email when a trade is complete
     // troop1 = req.body.email;
     // troop2 = "" // current user email from local storage
     // SUMemail = "";
@@ -183,28 +177,29 @@ module.exports = function(app) {
     //         GSCookieSwap`;
     // sendEmail(eAddress,eSubject,eBody);
 
+    // Defining some global variables to identify the trade variable, the ID of the cookie taker
+      // the cookies and the amount of the cookies
     let trade = req.body[0];
     let taker = parseFloat(req.body[2]) + 1;
     let cookies, amount;
 
-    // console.log(taker);
-
+    // Find the ID of the trade itself...
     db.Trade.findOne({
       where: { id: trade }
     })
+    // Redefine the cookies.
       .then(function(redefine) {
         cookies = redefine.dataValues.cookie_type;
         amount = redefine.dataValues.cookie_amount;
       })
+      // Then find the recipient's ID in the TCM
       .then(
         db.TCM.findOne({
           where: { id: taker }
+          // And increment the cookies by the amount and type of cookies of the trade.
         }).then(function(updating) {
-          // Adds how many you swapped to your current cookie inventory variables
-          // console.log(updating);
-
           updating.increment(cookies, { by: amount });
-          // where this trade ID is from the button
+          // Then destroy the trade.
           db.Trade.destroy({ where: { id: trade } });
         })
       );
@@ -212,26 +207,28 @@ module.exports = function(app) {
 
   // Put route that lets you update your cookies inventory and destroy the trade after Canceling
   app.put("/api/cancel", function(req, res) {
+    // Define 'global' variables for the trade's ID, the giver's ID, cookies and their amount.
     let trade = req.body[0];
     let giver = parseFloat(req.body[1]) + 1;
     let cookies, amount;
 
+    // Find the trade by the trade ID
     db.Trade.findOne({
       where: { id: trade }
     })
+    // Redefine cookies and amount
       .then(function(redefine) {
         cookies = redefine.dataValues.cookie_type;
         amount = redefine.dataValues.cookie_amount;
       })
+    // Then find the TCM table by the ID of the cookie giver.
       .then(
         db.TCM.findOne({
           where: { id: giver }
+      // Increments the cookies by their cookie type by the amount of the traded cookies
         }).then(function(updating) {
-          // Adds how many you swapped to your current cookie inventory variables
-          // console.log(updating);
-
           updating.increment(cookies, { by: amount });
-          // where this trade ID is from the button
+        // Then destroys the trades.
           db.Trade.destroy({ where: { id: trade } });
         })
       );
