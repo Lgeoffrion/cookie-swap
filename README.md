@@ -21,6 +21,14 @@ This application doesn't require any other installation for a user.
 
 Before starting development of this application, we needed to npm install express, dotenv, express-session, googleapis, mysqul2, moment, if-env, mysql, nodemailer, passport, path and sequelize packages. We created the database on jawsDB and deployed to Heroku.
 
+## Service Unit Manager user name and password
+
+You will need a service unit manager login to be able to run this app.  We are using email address as the username.
+
+username : JA@gmail.com
+password : password1
+
+
 ## Things that worked well
 
 A couple of things that worked well for us are listed below.
