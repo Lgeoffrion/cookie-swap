@@ -71,6 +71,7 @@ class TCMTrades extends Component {
                    
 
                         <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
+                        {this.state && this.state.outgoingTrades &&
                         <TradeTable2 
                             tradeDetails={this.state.outgoingTrades} 
                             tcmInfo={this.state.tcmInfo}
@@ -78,6 +79,7 @@ class TCMTrades extends Component {
                             cancelFormSubmit={this.cancelFormSubmit}
                             completeFormSubmit={this.completeFormSubmit}>
                         </TradeTable2>
+                        }
 
 
                     </div></div>
