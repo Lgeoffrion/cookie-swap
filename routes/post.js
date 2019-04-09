@@ -98,9 +98,8 @@ module.exports = function(app) {
       "\nThank you," +
       "\nGSCookieSwap";
     sendEmail(eAddress, eSubject, eBody);
-
     // Create a new TCM.
-    alert("creating new TCM named", req.body.name);
+    // alert("creating new TCM named", req.body.name);
     db.TCM.create({
       name: req.body.name,
       troop: req.body.troop,
