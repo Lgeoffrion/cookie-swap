@@ -161,9 +161,10 @@ class SUMlanding extends Component {
             else { palert.style.visibility = "hidden";
             pformatalert.style.visibility = "visible"; } 
         }
-        else {
-            event.preventDefault();
-        }
+        //breaks tabbing function if on
+        // else {
+        //     event.preventDefault();
+        // }
     };
 
     // Handle click on the submit button
@@ -190,7 +191,7 @@ class SUMlanding extends Component {
             })
         }
     }
-    //==========Search Bar listerns/functions========================================
+    //==========Search Bar listeners/functions========================================
     //specific input change handler for the search bar
     handleSearchInputChange = event => {
 
