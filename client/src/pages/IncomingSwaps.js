@@ -67,6 +67,7 @@ tcmInfo = () => {
 
         return (
             <>
+            {/* Navbar passes a prop which will be the navbar title */}
              <Navbar
                     title={'Troop Cookie Manager'}
                     ahref={'/'}
@@ -87,7 +88,6 @@ tcmInfo = () => {
                         </TradeTable>
                     }
                     </div></div>
-
             </>
 
         )
