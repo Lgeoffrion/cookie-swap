@@ -44,16 +44,13 @@ class SUMlanding extends Component {
             document.location.href = "/";
         }
         else {
-            console.log("usernfo", SUM_userInfo);
             this.setState({ userid: SUM_userInfo.user.id });
             API.getTCMS().then(res => {
-                // console.log(res);
                 this.setState({ 
                     troops: res.data,
                     filtTroop: res.data,
                 });
             });
-            console.log("troopinfor")
         }
 
     }
@@ -219,7 +216,6 @@ class SUMlanding extends Component {
             var fTroop =  this.state.troops.filter(troop => {
                 return troop.name == this.state.search || troop.troop == this.state.search;
             });
-            console.log("filter troop", fTroop);
             this.setState({
                 filtTroop: fTroop,
             })
