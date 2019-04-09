@@ -47,6 +47,8 @@ tcmInfo = () => {
         this.setState({ incomingTrades: res.data });
     });
 }
+
+//button handlers
     cancelFormSubmit = (event, i) => {
         event.preventDefault();
         let cancelArray = event.target.getAttribute('data-value').split(",")
