@@ -25,8 +25,8 @@ class TCMTrades extends Component {
         this.setState({ userid: userInfo.id });
         this.tcmInfo();
         this.myOpenTrades();
-        this.myOutgoingTrades();
-        this.myIncomingTrades();
+        // this.myOutgoingTrades();
+        // this.myIncomingTrades();
         
     }
 
@@ -34,7 +34,6 @@ class TCMTrades extends Component {
     tcmInfo = () => {
         API.getTCMS()
         .then(res => {
-            console.log("TCMINFO:", res)
             this.setState({tcmInfo: res.data})
         });
     }
@@ -49,27 +48,39 @@ class TCMTrades extends Component {
       
     }
 
-    //pulls outgoing trades made by the user
-    myOutgoingTrades = () => {
-        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
-        API.myOutgoingTrades(userInfo.id)
-        .then(res => {
-            this.setState({ outgoingTrades: res.data });
-        });
+//     //pulls outgoing trades made by the user
+//     myOutgoingTrades = () => {
+//         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
+//         API.myOutgoingTrades(userInfo.id)
+//         .then(res => {
+//             this.setState({ outgoingTrades: res.data });
+//         });
       
-    }
+//     }
 
-  //pulls incoming trades claimed by the user
-    myIncomingTrades = () => {
-        var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
-        API.myIncomingTrades(userInfo.id)
-        .then(res => {
-            this.setState({ incomingTrades: res.data });
-        });
-    }
+//   //pulls incoming trades claimed by the user
+//     myIncomingTrades = () => {
+//         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
+//         API.myIncomingTrades(userInfo.id)
+//         .then(res => {
+//             this.setState({ incomingTrades: res.data });
+//         });
+//     }
     
 
- 
+    cancelFormSubmit = (event, i) => {
+        event.preventDefault();
+        let cancelArray = event.target.getAttribute('data-value').split(",")
+        API.cancelSwap(cancelArray);
+        window.location.reload();
+    }
+
+    completeFormSubmit = (event, i) => {
+        event.preventDefault();
+        let completeArray = event.target.getAttribute('data-value').split(",")
+        API.completeSwap(completeArray);
+        window.location.reload();
+    }
 
     render() {
 
@@ -86,20 +97,28 @@ class TCMTrades extends Component {
                         <h3 class="tradeh3">Open Cookie Swaps</h3>
                         <OpenTradeTable tradeDetails={this.state.openTrades} 
                         tcmInfo={this.state.tcmInfo}
-                        currentUser={this.state.userid}>
+                        currentUser={this.state.userid}
+                        cancelFormSubmit={this.cancelFormSubmit}
+                        completeFormSubmit={this.completeFormSubmit}>
                         </OpenTradeTable>
 
-                        <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
-                        <TradeTable2 tradeDetails={this.state.outgoingTrades} 
-                        tcmInfo={this.state.tcmInfo}
-                        currentUser={this.state.userid}>
+                        {/* <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
+                        <TradeTable2 
+                            tradeDetails={this.state.outgoingTrades} 
+                            tcmInfo={this.state.tcmInfo}
+                            currentUser={this.state.userid}
+                            cancelFormSubmit={this.cancelFormSubmit}
+                            completeFormSubmit={this.completeFormSubmit}>
                         </TradeTable2>
 
                         <h3 class="tradeh3">Receiving Cookie Swaps</h3>
-                        <TradeTable tradeDetails={this.state.incomingTrades} 
-                        tcmInfo={this.state.tcmInfo}
-                        currentUser={this.state.userid}>
-                        </TradeTable>
+                        <TradeTable 
+                            tradeDetails={this.state.incomingTrades} 
+                            tcmInfo={this.state.tcmInfo}
+                            currentUser={this.state.userid}
+                            cancelFormSubmit={this.cancelFormSubmit}
+                            completeFormSubmit={this.completeFormSubmit}>
+                        </TradeTable> */}
                     </div></div>
                 {/* Navbar passes a prop which will be the navbar title */}
                
