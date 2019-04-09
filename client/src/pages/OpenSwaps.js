@@ -96,7 +96,7 @@ tcmInfo = () => {
                 <div className='row'>
                     <div className="col col l10 push-l1 s12">
                    
-                        <h3 class="tradeh3">Open Cookie Swaps</h3>
+                        <h3 className="tradeh3">Open Cookie Swaps</h3>
                         {this.state.doneLoading &&
                         <OpenTradeTable tradeDetails={this.state.openTrades} 
                         tcmInfo={this.state.tcmInfo}
@@ -105,7 +105,7 @@ tcmInfo = () => {
                         completeFormSubmit={this.completeFormSubmit}>
                         </OpenTradeTable>
                         }
-                        {/* <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
+                        {/* <h3 className="tradeh3">Outgoing Cookie Swaps</h3>
                         <TradeTable2 
                             tradeDetails={this.state.outgoingTrades} 
                             tcmInfo={this.state.tcmInfo}
@@ -114,7 +114,7 @@ tcmInfo = () => {
                             completeFormSubmit={this.completeFormSubmit}>
                         </TradeTable2>
 
-                        <h3 class="tradeh3">Receiving Cookie Swaps</h3>
+                        <h3 className="tradeh3">Receiving Cookie Swaps</h3>
                         <TradeTable 
                             tradeDetails={this.state.incomingTrades} 
                             tcmInfo={this.state.tcmInfo}

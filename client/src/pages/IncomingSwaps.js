@@ -71,7 +71,7 @@ tcmInfo = () => {
                     <div className="col col l10 push-l1 s12">
                    
 
-                    <h3 class="tradeh3">Incoming Cookie Swaps</h3>
+                    <h3 className="tradeh3">Incoming Cookie Swaps</h3>
                     {this.state.doneLoading &&
                         <TradeTable 
                             tradeDetails={this.state.incomingTrades} 

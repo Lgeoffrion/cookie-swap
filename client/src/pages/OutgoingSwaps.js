@@ -15,14 +15,16 @@ class TCMTrades extends Component {
 
 
 
-    componentDidMount() {
+    async componentDidMount() {
         var userInfo = JSON.parse(sessionStorage.getItem("TCM_userInfo"));
         this.setState({ userid: userInfo.id });
         this.tcmInfo();
+       
     }
 
         //pulls all TCM data
         tcmInfo = () => {
+            
             API.getTCMS()
             .then(res => {
                 this.setState({tcmInfo: res.data})
@@ -70,7 +72,7 @@ class TCMTrades extends Component {
                     <div className="col col l10 push-l1 s12">
                    
 
-                        <h3 class="tradeh3">Outgoing Cookie Swaps</h3>
+                        <h3 className="tradeh3">Outgoing Cookie Swaps</h3>
                         {this.state.doneLoading &&
                         <TradeTable2 
                             tradeDetails={this.state.outgoingTrades} 
