@@ -12,7 +12,7 @@ function InventoryTable(props) {
    //displays cookie inventorys of the individual logged in
    if (props.tradeDetails)
    {
-    inventoryRow.push(["Caramel Chocolate Chip",props.tradeDetails["caramel_chocolate_chip"],
+    inventoryRow.push(["Gluten Free",props.tradeDetails["caramel_chocolate_chip"],
     <form><input value={props.add} onChange={props.addInputChange} name="caramel_chocolate_chip" type="text" id="input_text" class="input1"  placeholder="Amount" /><a class="waves-effect waves-light btn-small" onClick={props.addFormSubmit}>Add+</a></form>,
     <form><input value={props.sub} onChange={props.subInputChange} name="caramel_chocolate_chip" type="text" class="input1" placeholder="Amount" /><a currnum={props.tradeDetails["caramel_chocolate_chip"]} class="waves-effect waves-light btn-small" onClick={props.subFormSubmit}>Remove-</a></form>, 
     <form><input value={props.swap} onChange={props.swapInputChange} name="caramel_chocolate_chip" type="text" width="10px" class="input1"  placeholder="Amount"/><a currnum={props.tradeDetails["caramel_chocolate_chip"]} class="waves-effect waves-light btn-small" onClick={props.swapFormSubmit}>Place Up For Trade</a></form>]);
