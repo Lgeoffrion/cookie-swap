@@ -43,6 +43,7 @@ export default {
   },
   // Add a new TCM to the TCM table
   tcmCreate : function(tcm) {
+    console.log(tcm);
     return axios.post("/api/addtcm",tcm)
   },
   // Add a new TCM to the TCM table

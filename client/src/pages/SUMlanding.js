@@ -110,21 +110,21 @@ class SUMlanding extends Component {
         this.setState({
             [name]: value
         });
-
+        //breaks the post route for some reason
         // Email Validation while typing Email
-        var eformatalert = document.getElementById("eformatalert");
-        var ealert = document.getElementById("ealert");
+        // var eformatalert = document.getElementById("eformatalert");
+        // var ealert = document.getElementById("ealert");
         
-        if (name == "email") {
-            if (!value.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,3})$/)) {
-                ealert.style.visibility = "hidden"
-                eformatalert.style.visibility = "visible";
-            }
-            else {
-                ealert.style.visibility = "hidden"
-                eformatalert.style.visibility = "hidden";
-            }
-        }
+        // if (name == "email") {
+        //     if (!value.trim().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,3})$/)) {
+        //         ealert.style.visibility = "hidden"
+        //         eformatalert.style.visibility = "visible";
+        //     }
+        //     else {
+        //         ealert.style.visibility = "hidden"
+        //         eformatalert.style.visibility = "hidden";
+        //     }
+        // }
         //checks the modal to see if there are inputs for all ======================
         if(!this.state.firstCheck){
             this.displayErr();
@@ -161,7 +161,7 @@ class SUMlanding extends Component {
             else { palert.style.visibility = "hidden";
             pformatalert.style.visibility = "visible"; } 
         }
-        //breaks tabbing function if on
+        // breaks tabbing function if on
         // else {
         //     event.preventDefault();
         // }
@@ -172,7 +172,14 @@ class SUMlanding extends Component {
         event.preventDefault();
         //if the modal passes the input check, update the DB =======================
         if (this.state.troop && this.state.name && this.state.phone && this.state.city && this.state.email){
-            API.tcmCreate(this.state);
+            API.tcmCreate({
+                name: this.state.name,
+                password: this.state.password,
+                troop: this.state.troop,
+                phone: this.state.phone,
+                city: this.state.city,
+                email: this.state.email,
+            });
             this.setState({
                 name: "",
                 password: 'temporary',

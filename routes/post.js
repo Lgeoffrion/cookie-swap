@@ -87,6 +87,7 @@ module.exports = function(app) {
   // Add a new Troop Cookie Manager
   app.post("/api/addtcm", function(req, res) {
     // Setting the email options and send out email when a new TCM is created
+    console.log("req.body", req.body);
     eAddress = req.body.email;
     eSubject = "Cookie Swap Account Created";
     eBody =
@@ -100,7 +101,7 @@ module.exports = function(app) {
     sendEmail(eAddress, eSubject, eBody);
 
     // Create a new TCM.
-    alert("creating new TCM named", req.body.name);
+    // alert("creating new TCM named", req.body.name);
     db.TCM.create({
       name: req.body.name,
       troop: req.body.troop,
