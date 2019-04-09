@@ -30,7 +30,10 @@ class TCMTrades extends Component {
                 this.setState({tcmInfo: res.data})
             }).then(
                 this.myOutgoingTrades()
-            );
+            ).then(setTimeout(()=>{
+                this.setState({ doneLoading: true })
+                }, 500)
+                );
         }
         
     
