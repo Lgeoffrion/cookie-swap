@@ -32,9 +32,9 @@ tcmInfo = () => {
         this.setState({tcmInfo: res.data})
     }).then(
         this.myIncomingTrades()
-    ).then(
+    ).then(setTimeout(()=>{
         this.setState({ doneLoading: true })
-        
+        }, 500)
         );
 }
     
@@ -47,6 +47,8 @@ tcmInfo = () => {
         this.setState({ incomingTrades: res.data });
     });
 }
+
+//button handlers
     cancelFormSubmit = (event, i) => {
         event.preventDefault();
         let cancelArray = event.target.getAttribute('data-value').split(",")

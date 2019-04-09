@@ -28,6 +28,9 @@ for (let index in props.tradeDetails) {
     ])
 }
 
+
+//generates table
+
     return (
 
         <table  className='tradecol striped' >

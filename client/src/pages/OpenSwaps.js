@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar"
-import MainWrapper from "../components/MainWrapper"
-import TradeTable from "../components/TCMTrades"
-import TradeTable2 from "../components/OutgoingTrades"
 import OpenTradeTable from "../components/OpenTrades"
 import API from "../utils/API";
 
@@ -52,6 +49,7 @@ tcmInfo = () => {
         });
     }
 
+    //button handles
     cancelFormSubmit = (event, i) => {
         event.preventDefault();
         let cancelArray = event.target.getAttribute('data-value').split(",")
