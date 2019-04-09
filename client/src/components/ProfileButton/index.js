@@ -19,7 +19,7 @@ export function ChangePwd(props) {
                 <div className="modal-content">
                     <h4 className="center">Change Password <a className="modal-close waves-effect waves-green btn-flat closeBtn"><i class="material-icons">close</i></a></h4>
                     <div className="row">
-                        {/* Form inside of the modal to add new troop to the database */}
+                        {/* Form inside of the modal to Reset the Password in the database */}
                         <form className="col s12">
                             <div className="row">
                                 <p className="col l4 push-l1"> Current Password </p>
@@ -62,6 +62,7 @@ export function ChangePwd(props) {
     )
 }
 
+// Buttons for Update Profile and Reset 
 export function UpdateButton(props) {
     return (
         <>

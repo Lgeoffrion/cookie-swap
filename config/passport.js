@@ -4,6 +4,7 @@ var LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
+// authenticate the troop cookie manager email and password
 passport.use('tcm-user', new LocalStrategy(
   // Our user will sign in using an email, rather than a "username"
   {
@@ -36,6 +37,7 @@ passport.use('tcm-user', new LocalStrategy(
     });//.catch(err => res.status(422).json(err));;
   }
 ));
+// authenticate the service unit manager email and password
 passport.use('sum-user', new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
     {

@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family: "Trefoil Sans Web", "Open Sans", Arial, sans-serif;
 }
-.btn, .btn-small{
+.btn, .btn-small, .btn-large{
   color: black !important;
   background-color: #F7CE4F !important;
 }
@@ -12,6 +12,30 @@ code {
     monospace;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1 0 auto;
+}
+.page-footer 
+{
+  background-color:white;
+}
+.page-footer .container
+{
+  
+  height: 25vh;
+  padding-bottom:5px;
+  width: 100vw;
+  background-image: url("../src/images/Cookie_Footer_3.jpg");
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: 10vw;
+}
 .tradeh3{
   margin-top: 5%;
   text-decoration: underline;
