@@ -32,9 +32,9 @@ tcmInfo = () => {
         this.setState({tcmInfo: res.data})
     }).then(
         this.myIncomingTrades()
-    ).then(setTimeout(()=>{
+    ).then(
         this.setState({ doneLoading: true })
-        }, 500)
+        
         );
 }
     
