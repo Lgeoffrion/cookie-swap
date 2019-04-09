@@ -1,3 +1,4 @@
+// Switch statement which replaces cookie names as passed.
 export default {
     cookieNamer: function(cookieName) {
     switch (cookieName) {

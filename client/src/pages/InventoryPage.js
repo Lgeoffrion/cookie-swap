@@ -24,6 +24,7 @@ class TCMInventory2 extends Component {
     value: ""
   };
 
+  // Loads the page right off
   componentDidMount() {
     this.myInventory();
   }
@@ -37,11 +38,9 @@ class TCMInventory2 extends Component {
       document.location.href = "/";
     }
     else {
-      console.log("user ID :", TCM_userInfo.id);
 
       API.getYourInventory(TCM_userInfo.id)
         .then(res => {
-          console.log("API Response:", res);
           this.setState({
             openTrade: res.data,
             userid: TCM_userInfo.id
@@ -50,14 +49,10 @@ class TCMInventory2 extends Component {
     }
   };
 
+  // Tracks changes when typed
   addInputChange = event => {
-    // const value = event.target.value;
     const name = event.target.name;
     const value = event.target.value;
-    // const troop = event.target.troopnum;
-    // const phone = event.target.phone;
-    // const city = event.target.location;
-    // const email = event.target.email;
     const digits_only = string => [...string].every(c => '0123456789'.includes(c));
     
     if(!digits_only(value)){
@@ -75,14 +70,10 @@ class TCMInventory2 extends Component {
   
   }
 
+  // Track changes when typed
   subInputChange = event => {
-    // const value = event.target.value;
     const name = event.target.name;
     const value = event.target.value;
-    // const troop = event.target.troopnum;
-    // const phone = event.target.phone;
-    // const city = event.target.location;
-    // const email = event.target.email;
     const digits_only = string => [...string].every(c => '0123456789'.includes(c));
 
     if(!digits_only(value)){
@@ -99,14 +90,10 @@ class TCMInventory2 extends Component {
     })
   }
   
+  // Tracks data when changed
   swapInputChange = event => {
-    // const value = event.target.value;
     const name = event.target.name;
     const value = event.target.value;
-    // const troop = event.target.troopnum;
-    // const phone = event.target.phone;
-    // const city = event.target.location;
-    // const email = event.target.email;
     const digits_only = string => [...string].every(c => '0123456789'.includes(c));
 
     if(!digits_only(value)){
@@ -123,6 +110,7 @@ class TCMInventory2 extends Component {
     })
   }
 
+  // Handles form submit
   addFormSubmit = event => {
     event.preventDefault();
     API.addCookies(this.state);
@@ -142,6 +130,7 @@ class TCMInventory2 extends Component {
     window.location.reload();
   }
 
+  // Handles form submit
   subFormSubmit = event => {
     event.preventDefault();
 
@@ -176,6 +165,7 @@ class TCMInventory2 extends Component {
 
   }
 
+  // Handles form submit
   swapFormSubmit = event => {
     event.preventDefault();
 
@@ -207,6 +197,7 @@ class TCMInventory2 extends Component {
     
   }
 
+  // Renders the page with all data
   render() {
     return (
       <>
