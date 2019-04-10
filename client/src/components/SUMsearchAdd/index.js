@@ -55,6 +55,7 @@ function SUMsearchAdd(props) {
                                 <div className="row addRow">
                                     <div className="input-field col s5">
                                         <input name="phone" type="text" 
+                                        maxlength="12"
                                         className={props.phoneErrorMsg}
                                         defaultValue={props.phone}
                                         onKeyDown={props.inputPhoneChange}
