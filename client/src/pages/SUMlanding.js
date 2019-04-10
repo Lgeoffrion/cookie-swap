@@ -152,7 +152,7 @@ class SUMlanding extends Component {
             (event.key.match(/[0-9]/) || event.keyCode == 8 || event.keyCode == 189)
             && (event.keyCode == 8 || value.length < 12)) {
             var newphone = value + event.key;
-            this.setState({ phone: newphone });
+            this.setState({ phone: value });
             if (newphone.match(/([0-9]{3})\-([0-9]{3})-([0-9]{4})$/))
             { 
                 palert.style.visibility = "hidden";
