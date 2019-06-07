@@ -8,6 +8,20 @@ The app admin will add the Service Unit Manager, SUM, into the SUM table and the
 
 Once the TCM logs in and updates their password, they can add cookies to their inventory, let others know by putting up their cookies for swap, or remove cookies from their inventory.  The TCM can also update their profile and see all their swaps.  They also have a view of all the available cookies if they need any and can claim the cookies for their troop.  Once they click the claim button, an email is sent to the other troop to let them know there is an interested taker and to contact that person.
 
+## Troop Cookie Manager user name and password
+
+The majority of the app is found under the Troop Cookie Manager.  We are using email address as the username.
+
+username : LoganG@G.com
+password : temporary
+
+## Service Unit Manager user name and password
+
+You will need a service unit manager login and add additional Troop Cookie Managers and overview Managers  We are using email address as the username.
+
+username : JA@gmail.com
+password : password1
+
 ## Links
 
 - Deployment page: https://gs-cookie-swap.herokuapp.com/
@@ -21,12 +35,6 @@ This application doesn't require any other installation for a user.
 
 Before starting development of this application, we needed to npm install express, dotenv, express-session, googleapis, mysqul2, moment, if-env, mysql, nodemailer, passport, path and sequelize packages. We created the database on jawsDB and deployed to Heroku.
 
-## Service Unit Manager user name and password
-
-You will need a service unit manager login to be able to run this app.  We are using email address as the username.
-
-username : JA@gmail.com
-password : password1
 
 
 ## Things that worked well
